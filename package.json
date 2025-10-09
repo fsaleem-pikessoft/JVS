@@ -6,7 +6,8 @@
   "scripts": {
     "build": "echo 'Static site - no build required'",
     "dev": "npx serve .",
-    "start": "npx serve ."
+    "start": "npx serve .",
+    "vercel-build": "echo 'Static site - no build required'"
   },
   "keywords": [
     "tax",
