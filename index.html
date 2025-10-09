@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JVS Tax Services - Professional Tax Solutions</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>+1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope me-2"></i>info@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <!-- Logo Section -->
+            <a class="navbar-brand" href="#home">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title">PEACE OF MIND</div>
+                        <div class="brand-subtitle">JVS TAX SERVICES</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf me-2"></i>Tax Forms</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-calculator me-2"></i>Tax Calculator</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-book me-2"></i>Tax Guide</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Help Center</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faqs">FAQS</a>
+                    </li>
+                </ul>
+
+                <!-- Call-to-Action Buttons -->
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin">
+                        <i class="fas fa-user"></i>
+                        <span>SIGN IN</span>
+                    </a>
+                    <a href="#appointment" class="btn btn-appointment">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>BOOK YOUR APPOINTMENT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container-fluid">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title animate-fade-in-up">
+                            Did You Miss the Tax Deadline?
+                        </h1>
+                        <h2 class="hero-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                            No Need to Worry
+                        </h2>
+                        <div class="hero-buttons animate-fade-in-up" style="animation-delay: 0.4s;">
+                            <a href="#services" class="btn btn-hero-primary">
+                                File Your Taxes With Us
+                            </a>
+                            <a href="#contact" class="btn btn-hero-secondary">
+                                File Your Taxes Remotely
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image animate-fade-in-right" style="animation-delay: 0.6s;">
+                        <div class="hero-person">
+                            <div class="person-image">
+                                <img src="images/coverPersonPointingBlack.webp" alt="Professional woman pointing" class="person-svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Cards Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Protection Plus Card -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="card-image">
+                            <img src="images/pp_logo-blue.webp" alt="Protection Plus Logo" class="protection-logo-img">
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">View our protection plan page and see many options we offer to give you peace of mind with your return.</p>
+                            <a href="#" class="btn btn-card">Click Here</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Business Card -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="card-image">
+                            <img src="images/small business.webp" alt="Small Business" class="business-svg">
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">View our small business taxes page to view what we offer.</p>
+                            <a href="#" class="btn btn-card">Click Here</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refund Tracking Card -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="card-image">
+                            <img src="images/family refund.webp" alt="Family celebrating refund" class="couple-svg">
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Looking for your federal and state refund?</p>
+                            <div class="card-buttons">
+                                <a href="#" class="btn btn-card-small">Track Federal Refund</a>
+                                <a href="#" class="btn btn-card-small">Track State Refund</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Card -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="card-image">
+                            <img src="images/family pom.webp" alt="Family reading pricing" class="family-svg">
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Click here to view our pricing sheet to give you absolute peace of mind</p>
+                            <a href="#" class="btn btn-card">Click Here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Services We Offer -->
+    <section class="other-services py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <h2 class="section-title">Other Services We Offer</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/2year tax review.webp" alt="Free 2 Year Tax Review" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Free 2 Year Tax Review</h5>
+                        <p class="os-text">Unlock potential savings with our complimentary 2‑year tax review. Our expert team thoroughly analyzes your last two returns including Earned Income Credit (EIC), CTC, D/I/D, and ITIN applications.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/bookkeeping.webp" alt="Bookkeeping" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Bookkeeping</h5>
+                        <p class="os-text">Accurate monthly books, reconciliations, and clean financials so you always know where your business stands.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/amended returns.webp" alt="Amended Returns" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Amended Returns</h5>
+                        <p class="os-text">Filed something incorrectly? We prepare Form 1040‑X and supporting schedules to correct and optimize your returns.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/corporations.webp" alt="S and C Corporations" class="os-svg">
+                        </div>
+                        <h5 class="os-title">S and C Corporations</h5>
+                        <p class="os-text">Entity selection, reasonable compensation planning, and accurate corporate filings for S‑Corp and C‑Corp clients.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/partnerships.webp" alt="Partnerships" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Partnerships</h5>
+                        <p class="os-text">Full partnership accounting and preparation of Form 1065 with Schedule K‑1s for each partner.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/military returns.webp" alt="Individual, Military, and Business Returns" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Individual, Military, and Business Returns</h5>
+                        <p class="os-text">From simple W‑2s to complex business and military situations—we’ve got you covered with accurate, on‑time filings.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                            <img src="images/gift-tax-returns.webp" alt="Gift Tax Returns" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Gift Tax Returns</h5>
+                        <p class="os-text">Preparation of Form 709 with strategic guidance to maximize lifetime exemptions and minimize exposure.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+                <!-- Card 8 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="os-card">
+                        <div class="os-thumb">
+                        <img src="images/estates-trusts.webp" alt="Estates and Trusts" class="os-svg">
+                        </div>
+                        <h5 class="os-title">Estates and Trusts</h5>
+                        <p class="os-text">Fiduciary accounting and Form 1041 preparation with distributions planning for beneficiaries.</p>
+                        <a href="#" class="btn btn-card w-100">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="#services" class="btn btn-card">View Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Appointment & Help Section -->
+     <section class="features-quad py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Book Appointment -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="fcard animate-fade-in-up" style="animation-delay:0.05s;">
+                        <div class="ficon calendar">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="6" y="12" width="52" height="46" rx="10" fill="#eaf7f7"/>
+                                <rect x="10" y="22" width="44" height="6" rx="3" fill="#20B2AA"/>
+                                <circle cx="18" cy="12" r="4" fill="#20B2AA"/>
+                                <circle cx="46" cy="12" r="4" fill="#20B2AA"/>
+                                <rect x="28" y="34" width="8" height="8" rx="2" fill="#20B2AA"/>
+                                <rect x="40" y="34" width="8" height="8" rx="2" fill="#9fd9d6"/>
+                                <rect x="16" y="34" width="8" height="8" rx="2" fill="#9fd9d6"/>
+                            </svg>
+                        </div>
+                        <h5 class="fcard-title">Book an appointment with us</h5>
+                        <p class="fcard-text">File your return today, starting at <strong>$75</strong>. Guaranteed smooth intake and dedicated support.</p>
+                        <a class="btn btn-fcard" href="#appointment">Schedule an appointment</a>
+                    </div>
+                </div>
+                <!-- Prior Year Returns -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="fcard animate-fade-in-up" style="animation-delay:0.15s;">
+                        <div class="ficon clipboard">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="12" y="10" width="40" height="50" rx="8" fill="#eef7ff"/>
+                                <rect x="20" y="14" width="24" height="6" rx="3" fill="#20B2AA"/>
+                                <rect x="18" y="26" width="28" height="4" rx="2" fill="#9fd9d6"/>
+                                <rect x="18" y="34" width="24" height="4" rx="2" fill="#cfeeee"/>
+                                <rect x="18" y="42" width="20" height="4" rx="2" fill="#d7f4f4"/>
+                            </svg>
+                        </div>
+                        <h5 class="fcard-title">Prior-year tax returns</h5>
+                        <p class="fcard-text">Behind on filings? We get you compliant fast—accurate, complete, and properly submitted to get you back on track.</p>
+                    </div>
+                </div>
+                <!-- Equity Comp -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="fcard animate-fade-in-up" style="animation-delay:0.25s;">
+                        <div class="ficon stocks">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="8" y="8" width="48" height="48" rx="10" fill="#fff7ef"/>
+                                <rect x="18" y="38" width="6" height="12" rx="2" fill="#20B2AA"/>
+                                <rect x="30" y="30" width="6" height="20" rx="2" fill="#9fd9d6"/>
+                                <rect x="42" y="24" width="6" height="26" rx="2" fill="#20B2AA"/>
+                                <circle cx="46" cy="20" r="3" fill="#ffc37b"/>
+                            </svg>
+                        </div>
+                        <h5 class="fcard-title">Equity compensation experts</h5>
+                        <p class="fcard-text">ISOs, NSOs, ESPPs, RSUs—we model tax impact and file precisely to keep you optimized and compliant.</p>
+                    </div>
+                </div>
+                <!-- Find W2/EIN -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="fcard animate-fade-in-up" style="animation-delay:0.35s;">
+                        <div class="ficon search">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="10" y="10" width="44" height="44" rx="12" fill="#f7f3ff"/>
+                                <circle cx="30" cy="30" r="10" fill="#20B2AA" opacity="0.25"/>
+                                <circle cx="30" cy="30" r="6" fill="#20B2AA"/>
+                                <rect x="38" y="38" width="12" height="4" rx="2" transform="rotate(45 44 40)" fill="#b9a9ff"/>
+                            </svg>
+                        </div>
+                        <h5 class="fcard-title">Missing W‑2 or EIN?</h5>
+                        <p class="fcard-text">We can retrieve employer EIN details and IRS wage transcripts securely so you can file without delay.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Promo Posters Section -->
+      <section class="promo-posters py-5">
+        <div class="container">
+            <div class="row gy-4 align-items-center">
+                <div class="col-lg-6">
+                    <div class="poster-card fade-motion" data-motion>
+                        <div class="poster poster-a">
+                            <img src="images/refund-transfer.webp" alt="File Your Taxes Here - $0 Up Front" class="poster-image">
+                        </div>
+                        <a href="#" class="btn btn-poster w-100 mt-3">Click Here to View More Info</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="poster-card fade-motion" data-motion style="animation-delay:.15s;">
+                        <div class="poster poster-b">
+                            <img src="images/fasterCard.webp" alt="FasterMoney Visa Prepaid Card" class="poster-image">
+                        </div>
+                        <a href="#" class="btn btn-poster w-100 mt-3">Get Faster Money Card Info Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- We Guarantee Section -->
+     <section class="guarantee-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="guarantee-title animate-fade-in-up">
+                        Here at JVS Tax Services<br>
+                        <span class="guarantee-subtitle">We Guarantee:</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="guarantee-image animate-fade-in-left">
+                        <div class="professional-portrait">
+                            <img src="images/julia_spooner.webp" alt="Julia Spooner - Tax Professional" class="portrait-svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="guarantee-accordion animate-fade-in-right">
+                        <div class="accordion" id="guaranteeAccordion">
+                            <!-- 100% Satisfaction (Active) -->
+                            <div class="accordion-item active">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button active" type="button" data-bs-toggle="collapse" data-bs-target="#satisfaction" aria-expanded="true">
+                                        <span class="guarantee-text">100% Satisfaction</span>
+                                        <i class="fas fa-chevron-up guarantee-icon"></i>
+                                    </button>
+                                </h3>
+                                <div id="satisfaction" class="accordion-collapse collapse show" data-bs-parent="#guaranteeAccordion">
+                                    <div class="accordion-body">
+                                        <p>We stand behind our work with complete confidence. If you're not satisfied with our service, we'll make it right or provide a full refund.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 100% Accuracy -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accuracy" aria-expanded="false">
+                                        <span class="guarantee-text">100% Accuracy</span>
+                                        <i class="fas fa-chevron-down guarantee-icon"></i>
+                                    </button>
+                                </h3>
+                                <div id="accuracy" class="accordion-collapse collapse" data-bs-parent="#guaranteeAccordion">
+                                    <div class="accordion-body">
+                                        <p>Our certified tax professionals ensure every calculation is precise and every form is completed correctly according to current tax laws.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Maximum Refund -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#refund" aria-expanded="false">
+                                        <span class="guarantee-text">Maximum Refund</span>
+                                        <i class="fas fa-chevron-down guarantee-icon"></i>
+                                    </button>
+                                </h3>
+                                <div id="refund" class="accordion-collapse collapse" data-bs-parent="#guaranteeAccordion">
+                                    <div class="accordion-body">
+                                        <p>We guarantee to find every deduction and credit you're entitled to, maximizing your refund or minimizing what you owe.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- No Surprise Guarantees -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#surprise" aria-expanded="false">
+                                        <span class="guarantee-text">No Surprise Guarantees</span>
+                                        <i class="fas fa-chevron-down guarantee-icon"></i>
+                                    </button>
+                                </h3>
+                                <div id="surprise" class="accordion-collapse collapse" data-bs-parent="#guaranteeAccordion">
+                                    <div class="accordion-body">
+                                        <p>Transparent pricing with no hidden fees. You'll know exactly what you're paying before we start your return.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- About JVS Tax Services -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>718-395-9663</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>support@jvstaxservices.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>147 Prince Street</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Brooklyn, NY 11201</span>
+                            </div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Hours -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item">
+                                <span class="day">Monday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Tuesday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Wednesday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Thursday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Friday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Sat - Sun:</span>
+                                <span class="time">11am - 3pm</span>
+                            </div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sitemap -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="#home" class="sitemap-link">Home</a>
+                            <a href="#contact" class="sitemap-link">Contact</a>
+                            <a href="about.html" class="sitemap-link">About Us</a>
+                            <a href="#" class="sitemap-link">Protection Plan</a>
+                            <a href="#" class="sitemap-link">Pricing Sheet</a>
+                            <a href="#" class="sitemap-link">Refund Transfer</a>
+                            <a href="#" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="#" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="#" class="sitemap-link">Track Your State Refund</a>
+                            <a href="#" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="#" class="sitemap-link">Our Blog</a>
+                            <a href="#faqs" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo">
+                                    <div class="bbb-square">BBB</div>
+                                </div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accessibility Icon -->
+        <div class="accessibility-icon">
+            <i class="fas fa-universal-access"></i>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

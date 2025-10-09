@@ -1,0 +1,23 @@
+{
+  "name": "jvs-tax-services",
+  "version": "1.0.0",
+  "description": "JVS Tax Services - Professional Tax Solutions Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build required'",
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "tax",
+    "services",
+    "accounting",
+    "tax-preparation",
+    "jvs"
+  ],
+  "author": "JVS Tax Services",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.x"
+  }
+}
