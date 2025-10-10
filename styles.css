@@ -380,15 +380,38 @@ html {
         margin-bottom: 0;
     }
     
-    /* Tablet Image Adjustments */
+    /* Tablet Image Adjustments - Show Hero Image */
     .hero-image {
-        height: 500px;
+        height: auto;
+        min-height: 350px;
+        padding: 1rem;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
     }
     
     .person-image {
         width: 100%;
         max-width: 400px;
         height: auto;
+        min-height: 220px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .person-svg {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+        display: block !important;
+    }
+    
+    /* Show hero image column on tablets */
+    .hero-section .col-lg-6:last-child {
+        display: block !important;
     }
     
     .hero-title {
@@ -559,6 +582,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
 }
 
 .hero-person {
@@ -572,14 +596,23 @@ html {
 
 .person-image {
     position: relative;
-    width: 600px;
-    height: 400px;    
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .person-svg {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    animation: float 6s ease-in-out infinite;
 }
 
 /* Floating animation for the person */
@@ -2156,28 +2189,46 @@ html {
         padding: 1.5rem 1rem;
     }
     
-    /* Mobile Image Fixes */
+    /* Mobile - Hide Hero Image */
     .hero-image {
-        height: 400px;
-        margin-top: 2rem;
+        display: none !important;
     }
     
     .person-image {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        max-height: 300px;
+        display: none !important;
     }
     
     .person-svg {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
+        display: none !important;
     }
     
     .hero-person {
-        height: auto;
-        padding: 1rem;
+        display: none !important;
+    }
+    
+    /* Hide the entire hero image column on mobile */
+    .hero-section .col-lg-6:last-child {
+        display: none !important;
+    }
+    
+    /* Adjust hero section for mobile without image */
+    .hero-section {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 2rem;
+    }
+    
+    .hero-content {
+        padding: 1rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    /* Make hero content take full width on mobile */
+    .hero-section .col-lg-6:first-child {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
     }
     
     /* Service card images */
