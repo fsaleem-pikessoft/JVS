@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         navLinks.forEach(link => {
             const href = (link.getAttribute('href') || '').toLowerCase();
             link.classList.remove('active');
-            if (currentPath.includes('about.html') && href.includes('about.html')) {
+            if ((currentPath.includes('/about') || currentPath.includes('about.html')) && (href.includes('/about') || href.includes('about.html'))) {
                 link.classList.add('active');
-            } else if (!currentPath.includes('about.html') && (href === '#home' || href.endsWith('/#home'))) {
+            } else if (!currentPath.includes('/about') && !currentPath.includes('about.html') && (href === '#home' || href.endsWith('/#home'))) {
                 link.classList.add('active');
             }
         });
