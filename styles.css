@@ -418,6 +418,22 @@ html {
         font-size: 3rem;
     }
     
+    /* Tablet hero button alignment */
+    .hero-buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .hero-buttons .btn {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+    }
+    
     .hero-subtitle {
         font-size: 2rem;
     }
@@ -2222,6 +2238,22 @@ html {
         padding: 1rem 0;
         text-align: center;
         width: 100%;
+    }
+    
+    /* Center align hero buttons on mobile */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
     }
     
     /* Make hero content take full width on mobile */
