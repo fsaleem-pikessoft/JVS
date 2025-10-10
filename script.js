@@ -26,7 +26,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                 link.classList.add('active');
             } else if ((currentPath.includes('/protection-plus') || currentPath.includes('protection-plus.html')) && (href.includes('/protection-plus') || href.includes('protection-plus.html'))) {
                 link.classList.add('active');
-            } else if (!currentPath.includes('/about') && !currentPath.includes('about.html') && !currentPath.includes('/protection-plus') && !currentPath.includes('protection-plus.html') && (href === '#home' || href.endsWith('/#home'))) {
+            } else if ((currentPath.includes('/contact') || currentPath.includes('contact.html')) && (href.includes('/contact') || href.includes('contact.html'))) {
+                link.classList.add('active');
+            } else if ((currentPath.includes('/faqs') || currentPath.includes('faqs.html')) && (href.includes('/faqs') || href.includes('faqs.html'))) {
+                link.classList.add('active');
+            } else if (!currentPath.includes('/about') && !currentPath.includes('about.html') && !currentPath.includes('/protection-plus') && !currentPath.includes('protection-plus.html') && !currentPath.includes('/contact') && !currentPath.includes('contact.html') && !currentPath.includes('/faqs') && !currentPath.includes('faqs.html') && (href === '#home' || href.endsWith('/#home'))) {
                 link.classList.add('active');
             }
         });

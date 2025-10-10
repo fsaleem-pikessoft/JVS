@@ -24,6 +24,14 @@
       "dest": "/protection-plus.html"
     },
     {
+      "src": "/contact",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/faqs",
+      "dest": "/faqs.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }

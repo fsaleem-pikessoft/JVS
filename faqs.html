@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protection Plus Plan - JVS Tax Services</title>
+    <title>Frequently Asked Questions - JVS Tax Services</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <style>
-        .protection-hero {
+        .faq-hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #1e3c72 50%, #2a5298 75%, #20B2AA 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
@@ -31,7 +31,7 @@
             100% { background-position: 0% 50%; }
         }
         
-        .protection-hero::before {
+        .faq-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -50,24 +50,7 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
         
-        .protection-hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-        
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        
-        .protection-badge {
+        .faq-badge {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -84,28 +67,12 @@
             animation: badgeGlow 2s ease-in-out infinite alternate;
         }
         
-        .protection-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmerBadge 3s infinite;
-        }
-        
         @keyframes badgeGlow {
             0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
             100% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
         }
         
-        @keyframes shimmerBadge {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .protection-title {
+        .faq-title {
             font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.2;
@@ -124,7 +91,7 @@
             50% { background-position: 100% 50%; }
         }
         
-        .protection-subtitle {
+        .faq-subtitle {
             font-size: 1.25rem;
             font-weight: 400;
             opacity: 0.9;
@@ -133,7 +100,7 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
-        .protection-stats {
+        .faq-stats {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
             backdrop-filter: blur(20px);
             border-radius: 25px;
@@ -145,7 +112,7 @@
             overflow: hidden;
         }
         
-        .protection-stats::before {
+        .faq-stats::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -161,68 +128,41 @@
             100% { transform: rotate(360deg); }
         }
         
-        .stat-item {
-            text-align: center;
-            padding: 25px;
+        .faq-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
             position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            margin: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
         }
         
-        .stat-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(32, 178, 170, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.03) 0%, transparent 50%);
+            animation: faqFloat 30s ease-in-out infinite;
         }
         
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #20B2AA, #00ff88, #20B2AA);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: statPulse 2s ease-in-out infinite;
-            display: block;
-            text-shadow: 0 0 20px rgba(32, 178, 170, 0.5);
+        @keyframes faqFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
         }
         
-        @keyframes statPulse {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0.9;
-            margin-top: 8px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .feature-section {
-            padding: 80px 0;
-        }
-        
-        .feature-card {
+        .faq-accordion {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
             border-radius: 25px;
-            padding: 45px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(32, 178, 170, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 100%;
             position: relative;
             overflow: hidden;
         }
         
-        .feature-card::before {
+        .faq-accordion::before {
             content: '';
             position: absolute;
             top: 0;
@@ -239,13 +179,139 @@
             50% { background-position: 100% 50%; }
         }
         
-        .feature-card:hover {
+        .accordion-item {
+            background: transparent;
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .accordion-button {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border: 1px solid rgba(32, 178, 170, 0.2);
+            border-radius: 15px;
+            padding: 25px 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1e3c72;
+            box-shadow: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .accordion-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #20B2AA, #667eea, #764ba2);
+            background-size: 100% 200%;
+            animation: accordionFlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes accordionFlow {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #20B2AA, #667eea);
+            color: white;
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.25);
+        }
+        
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2320B2AA'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            transform: rotate(180deg);
+        }
+        
+        .accordion-body {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border: 1px solid rgba(32, 178, 170, 0.1);
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            padding: 25px 30px;
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .faq-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 50%, #f0f8ff 100%);
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .faq-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(32, 178, 170, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+            animation: categoryFloat 25s ease-in-out infinite;
+        }
+        
+        @keyframes categoryFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .category-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 25px;
+            padding: 45px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(32, 178, 170, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #20B2AA, #667eea, #764ba2, #20B2AA);
+            background-size: 200% 100%;
+            animation: borderFlow 3s ease-in-out infinite;
+        }
+        
+        .category-card:hover {
             transform: translateY(-15px) scale(1.02);
             box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
             background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
         }
         
-        .feature-icon {
+        .category-icon {
             width: 90px;
             height: 90px;
             background: linear-gradient(135deg, #20B2AA, #667eea, #764ba2);
@@ -255,7 +321,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 0 auto 30px;
             font-size: 2.2rem;
             color: white;
             box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
@@ -263,7 +329,7 @@
             overflow: hidden;
         }
         
-        .feature-icon::before {
+        .category-icon::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -284,111 +350,28 @@
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
         
-        .feature-title {
+        .category-title {
             font-size: 1.5rem;
             font-weight: 600;
             color: #1e3c72;
             margin-bottom: 15px;
         }
         
-        .feature-description {
+        .category-description {
             color: #666;
             line-height: 1.7;
             font-size: 1rem;
+            margin-bottom: 20px;
         }
         
-        .protection-benefits {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-        
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 35px;
-            padding: 30px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(32, 178, 170, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .benefit-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #20B2AA, #667eea, #764ba2);
-            background-size: 100% 200%;
-            animation: benefitFlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes benefitFlow {
-            0%, 100% { background-position: 0% 0%; }
-            50% { background-position: 0% 100%; }
-        }
-        
-        .benefit-item:hover {
-            transform: translateX(15px) scale(1.02);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
-        }
-        
-        .benefit-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #20B2AA, #667eea, #764ba2);
-            background-size: 200% 200%;
-            animation: benefitIconGradient 3s ease-in-out infinite;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .category-count {
+            background: linear-gradient(135deg, #20B2AA, #667eea);
             color: white;
-            font-size: 1.4rem;
-            margin-right: 25px;
-            flex-shrink: 0;
-            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .benefit-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: benefitIconShine 2s ease-in-out infinite;
-        }
-        
-        @keyframes benefitIconGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes benefitIconShine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .benefit-content h4 {
-            color: #1e3c72;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .benefit-content p {
-            color: #666;
-            line-height: 1.6;
-            margin: 0;
+            display: inline-block;
         }
         
         .cta-section {
@@ -461,7 +444,7 @@
             z-index: 2;
         }
         
-        .btn-protection {
+        .btn-faq {
             background: linear-gradient(135deg, #20B2AA, #00ff88, #20B2AA);
             background-size: 200% 200%;
             animation: buttonGradient 3s ease-in-out infinite;
@@ -481,7 +464,7 @@
             overflow: hidden;
         }
         
-        .btn-protection::before {
+        .btn-faq::before {
             content: '';
             position: absolute;
             top: 0;
@@ -502,13 +485,13 @@
             100% { left: 100%; }
         }
         
-        .btn-protection:hover {
+        .btn-faq:hover {
             color: white;
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 20px 50px rgba(32, 178, 170, 0.5);
         }
         
-        .btn-outline-protection {
+        .btn-outline-faq {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -527,7 +510,7 @@
             overflow: hidden;
         }
         
-        .btn-outline-protection::before {
+        .btn-outline-faq::before {
             content: '';
             position: absolute;
             top: 0;
@@ -538,56 +521,19 @@
             animation: buttonShine 2s ease-in-out infinite;
         }
         
-        .btn-outline-protection:hover {
+        .btn-outline-faq:hover {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 20px 50px rgba(255, 255, 255, 0.2);
         }
         
-        .guarantee-badge {
-            background: linear-gradient(135deg, #20B2AA, #667eea, #764ba2);
-            background-size: 200% 200%;
-            animation: guaranteeGradient 4s ease-in-out infinite;
-            color: white;
-            padding: 25px 40px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 50px 0;
-            font-weight: 600;
-            font-size: 1.2rem;
-            box-shadow: 0 15px 40px rgba(32, 178, 170, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .guarantee-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: guaranteeShine 3s ease-in-out infinite;
-        }
-        
-        @keyframes guaranteeGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes guaranteeShine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
         @media (max-width: 768px) {
-            .protection-title {
+            .faq-title {
                 font-size: 2.5rem;
             }
             
-            .protection-subtitle {
+            .faq-subtitle {
                 font-size: 1.1rem;
             }
             
@@ -600,8 +546,8 @@
                 align-items: center;
             }
             
-            .btn-protection,
-            .btn-outline-protection {
+            .btn-faq,
+            .btn-outline-faq {
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
@@ -610,7 +556,7 @@
     </style>
     
     <link rel="icon" href="images/JVS Official Logo 200x200.webp">
-    <meta name="description" content="JVS Protection Plus: $1,000,000 Tax Audit Defense™ and Identity Theft Restoration services. Complete peace of mind for your tax filing needs.">
+    <meta name="description" content="Find answers to frequently asked questions about JVS Tax Services. Get expert tax advice and learn about our services, pricing, and processes.">
 </head>
 <body>
     <!-- Top Bar -->
@@ -638,7 +584,6 @@
     <!-- Main Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container-fluid px-4">
-            <!-- Logo Section -->
             <a class="navbar-brand" href="/">
                 <div class="brand-container">
                     <div class="logo-circle">
@@ -651,27 +596,17 @@
                 </div>
             </a>
 
-            <!-- Mobile Toggle Button -->
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Navigation Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">CONTACT</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">CONTACT</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
-                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">RESOURCES <i class="fas fa-chevron-down ms-1"></i></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/protection-plus"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
@@ -682,58 +617,55 @@
                             <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Privacy Policy</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Our Blog</a></li>
                         </ul>
-                    </li>                  
-                    <li class="nav-item">
-                        <a class="nav-link" href="/faqs">FAQS</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="/protection-plus">PROTECTION PLUS</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/faqs">FAQS</a></li>
                 </ul>
-
-                <!-- Call-to-Action Buttons -->
                 <div class="navbar-actions">
-                    <a href="#signin" class="btn btn-signin">
-                        <i class="fas fa-user"></i>
-                        <span>SIGN IN</span>
-                    </a>
-                    <a href="#appointment" class="btn btn-appointment">
-                        <i class="fas fa-calendar-check"></i>
-                        <span>BOOK YOUR APPOINTMENT</span>
-                    </a>
+                    <a href="/#signin" class="btn btn-signin"><i class="fas fa-user"></i><span>SIGN IN</span></a>
+                    <a href="/#appointment" class="btn btn-appointment"><i class="fas fa-calendar-check"></i><span>BOOK YOUR APPOINTMENT</span></a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="protection-hero">
+    <section class="faq-hero">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <div class="protection-badge animate-fade-in-up">
-                        <i class="fas fa-shield-check me-2"></i>PROTECTION YOU CAN RELY ON
+                    <div class="faq-badge animate-fade-in-up">
+                        <i class="fas fa-question-circle me-2"></i>ANSWERS TO YOUR QUESTIONS
                     </div>
-                    <h1 class="protection-title animate-fade-in-up" style="animation-delay: 0.1s;">
-                        JVS Protection Plus
+                    <h1 class="faq-title animate-fade-in-up" style="animation-delay: 0.1s;">
+                        Frequently Asked Questions
                     </h1>
-                    <p class="protection-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
-                        Total Peace of Mind, No Matter What
+                    <p class="faq-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                        Find answers to common questions about our tax services, processes, and policies.
                     </p>
                     <p class="lead animate-fade-in-up" style="animation-delay: 0.3s;">
-                        We're proud to offer every client $1,000,000 Tax Audit Defense™ and Identity Theft Restoration services through Protection Plus. With our expert assistance, you can face any tax notice or identity theft incident with confidence, knowing our dedicated team is in your corner.
+                        Can't find what you're looking for? Our expert team is always ready to help with personalized answers to your specific tax questions.
                     </p>
                 </div>
                 <div class="col-lg-4">
-                    <div class="protection-stats animate-fade-in-right" style="animation-delay: 0.4s;">
+                    <div class="faq-stats animate-fade-in-right" style="animation-delay: 0.4s;">
                         <div class="row">
                             <div class="col-6">
-                                <div class="stat-item">
-                                    <span class="stat-number">$1M</span>
-                                    <div class="stat-label">Tax Audit Defense</div>
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-lightbulb fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">24/7</div>
+                                    <div class="text-white-50 small">Expert Support</div>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="stat-item">
-                                    <span class="stat-number">24/7</span>
-                                    <div class="stat-label">Expert Support</div>
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-clock fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">< 24hr</div>
+                                    <div class="text-white-50 small">Response Time</div>
                                 </div>
                             </div>
                         </div>
@@ -743,120 +675,202 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="feature-section">
+    <!-- FAQ Categories Section -->
+    <section class="faq-category">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title animate-fade-in-up">Comprehensive Protection Services</h2>
-                    <p class="lead animate-fade-in-up" style="animation-delay: 0.1s;">Expert assistance during tax season and beyond</p>
+                    <h2 class="section-title animate-fade-in-up">Browse by Category</h2>
+                    <p class="lead animate-fade-in-up" style="animation-delay: 0.1s;">Find answers organized by topic</p>
                 </div>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.1s;">
-                        <div class="feature-icon">
+                    <div class="category-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="category-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="category-title">Tax Preparation</h3>
+                        <p class="category-description">
+                            Questions about our tax preparation services, pricing, and what to expect during the process.
+                        </p>
+                        <div class="category-count">12 Questions</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="category-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="feature-title">$1,000,000 Tax Audit Defense™</h3>
-                        <p class="feature-description">
-                            Complete access to our expert tax audit defense team. In the event you receive a tax notice from the IRS or State, our Protection Plus audit defense team will provide up to $1,000,000 in services to find a resolution.
+                        <h3 class="category-title">Protection Plus</h3>
+                        <p class="category-description">
+                            Learn about our $1M Tax Audit Defense™ and Identity Theft Restoration services.
                         </p>
+                        <div class="category-count">8 Questions</div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="feature-icon">
-                            <i class="fas fa-user-shield"></i>
-                        </div>
-                        <h3 class="feature-title">Identity Theft Restoration</h3>
-                        <p class="feature-description">
-                            Our Privacy Advocates are available to provide support and assistance in the event of an identity theft incident, whether related to taxes or not. We'll help you recover your identity after an incident.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.3s;">
-                        <div class="feature-icon">
+                    <div class="category-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="category-icon">
                             <i class="fas fa-building"></i>
                         </div>
-                        <h3 class="feature-title">Business Return Support</h3>
-                        <p class="feature-description">
-                            We've teamed up with Protection Plus to offer $1 Million Tax Audit Defense™ to our business return clients, including partnerships, S-Corp, and C-Corp returns. Complete peace of mind for your business.
+                        <h3 class="category-title">Business Services</h3>
+                        <p class="category-description">
+                            Information about our business tax services, partnerships, and corporate filings.
                         </p>
+                        <div class="category-count">10 Questions</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Protection Benefits -->
-    <section class="protection-benefits">
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title animate-fade-in-up">Why Choose Protection Plus?</h2>
-                    <p class="lead animate-fade-in-up" style="animation-delay: 0.1s;">Complete confidence in your tax filing experience</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.1s;">
-                        <div class="benefit-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>Expert Tax Resolution</h4>
-                            <p>Our audit defense team is composed of highly skilled and qualified tax resolution experts who will work diligently on your behalf. From communicating with the IRS to organizing documents, we'll handle the entire process until we reach a resolution.</p>
-                        </div>
+                <div class="col-lg-10 mx-auto">
+                    <div class="text-center mb-5">
+                        <h2 class="section-title animate-fade-in-up">Common Questions</h2>
+                        <p class="lead animate-fade-in-up" style="animation-delay: 0.1s;">Click on any question to see the answer</p>
                     </div>
-                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="benefit-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>Identity Theft Recovery</h4>
-                            <p>After notification of an identity theft incident, you will be assigned a Privacy Advocate who will assess the severity of the situation and take immediate action to begin the identity restoration process.</p>
-                        </div>
-                    </div>
-                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.3s;">
-                        <div class="benefit-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>24/7 Support</h4>
-                            <p>If you receive a tax notice or have an ID theft problem, let us know and we'll take care of it for free. Our dedicated team is always ready to assist you with any tax-related concerns.</p>
-                        </div>
-                    </div>
-                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="benefit-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>No Additional Cost</h4>
-                            <p>All Protection Plus services are included at no additional cost when you file with us. Don't lose sleep over a tax audit - we include Protection Plus $1 Million tax audit defense to offer you peace of mind even after successfully filing your return.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="faq-accordion animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="accordion" id="faqAccordion">
+                            <!-- Tax Preparation Questions -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false">
+                                        What documents do I need to bring for my tax appointment?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You'll need your W-2 forms, 1099 forms, receipts for deductions, previous year's tax return, Social Security numbers for all dependents, and any other income-related documents. We'll provide you with a comprehensive checklist when you book your appointment to ensure you have everything needed.
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Guarantee Section -->
-    <section class="feature-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="guarantee-badge animate-fade-in-up">
-                        <i class="fas fa-award me-2"></i>
-                        Complete Confidence in Tax Filing - We've Got it Handled
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false">
+                                        How much does tax preparation cost?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Our pricing starts at $75 for simple individual returns. Complex returns, business filings, and specialized services are priced based on the specific work required. We provide transparent, upfront pricing with no hidden fees. Contact us for a personalized quote based on your specific situation.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false">
+                                        How long does it take to prepare my tax return?
+                                    </button>
+                                </h3>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Simple individual returns can often be completed during your appointment. Complex returns may take 3-5 business days. We'll provide you with a timeline based on your specific situation and keep you updated throughout the process.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Protection Plus Questions -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false">
+                                        What is included in Protection Plus?
+                                    </button>
+                                </h3>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Protection Plus includes $1,000,000 Tax Audit Defense™ and Identity Theft Restoration services. If you receive a tax notice or audit, our expert team will handle all communications with the IRS and state tax authorities at no additional cost to you.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false">
+                                        Is Protection Plus included with all services?
+                                    </button>
+                                </h3>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes! Protection Plus is automatically included at no additional cost when you file your tax return with us, whether it's an individual, business, or amended return. You get complete peace of mind with every filing.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Business Services Questions -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false">
+                                        Do you handle business tax returns?
+                                    </button>
+                                </h3>
+                                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes, we prepare all types of business returns including S-Corporations, C-Corporations, Partnerships (Form 1065), LLCs, and Sole Proprietorships. We also provide bookkeeping services and business consultation to help optimize your tax situation.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false">
+                                        Can you help with amended returns?
+                                    </button>
+                                </h3>
+                                <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Absolutely! We prepare Form 1040-X and supporting schedules to correct and optimize your returns. Whether you need to add missed deductions, correct errors, or file additional forms, we'll ensure your amended return is accurate and properly submitted.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- General Questions -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false">
+                                        What if I missed the tax deadline?
+                                    </button>
+                                </h3>
+                                <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Don't worry! We can still help you file your return even after the deadline. While there may be penalties and interest for late filing, we'll work with you to minimize these costs and get you back in compliance as quickly as possible.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9" aria-expanded="false">
+                                        How do I track my refund?
+                                    </button>
+                                </h3>
+                                <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You can track your federal refund using the IRS "Where's My Refund?" tool on their website. For state refunds, check your state's tax department website. We also provide links to both tracking tools on our website for your convenience.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10" aria-expanded="false">
+                                        Do you offer remote tax preparation services?
+                                    </button>
+                                </h3>
+                                <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes! We offer secure remote tax preparation services. You can upload your documents securely through our client portal, and we'll prepare your return remotely. We'll schedule a video consultation to review your return before filing, ensuring you're completely satisfied with the results.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="section-title animate-fade-in-up" style="animation-delay: 0.1s;">
-                        Tax Resolution and Identity Theft Restoration
-                    </h2>
-                    <p class="lead animate-fade-in-up" style="animation-delay: 0.2s; max-width: 800px; margin: 0 auto;">
-                        Tax preparation services support from Protection Plus. If you receive a notice, inquiry, or audit, Protection Plus will provide up to $1,000,000 worth of services to find a resolution. Our audit defense team is composed of highly skilled and qualified tax resolution experts who will work diligently on your behalf.
-                    </p>
                 </div>
             </div>
         </div>
@@ -865,18 +879,18 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-title animate-fade-in-up">Ready for Complete Protection?</h2>
+            <h2 class="cta-title animate-fade-in-up">Still Have Questions?</h2>
             <p class="cta-subtitle animate-fade-in-up" style="animation-delay: 0.1s;">
-                Experience the peace of mind that comes with JVS Protection Plus. File with confidence knowing you're fully protected.
+                Our expert team is ready to provide personalized answers to your specific tax questions. Get in touch today!
             </p>
             <div class="cta-buttons animate-fade-in-up" style="animation-delay: 0.2s;">
-                <a href="/#appointment" class="btn-protection">
-                    <i class="fas fa-calendar-check"></i>
-                    Book Your Appointment
+                <a href="/contact" class="btn-faq">
+                    <i class="fas fa-envelope"></i>
+                    Contact Us
                 </a>
-                <a href="/#contact" class="btn-outline-protection">
-                    <i class="fas fa-phone"></i>
-                    Contact Us Today
+                <a href="/#appointment" class="btn-outline-faq">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Appointment
                 </a>
             </div>
         </div>
@@ -928,8 +942,9 @@
                         <div class="footer-sitemap">
                             <a href="/#home" class="sitemap-link">Home</a>
                             <a href="/about" class="sitemap-link">About Us</a>
+                            <a href="/contact" class="sitemap-link">Contact</a>
                             <a href="/protection-plus" class="sitemap-link">Protection Plus</a>
-                            <a href="/#contact" class="sitemap-link">Contact</a>
+                            <a href="/faqs" class="sitemap-link">FAQs</a>
                             <a href="#" class="sitemap-link">Pricing Sheet</a>
                             <a href="#" class="sitemap-link">Refund Transfer</a>
                             <a href="#" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
@@ -937,7 +952,6 @@
                             <a href="#" class="sitemap-link">Track Your State Refund</a>
                             <a href="#" class="sitemap-link">Our Privacy Policy</a>
                             <a href="#" class="sitemap-link">Our Blog</a>
-                            <a href="/#faqs" class="sitemap-link">FAQs</a>
                         </div>
                         <div class="bbb-accreditation mt-4">
                             <div class="bbb-badge">

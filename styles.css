@@ -28,6 +28,28 @@ body {
     overflow-x: hidden;
 }
 
+/* Global Image Responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Ensure all images are responsive by default */
+.person-svg,
+.tree-logo,
+.watermark-svg,
+.portrait-svg,
+.card-image img,
+.service-card img,
+.commitment-media img,
+.transparency-media img,
+.alt-media img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
@@ -356,6 +378,75 @@ html {
     .logo-circle {
         margin-right: 1rem;
         margin-bottom: 0;
+    }
+    
+    /* Tablet Image Adjustments */
+    .hero-image {
+        height: 500px;
+    }
+    
+    .person-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Medium Mobile Adjustments */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .hero-image {
+        height: 450px;
+    }
+    
+    .person-image {
+        max-width: 350px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Service cards on medium screens */
+    .service-card {
+        margin-bottom: 2rem;
+    }
+    
+    .card-image img {
+        max-width: 150px;
     }
 }
 
@@ -2047,6 +2138,10 @@ html {
         font-size: 2rem;
     }
     
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
     .hero-buttons .btn {
         display: block;
         width: 100%;
@@ -2059,6 +2154,85 @@ html {
     
     .contact-form {
         padding: 1.5rem 1rem;
+    }
+    
+    /* Mobile Image Fixes */
+    .hero-image {
+        height: 400px;
+        margin-top: 2rem;
+    }
+    
+    .person-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        max-height: 300px;
+    }
+    
+    .person-svg {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .hero-person {
+        height: auto;
+        padding: 1rem;
+    }
+    
+    /* Service card images */
+    .card-image img {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        object-fit: contain;
+    }
+    
+    /* About page images */
+    .commitment-media img,
+    .transparency-media img,
+    .alt-media img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    
+    /* Portrait images */
+    .portrait-svg {
+        width: 100%;
+        height: auto;
+        max-width: 250px;
+        object-fit: contain;
+    }
+    
+    .professional-portrait {
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    /* Logo images */
+    .tree-logo {
+        width: 100%;
+        height: auto;
+        max-width: 60px;
+        object-fit: contain;
+    }
+    
+    .watermark-svg {
+        width: 100%;
+        height: auto;
+        max-width: 80px;
+        object-fit: contain;
+    }
+    
+    /* Footer images */
+    .footer-logo img {
+        width: 100%;
+        height: auto;
+        max-width: 100px;
+        object-fit: contain;
     }
 }
 
