@@ -20,6 +20,10 @@
       "dest": "/about.html"
     },
     {
+      "src": "/protection-plus",
+      "dest": "/protection-plus.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }

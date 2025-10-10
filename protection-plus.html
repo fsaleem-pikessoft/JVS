@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection Plus Plan - JVS Tax Services</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .protection-hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .protection-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .protection-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .protection-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .protection-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+        
+        .protection-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #20B2AA;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .feature-section {
+            padding: 80px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(32, 178, 170, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .protection-benefits {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content h4 {
+            color: #1e3c72;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-protection {
+            background: #20B2AA;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-protection:hover {
+            background: #17a2b8;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
+        }
+        
+        .btn-outline-protection {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-outline-protection:hover {
+            background: white;
+            color: #1e3c72;
+            transform: translateY(-2px);
+        }
+        
+        .guarantee-badge {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .protection-title {
+                font-size: 2.5rem;
+            }
+            
+            .protection-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-protection,
+            .btn-outline-protection {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="JVS Protection Plus: $1,000,000 Tax Audit Defense™ and Identity Theft Restoration services. Complete peace of mind for your tax filing needs.">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>+1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope me-2"></i>info@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <!-- Logo Section -->
+            <a class="navbar-brand" href="#home">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title">PEACE OF MIND</div>
+                        <div class="brand-subtitle">JVS TAX SERVICES</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faqs">FAQS</a>
+                    </li>
+                </ul>
+
+                <!-- Call-to-Action Buttons -->
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin">
+                        <i class="fas fa-user"></i>
+                        <span>SIGN IN</span>
+                    </a>
+                    <a href="#appointment" class="btn btn-appointment">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>BOOK YOUR APPOINTMENT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="protection-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="protection-badge animate-fade-in-up">
+                        <i class="fas fa-shield-check me-2"></i>PROTECTION YOU CAN RELY ON
+                    </div>
+                    <h1 class="protection-title animate-fade-in-up" style="animation-delay: 0.1s;">
+                        JVS Protection Plus
+                    </h1>
+                    <p class="protection-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                        Total Peace of Mind, No Matter What
+                    </p>
+                    <p class="lead animate-fade-in-up" style="animation-delay: 0.3s;">
+                        We're proud to offer every client $1,000,000 Tax Audit Defense™ and Identity Theft Restoration services through Protection Plus. With our expert assistance, you can face any tax notice or identity theft incident with confidence, knowing our dedicated team is in your corner.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="protection-stats animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="stat-item">
+                                    <span class="stat-number">$1M</span>
+                                    <div class="stat-label">Tax Audit Defense</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-item">
+                                    <span class="stat-number">24/7</span>
+                                    <div class="stat-label">Expert Support</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title animate-fade-in-up">Comprehensive Protection Services</h2>
+                    <p class="lead animate-fade-in-up" style="animation-delay: 0.1s;">Expert assistance during tax season and beyond</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">$1,000,000 Tax Audit Defense™</h3>
+                        <p class="feature-description">
+                            Complete access to our expert tax audit defense team. In the event you receive a tax notice from the IRS or State, our Protection Plus audit defense team will provide up to $1,000,000 in services to find a resolution.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="feature-title">Identity Theft Restoration</h3>
+                        <p class="feature-description">
+                            Our Privacy Advocates are available to provide support and assistance in the event of an identity theft incident, whether related to taxes or not. We'll help you recover your identity after an incident.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="feature-title">Business Return Support</h3>
+                        <p class="feature-description">
+                            We've teamed up with Protection Plus to offer $1 Million Tax Audit Defense™ to our business return clients, including partnerships, S-Corp, and C-Corp returns. Complete peace of mind for your business.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protection Benefits -->
+    <section class="protection-benefits">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title animate-fade-in-up">Why Choose Protection Plus?</h2>
+                    <p class="lead animate-fade-in-up" style="animation-delay: 0.1s;">Complete confidence in your tax filing experience</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Expert Tax Resolution</h4>
+                            <p>Our audit defense team is composed of highly skilled and qualified tax resolution experts who will work diligently on your behalf. From communicating with the IRS to organizing documents, we'll handle the entire process until we reach a resolution.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Identity Theft Recovery</h4>
+                            <p>After notification of an identity theft incident, you will be assigned a Privacy Advocate who will assess the severity of the situation and take immediate action to begin the identity restoration process.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>24/7 Support</h4>
+                            <p>If you receive a tax notice or have an ID theft problem, let us know and we'll take care of it for free. Our dedicated team is always ready to assist you with any tax-related concerns.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>No Additional Cost</h4>
+                            <p>All Protection Plus services are included at no additional cost when you file with us. Don't lose sleep over a tax audit - we include Protection Plus $1 Million tax audit defense to offer you peace of mind even after successfully filing your return.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="guarantee-badge animate-fade-in-up">
+                        <i class="fas fa-award me-2"></i>
+                        Complete Confidence in Tax Filing - We've Got it Handled
+                    </div>
+                    <h2 class="section-title animate-fade-in-up" style="animation-delay: 0.1s;">
+                        Tax Resolution and Identity Theft Restoration
+                    </h2>
+                    <p class="lead animate-fade-in-up" style="animation-delay: 0.2s; max-width: 800px; margin: 0 auto;">
+                        Tax preparation services support from Protection Plus. If you receive a notice, inquiry, or audit, Protection Plus will provide up to $1,000,000 worth of services to find a resolution. Our audit defense team is composed of highly skilled and qualified tax resolution experts who will work diligently on your behalf.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title animate-fade-in-up">Ready for Complete Protection?</h2>
+            <p class="cta-subtitle animate-fade-in-up" style="animation-delay: 0.1s;">
+                Experience the peace of mind that comes with JVS Protection Plus. File with confidence knowing you're fully protected.
+            </p>
+            <div class="cta-buttons animate-fade-in-up" style="animation-delay: 0.2s;">
+                <a href="/#appointment" class="btn-protection">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Your Appointment
+                </a>
+                <a href="/#contact" class="btn-outline-protection">
+                    <i class="fas fa-phone"></i>
+                    Contact Us Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item"><i class="fas fa-phone"></i><span>718-395-9663</span></div>
+                            <div class="contact-item"><i class="fas fa-envelope"></i><span>support@jvstaxservices.com</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>147 Prince Street</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Brooklyn, NY 11201</span></div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item"><span class="day">Mon - Fri:</span><span class="time">10am - 6pm</span></div>
+                            <div class="hours-item"><span class="day">Sat - Sun:</span><span class="time">11am - 3pm</span></div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="/#home" class="sitemap-link">Home</a>
+                            <a href="/about" class="sitemap-link">About Us</a>
+                            <a href="/protection-plus" class="sitemap-link">Protection Plus</a>
+                            <a href="/#contact" class="sitemap-link">Contact</a>
+                            <a href="#" class="sitemap-link">Pricing Sheet</a>
+                            <a href="#" class="sitemap-link">Refund Transfer</a>
+                            <a href="#" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="#" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="#" class="sitemap-link">Track Your State Refund</a>
+                            <a href="#" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="#" class="sitemap-link">Our Blog</a>
+                            <a href="/#faqs" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo"><div class="bbb-square">BBB</div></div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accessibility-icon"><i class="fas fa-universal-access"></i></div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

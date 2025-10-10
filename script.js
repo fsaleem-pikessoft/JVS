@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             link.classList.remove('active');
             if ((currentPath.includes('/about') || currentPath.includes('about.html')) && (href.includes('/about') || href.includes('about.html'))) {
                 link.classList.add('active');
-            } else if (!currentPath.includes('/about') && !currentPath.includes('about.html') && (href === '#home' || href.endsWith('/#home'))) {
+            } else if ((currentPath.includes('/protection-plus') || currentPath.includes('protection-plus.html')) && (href.includes('/protection-plus') || href.includes('protection-plus.html'))) {
+                link.classList.add('active');
+            } else if (!currentPath.includes('/about') && !currentPath.includes('about.html') && !currentPath.includes('/protection-plus') && !currentPath.includes('protection-plus.html') && (href === '#home' || href.endsWith('/#home'))) {
                 link.classList.add('active');
             }
         });
