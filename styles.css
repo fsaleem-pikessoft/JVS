@@ -598,6 +598,7 @@ html {
     z-index: 2;
     color: white;
     padding: 2rem 0;
+    text-align: center;
 }
 
 /* Small badge above title */
@@ -613,6 +614,7 @@ html {
     letter-spacing: 0.5px;
     margin-bottom: 14px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
 .hero-title {
@@ -620,8 +622,8 @@ html {
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.1;
-    color: #20B2AA;
-    text-shadow: 0 0 20px rgba(32, 178, 170, 0.5);
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     font-family: 'Poppins', sans-serif;
     letter-spacing: -1px;
 }
@@ -629,8 +631,8 @@ html {
 .hero-subtitle {
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #20B2AA;
-    text-shadow: 0 0 15px rgba(32, 178, 170, 0.4);
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     letter-spacing: -0.5px;
@@ -640,6 +642,8 @@ html {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-hero-primary,
@@ -1329,6 +1333,7 @@ html {
     max-width: 400px;
     margin: 0 auto;
     position: relative;
+    padding: 30px;
 }
 
 .portrait-svg {
