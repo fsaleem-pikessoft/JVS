@@ -598,7 +598,11 @@ html {
     z-index: 2;
     color: white;
     padding: 2rem 0;
-    text-align: center;
+    text-align: left;
+}
+
+.hero-content.text-left {
+    text-align: left;
 }
 
 /* Small badge above title */
@@ -628,6 +632,14 @@ html {
     letter-spacing: -1px;
 }
 
+.hero-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
 .hero-subtitle {
     font-size: 2.5rem;
     margin-bottom: 3rem;
@@ -642,7 +654,7 @@ html {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -815,19 +827,22 @@ html {
         font-size: 2.5rem;
     }
     
-    .hero-subtitle {
-        font-size: 1.8rem;
+    .hero-description {
+        font-size: 1.1rem;
+        max-width: 100%;
     }
     
     .hero-buttons {
         flex-direction: column;
         align-items: flex-start;
+        gap: 1rem;
     }
     
     .btn-hero-primary,
     .btn-hero-secondary {
         width: 100%;
         min-width: auto;
+        max-width: 300px;
     }
     
     .person-image {
@@ -847,8 +862,9 @@ html {
         font-size: 2rem;
     }
     
-    .hero-subtitle {
-        font-size: 1.5rem;
+    .hero-description {
+        font-size: 1rem;
+        max-width: 100%;
     }
     
     .person-image {
