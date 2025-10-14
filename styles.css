@@ -758,7 +758,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 0;
 }
 
 .hero-person {
@@ -775,11 +775,11 @@ html {
     width: 100%;
     max-width: 600px;
     height: auto;
-    min-height: 500px;
+    min-height: 400px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: 2rem;
+    padding: 0;
 }
 
 .person-svg {
@@ -852,9 +852,9 @@ html {
     
     .person-image {
         width: 250px;
-        height: 500px;
-        min-height: 500px;
-        padding-top: 1rem;
+        height: 400px;
+        min-height: 400px;
+        padding: 0;
     }
 
     .portrait-svg {
@@ -880,9 +880,9 @@ html {
     
     .person-image {
         width: 200px;
-        height: 450px;
-        min-height: 450px;
-        padding-top: 0.5rem;
+        height: 350px;
+        min-height: 350px;
+        padding: 0;
     }
 
     .portrait-svg {
