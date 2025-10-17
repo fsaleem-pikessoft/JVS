@@ -578,6 +578,7 @@ html {
     align-items: center;
     overflow: hidden;
     padding-top: 120px; /* Account for top bar + navbar */
+    padding-bottom: 0;
 }
 
 /* Home hero gradient style (match contact aesthetic) */
@@ -889,6 +890,12 @@ html {
 }
 
 @media (max-width: 576px) {
+    .hero-section {
+        min-height: auto;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    
     .hero-content {
         margin-left: 0.5rem;
     }
@@ -913,6 +920,11 @@ html {
         max-width: 280px;
         max-height: 320px;
         object-fit: cover;
+    }
+    
+    /* Remove spacing between hero and service cards on mobile */
+    #services.py-5 {
+        padding-top: 0 !important;
     }
 }
 
