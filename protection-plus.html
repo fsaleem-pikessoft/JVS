@@ -145,6 +145,16 @@
             overflow: hidden;
         }
         
+        .protection-stats .text-white {
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .protection-stats .text-white-50 {
+            color: rgba(255, 255, 255, 0.8) !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
         .protection-stats::before {
             content: '';
             position: absolute;
@@ -725,15 +735,21 @@
                     <div class="protection-stats animate-fade-in-right" style="animation-delay: 0.4s;">
                         <div class="row">
                             <div class="col-6">
-                                <div class="stat-item">
-                                    <span class="stat-number">$1M</span>
-                                    <div class="stat-label">Tax Audit Defense</div>
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-shield-alt fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">$1M</div>
+                                    <div class="text-white-50 small">Tax Audit Defense</div>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="stat-item">
-                                    <span class="stat-number">24/7</span>
-                                    <div class="stat-label">Expert Support</div>
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-headset fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">24/7</div>
+                                    <div class="text-white-50 small">Expert Support</div>
                                 </div>
                             </div>
                         </div>
