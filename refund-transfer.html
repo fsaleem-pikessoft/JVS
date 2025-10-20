@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Transfer Services - JVS Tax Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .refund-hero {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .refund-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .refund-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: white;
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .refund-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white !important;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
+        }
+        
+        .refund-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .refund-info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .refund-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .process-section {
+            background: #fbfcfd;
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #20B2AA;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .process-step {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(32, 178, 170, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: center;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(32, 178, 170, 0.2);
+            border-color: #20B2AA;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #20B2AA, #48CAE4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.3);
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .step-description {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .disbursement-section {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .disbursement-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .disbursement-option {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(32, 178, 170, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: center;
+        }
+        
+        .disbursement-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(32, 178, 170, 0.2);
+            border-color: #20B2AA;
+        }
+        
+        .option-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #20B2AA, #48CAE4);
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
+        }
+        
+        .option-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .option-description {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .benefits-section {
+            background: #fbfcfd;
+            padding: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(32, 178, 170, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(32, 178, 170, 0.15);
+            border-color: #20B2AA;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #20B2AA, #48CAE4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(32, 178, 170, 0.3);
+        }
+        
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .benefit-description {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .professional-disclaimer {
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.05), rgba(72, 202, 228, 0.02));
+            border: 2px solid rgba(32, 178, 170, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .disclaimer-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20B2AA, #48CAE4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .disclaimer-content h4 {
+            color: #20B2AA;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .disclaimer-content p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .refund-title {
+                font-size: 2.5rem;
+            }
+            
+            .refund-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .refund-info-card {
+                padding: 30px;
+                margin-top: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .disbursement-options {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .professional-disclaimer {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+            
+            .disclaimer-icon {
+                align-self: center;
+            }
+        }
+    </style>
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="Hassle-free tax refund transfer services tailored to your needs. Choose from Faster Money Prepaid Visa Card, Cashier's Check, or Direct Deposit options.">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>+1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope me-2"></i>info@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <!-- Logo Section -->
+            <a class="navbar-brand" href="#home">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title">PEACE OF MIND</div>
+                        <div class="brand-subtitle">JVS TAX SERVICES</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="/pricing"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="/refund-transfer"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faqs">FAQS</a>
+                    </li>
+                </ul>
+
+                <!-- Call-to-Action Buttons -->
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin">
+                        <i class="fas fa-user"></i>
+                        <span>SIGN IN</span>
+                    </a>
+                    <a href="#appointment" class="btn btn-appointment">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>BOOK YOUR APPOINTMENT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="refund-hero">
+        <div class="container">
+            <div class="row align-items-center" style="margin-top: 10px;">
+                <div class="col-lg-8" style="margin-top: 20px;">                    
+                    <h1 class="refund-title animate-fade-in-up" style="animation-delay: 0.1s;">                       
+                        Hassle-Free Tax Refund Transfer Services
+                    </h1>
+                    <div class="refund-badge animate-fade-in-up">
+                        <i class="fas fa-money-bill-transfer me-2"></i> Tailored to Your Needs 
+                    </div>
+                    <p class="refund-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                        Professional refund transfer services that allow you to pay for tax preparation fees directly from your refund, with multiple convenient disbursement options.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="refund-info-card animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-clock fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">24-48hrs</div>
+                                    <div class="text-white-50 small">Processing Time</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-shield-check fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">100%</div>
+                                    <div class="text-white-50 small">Secure Transfer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple, secure, and convenient refund transfer process</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step animate-fade-in-up">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Ask for a Refund Transfer</h3>
+                    <p class="step-description">Tell your tax professional that you want to pay for tax preparation with your refund. No upfront payment required.</p>
+                </div>
+                
+                <div class="process-step animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Select Your Disbursement</h3>
+                    <p class="step-description">Choose how you want to receive your refund and Fast Cash Advance (if applicable) from our convenient options.</p>
+                </div>
+                
+                <div class="process-step animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">File Your Tax Return</h3>
+                    <p class="step-description">When your tax return is filed, it will include instructions to send your refund to Santa Barbara Tax Products Group (SBTPG).</p>
+                </div>
+                
+                <div class="process-step animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Receive Your Refund</h3>
+                    <p class="step-description">Once we receive your refund, all requested fees are taken from your refund and the rest is paid to you through your chosen method.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disbursement Options Section -->
+    <section class="disbursement-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Clients Choose How to Receive Their Money</h2>
+                <p class="section-subtitle">Multiple convenient options for receiving your refund</p>
+            </div>
+            
+            <div class="disbursement-options">
+                <div class="disbursement-option animate-fade-in-up">
+                    <div class="option-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="option-title">Faster Money Prepaid Visa® Card</h3>
+                    <p class="option-description">Refund deposited directly to a Green Dot prepaid Visa card for immediate access to your funds with nationwide acceptance.</p>
+                </div>
+                
+                <div class="disbursement-option animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="option-icon">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <h3 class="option-title">Cashier's Check</h3>
+                    <p class="option-description">Cashier's check printed and disbursed from our office, providing a secure and traditional method for receiving your refund.</p>
+                </div>
+                
+                <div class="disbursement-option animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="option-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="option-title">Direct Deposit</h3>
+                    <p class="option-description">Refund direct deposited directly to your bank account for the fastest and most convenient access to your funds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Why Choose Our Refund Transfer Service</h2>
+                <p class="section-subtitle">Professional, secure, and convenient refund processing</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card animate-fade-in-up">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="benefit-title">No Upfront Payment</h3>
+                    <p class="benefit-description">Pay for tax preparation services directly from your refund - no need to pay upfront fees.</p>
+                </div>
+                
+                <div class="benefit-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="benefit-title">Secure Processing</h3>
+                    <p class="benefit-description">Your refund is processed through secure, encrypted channels with full protection and monitoring.</p>
+                </div>
+                
+                <div class="benefit-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="benefit-title">Fast Processing</h3>
+                    <p class="benefit-description">Quick 24-48 hour processing time to get your refund to you as soon as possible.</p>
+                </div>
+                
+                <div class="benefit-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="benefit-title">Professional Service</h3>
+                    <p class="benefit-description">Expert handling by certified tax professionals with 24+ years of experience.</p>
+                </div>
+                
+                <div class="benefit-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Multiple Options</h3>
+                    <p class="benefit-description">Choose from prepaid card, cashier's check, or direct deposit - whatever works best for you.</p>
+                </div>
+                
+                <div class="benefit-card animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="benefit-title">24/7 Support</h3>
+                    <p class="benefit-description">Round-the-clock customer support to assist you with any questions or concerns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Disclaimer -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="professional-disclaimer">
+                        <div class="disclaimer-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="disclaimer-content">
+                            <h4>Refund Transfer Terms & Conditions</h4>
+                            <p>Refund transfer services are subject to approval and processing times may vary. Fees and terms apply. The Faster Money Prepaid Visa Card is issued by Green Dot Bank. All refund transfer services are processed through Santa Barbara Tax Products Group (SBTPG). We provide transparent pricing with no hidden fees. Contact us for complete terms and conditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Promise Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="contact-promise">
+                        <h3 class="mb-4">Ready to Get Started?</h3>
+                        <p class="lead">Contact JVS Tax Services today to learn more about our refund transfer services. We'll respond within 24 hours with detailed information and next steps.</p>
+                        <div class="mt-4">
+                            <a href="/contact" class="btn btn-card me-3">
+                                <i class="fas fa-envelope me-2"></i>Contact Us
+                            </a>
+                            <a href="#appointment" class="btn btn-card">
+                                <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item"><i class="fas fa-phone"></i><span>718-395-9663</span></div>
+                            <div class="contact-item"><i class="fas fa-envelope"></i><span>support@jvstaxservices.com</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>147 Prince Street</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span >Brooklyn, NY 11201</span></div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item"><span class="day">Mon - Fri:</span><span class="time">10am - 6pm</span></div>
+                            <div class="hours-item"><span class="day">Sat - Sun:</span><span class="time">11am - 3pm</span></div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="/#home" class="sitemap-link">Home</a>
+                            <a href="/about" class="sitemap-link">About Us</a>
+                            <a href="/#contact" class="sitemap-link">Contact</a>
+                            <a href="#" class="sitemap-link">Protection Plan</a>
+                            <a href="#" class="sitemap-link">Pricing Sheet</a>
+                            <a href="/refund-transfer" class="sitemap-link">Refund Transfer</a>
+                            <a href="#" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="#" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="#" class="sitemap-link">Track Your State Refund</a>
+                            <a href="#" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="#" class="sitemap-link">Our Blog</a>
+                            <a href="/#faqs" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo"><div class="bbb-square">BBB</div></div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accessibility-icon"><i class="fas fa-universal-access"></i></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
