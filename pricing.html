@@ -673,6 +673,7 @@
             display: flex;
             align-items: flex-start;
             gap: 20px;
+            position: relative;
         }
         
         .disclaimer-icon {
@@ -700,6 +701,60 @@
             line-height: 1.6;
             margin: 0;
             font-size: 0.95rem;
+        }
+        
+        .disclaimer-action {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        
+        .btn-jvs-info {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 140px;
+        }
+        
+        .btn-jvs-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-jvs-info:hover::before {
+            left: 100%;
+        }
+        
+        .btn-jvs-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(32, 178, 170, 0.4);
+            color: white;
+        }
+        
+        .btn-jvs-info:active {
+            transform: translateY(0);
+        }
+        
+        .btn-jvs-info:focus {
+            box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.25);
+            outline: none;
         }
         
         /* Responsive adjustments */
@@ -754,6 +809,18 @@
             
             .disclaimer-icon {
                 align-self: center;
+            }
+            
+            .disclaimer-action {
+                margin-left: 0;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .btn-jvs-info {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                min-width: 120px;
             }
         }
         
@@ -1435,6 +1502,12 @@
                         <div class="disclaimer-content">
                             <h4>Professional Pricing Notice</h4>
                             <p>All pricing estimates are based on preliminary assessment of your tax situation. Final pricing may vary based on actual complexity, additional forms required, and specific circumstances. Entity return pricing applies to tax year 2025. We provide transparent, upfront pricing with no hidden fees.</p>
+                        </div>
+                        <div class="disclaimer-action">
+                            <button class="btn btn-jvs-info" id="downloadJVSInfo">
+                                <i class="fas fa-download me-2"></i>
+                                JVS Info
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -524,6 +524,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Initialize scroll progress
     initScrollProgress();
     
+    // Initialize feedback form functionality
+    initFeedbackForm();
+    
+    // Initialize JVS Info download functionality
+    initJVSInfoDownload();
+    
     // Add keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
@@ -555,6 +561,264 @@ document.addEventListener('DOMContentLoaded', async function() {
     }, 16); // ~60fps
     
     window.addEventListener('scroll', throttledScrollHandler);
+    
+    // Feedback form functionality
+    function initFeedbackForm() {
+        const feedbackForm = document.getElementById('feedbackForm');
+        const submitBtn = document.getElementById('submitFeedback');
+        const feedbackModal = document.getElementById('feedbackModal');
+        
+        if (!feedbackForm || !submitBtn || !feedbackModal) return;
+        
+        // Handle form submission
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('reviewerName').value.trim(),
+                email: document.getElementById('reviewerEmail').value.trim(),
+                rating: document.querySelector('input[name="rating"]:checked')?.value,
+                title: document.getElementById('reviewTitle').value.trim(),
+                review: document.getElementById('reviewText').value.trim(),
+                agreeTerms: document.getElementById('agreeTerms').checked
+            };
+            
+            // Validate form
+            if (!formData.name) {
+                showNotification('Please enter your name.', 'error');
+                return;
+            }
+            
+            if (!formData.email || !isValidEmail(formData.email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            if (!formData.rating) {
+                showNotification('Please select a rating.', 'error');
+                return;
+            }
+            
+            if (!formData.review) {
+                showNotification('Please write your review.', 'error');
+                return;
+            }
+            
+            if (!formData.agreeTerms) {
+                showNotification('Please agree to the terms and conditions.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Show success message
+                showNotification('Thank you for your feedback! Your review has been submitted successfully.', 'success');
+                
+                // Reset form
+                feedbackForm.reset();
+                
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(feedbackModal);
+                if (modal) {
+                    modal.hide();
+                }
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Log the feedback (in a real app, this would be sent to a server)
+                console.log('Feedback submitted:', formData);
+                
+            }, 2000);
+        });
+        
+        // Add real-time validation
+        const nameInput = document.getElementById('reviewerName');
+        const emailInput = document.getElementById('reviewerEmail');
+        const reviewTextarea = document.getElementById('reviewText');
+        
+        // Name validation
+        nameInput.addEventListener('blur', function() {
+            if (this.value.trim().length < 2) {
+                this.classList.add('is-invalid');
+                showFieldError(this, 'Name must be at least 2 characters long.');
+            } else {
+                this.classList.remove('is-invalid');
+                hideFieldError(this);
+            }
+        });
+        
+        // Email validation
+        emailInput.addEventListener('blur', function() {
+            if (!isValidEmail(this.value.trim())) {
+                this.classList.add('is-invalid');
+                showFieldError(this, 'Please enter a valid email address.');
+            } else {
+                this.classList.remove('is-invalid');
+                hideFieldError(this);
+            }
+        });
+        
+        // Review text validation
+        reviewTextarea.addEventListener('blur', function() {
+            if (this.value.trim().length < 10) {
+                this.classList.add('is-invalid');
+                showFieldError(this, 'Review must be at least 10 characters long.');
+            } else {
+                this.classList.remove('is-invalid');
+                hideFieldError(this);
+            }
+        });
+        
+        // Clear validation on input
+        [nameInput, emailInput, reviewTextarea].forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid')) {
+                    this.classList.remove('is-invalid');
+                    hideFieldError(this);
+                }
+            });
+        });
+    }
+    
+    // Helper function to show field error
+    function showFieldError(field, message) {
+        hideFieldError(field); // Remove existing error
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'invalid-feedback';
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        
+        field.parentNode.appendChild(errorDiv);
+    }
+    
+    // Helper function to hide field error
+    function hideFieldError(field) {
+        const existingError = field.parentNode.querySelector('.invalid-feedback');
+        if (existingError) {
+            existingError.remove();
+        }
+    }
+    
+    // JVS Info download functionality
+    function initJVSInfoDownload() {
+        const downloadBtn = document.getElementById('downloadJVSInfo');
+        
+        if (!downloadBtn) return;
+        
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Downloading...';
+            this.disabled = true;
+            
+            // Create a sample PDF content (in a real app, this would be a server endpoint)
+            const pdfContent = createSamplePDF();
+            
+            // Create blob and download
+            const blob = new Blob([pdfContent], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'JVS_Tax_Services_Info.pdf';
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            
+            // Show success message
+            showNotification('JVS Info PDF downloaded successfully!', 'success');
+            
+            // Reset button
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.disabled = false;
+            }, 2000);
+        });
+    }
+    
+    // Create sample PDF content (this would typically come from a server)
+    function createSamplePDF() {
+        // This is a simplified example - in reality, you'd use a PDF library like jsPDF
+        // or make an API call to generate the PDF on the server
+        const sampleContent = `
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+>>
+endobj
+
+4 0 obj
+<<
+/Length 200
+>>
+stream
+BT
+/F1 12 Tf
+100 700 Td
+(JVS Tax Services Information) Tj
+0 -20 Td
+(Professional Tax Preparation Services) Tj
+0 -20 Td
+(Contact: 718-395-9663) Tj
+0 -20 Td
+(Email: support@jvstaxservices.com) Tj
+0 -20 Td
+(Address: 147 Prince Street, Brooklyn, NY 11201) Tj
+ET
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000204 00000 n 
+trailer
+<<
+/Size 5
+/Root 1 0 R
+>>
+startxref
+454
+%%EOF
+        `;
+        
+        return sampleContent;
+    }
     
     console.log('JVS Tax Services landing page initialized successfully!');
     async function injectPartials() {

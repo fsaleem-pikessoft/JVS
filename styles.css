@@ -1777,6 +1777,7 @@ html {
 .footer-contact .contact-item {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
     color: #ecf0f1;
     font-size: 1rem;
@@ -1883,6 +1884,7 @@ html {
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    justify-items: center;
 }
 
 .sitemap-link {
@@ -1908,6 +1910,9 @@ html {
 
 .bbb-accreditation {
     margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .bbb-badge {
@@ -2671,6 +2676,430 @@ html {
 }
 
 /* ========================================
+   REVIEWS PREVIEW SECTION
+   ======================================== */
+
+.reviews-preview {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.reviews-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #20B2AA, transparent);
+}
+
+.overall-rating-preview {
+    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(32, 178, 170, 0.2);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.overall-rating-preview::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+}
+
+.overall-rating-preview .rating-stars {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.overall-rating-preview .rating-score {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.overall-rating-preview .rating-count {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+.review-card-preview {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(32, 178, 170, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.review-card-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #20B2AA, #17a2b8);
+}
+
+.review-card-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(32, 178, 170, 0.15);
+    border-color: #20B2AA;
+}
+
+.review-card-preview .review-header {
+    margin-bottom: 1.5rem;
+}
+
+.review-card-preview .reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review-card-preview .reviewer-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+}
+
+.review-card-preview .reviewer-name {
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.review-card-preview .review-rating {
+    color: #ffc107;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.review-card-preview .review-content {
+    color: #6c757d;
+    line-height: 1.6;
+    font-style: italic;
+    position: relative;
+}
+
+.review-card-preview .review-content::before {
+    content: '"';
+    font-size: 3rem;
+    color: #20B2AA;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    opacity: 0.3;
+    font-family: serif;
+}
+
+/* ========================================
+   FEEDBACK BUTTON AND MODAL STYLING
+   ======================================== */
+
+.btn-feedback {
+    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-feedback::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-feedback:hover::before {
+    left: 100%;
+}
+
+.btn-feedback:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(32, 178, 170, 0.4);
+    color: white;
+}
+
+.btn-feedback:active {
+    transform: translateY(0);
+}
+
+/* Feedback Modal Styling */
+.modal-content {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    color: white;
+    border: none;
+    padding: 1.5rem 2rem;
+}
+
+.modal-title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 2rem;
+    background: #f8f9fa;
+}
+
+.modal-footer {
+    background: white;
+    border: none;
+    padding: 1.5rem 2rem;
+}
+
+/* Star Rating Input */
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 0.5rem;
+}
+
+.rating-input input[type="radio"] {
+    display: none;
+}
+
+.rating-input .star-label {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.rating-input .star-label:hover,
+.rating-input .star-label:hover ~ .star-label,
+.rating-input input[type="radio"]:checked ~ .star-label {
+    color: #ffc107;
+}
+
+.rating-input input[type="radio"]:checked ~ .star-label {
+    animation: starPulse 0.3s ease;
+}
+
+@keyframes starPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Form Styling */
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #20B2AA;
+    box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: #20B2AA;
+    border-color: #20B2AA;
+}
+
+.form-check-input:focus {
+    border-color: #20B2AA;
+    box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.25);
+}
+
+/* Submit Button */
+#submitFeedback {
+    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#submitFeedback:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(32, 178, 170, 0.3);
+}
+
+/* Cancel Button - Professional Senior Level Styling */
+.modal-footer .btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #5a6268);
+    border: 2px solid #6c757d;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.2);
+}
+
+.modal-footer .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.modal-footer .btn-secondary:hover::before {
+    left: 100%;
+}
+
+.modal-footer .btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268, #495057);
+    border-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
+    color: white;
+}
+
+.modal-footer .btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(108, 117, 125, 0.2);
+}
+
+.modal-footer .btn-secondary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
+    outline: none;
+}
+
+/* Enhanced Modal Footer Styling */
+.modal-footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 1px solid rgba(32, 178, 170, 0.1);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-footer .btn {
+    min-width: 140px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Responsive Modal Footer */
+@media (max-width: 768px) {
+    .modal-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+/* Success Message */
+.feedback-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .btn-feedback {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-footer {
+        padding: 1rem 1.5rem;
+    }
+    
+    .rating-input .star-label {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========================================
    REVIEWS SECTION - SENIOR LEVEL STYLING
    ======================================== */
 
@@ -3129,6 +3558,52 @@ html {
 }
 
 @media (max-width: 768px) {
+    .reviews-preview {
+        padding: 3rem 0;
+    }
+    
+    .overall-rating-preview {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .overall-rating-preview .rating-stars {
+        font-size: 1.5rem;
+    }
+    
+    .overall-rating-preview .rating-score {
+        font-size: 2.5rem;
+    }
+    
+    .overall-rating-preview .rating-count {
+        font-size: 1rem;
+    }
+    
+    .review-card-preview {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .review-card-preview .reviewer-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .review-card-preview .reviewer-name {
+        font-size: 1rem;
+    }
+    
+    .review-card-preview .review-content {
+        font-size: 0.95rem;
+    }
+    
+    .review-card-preview .review-content::before {
+        font-size: 2rem;
+        top: -5px;
+        left: -5px;
+    }
+    
     .reviews-section {
         padding: 4rem 0;
     }
