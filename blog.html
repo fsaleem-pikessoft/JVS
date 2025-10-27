@@ -140,10 +140,16 @@
         }
         
         .blog-search-box h3 {
-            color: #20B2AA;
+            color: #2c3e50;
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-search-box h3 i {
+            color: #20B2AA;
         }
         
         .blog-search-input {
@@ -169,18 +175,22 @@
             background: #20B2AA;
             color: white;
             border: none;
-            padding: 10px 25px;
+            padding: 12px 25px;
             border-radius: 8px;
             font-weight: 600;
             margin-top: 10px;
             width: 100%;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .blog-search-btn:hover {
             background: #17a2b8;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.3);
         }
         
         .pagination {
@@ -648,11 +658,11 @@
                 <!-- Sidebar Column -->
                 <div class="col-lg-4">
                     <div class="blog-search-box">
-                        <h3>Search</h3>
+                        <h3><i class="fas fa-search me-2"></i>Search</h3>
                         <div class="blog-search-input">
                             <input type="text" placeholder="Enter search term..." id="blogSearchInput">
                             <button class="blog-search-btn" id="blogSearchBtn">
-                                <i class="fas fa-search me-2"></i>GO
+                                GO
                             </button>
                         </div>
                         
