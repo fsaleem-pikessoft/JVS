@@ -2309,12 +2309,12 @@ html {
 
 .btn-cta-secondary {
     background: transparent;
-    color: #FDB91D;
+    color: white;
     padding: 1rem 2rem;
     border-radius: 50px;
     font-weight: 600;
     font-size: 1rem;
-    border: 2px solid #FDB91D;
+    border: 2px solid white;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
@@ -2323,10 +2323,10 @@ html {
 }
 
 .btn-cta-secondary:hover {
-    background: #FDB91D;
-    color: #2c3e50;
+    background: white;
+    color: #20B2AA;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(253, 185, 29, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
 }
 
 /* Responsive Design for How It Works & CTA */
