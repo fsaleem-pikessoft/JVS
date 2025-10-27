@@ -130,26 +130,27 @@
         }
         
         .blog-search-box {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            background: #20B2AA;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(32, 178, 170, 0.2);
             margin-bottom: 30px;
             position: sticky;
             top: 100px;
         }
         
         .blog-search-box h3 {
-            color: #2c3e50;
+            color: white;
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
         
         .blog-search-box h3 i {
-            color: #20B2AA;
+            color: white;
+            font-size: 1rem;
         }
         
         .blog-search-input {
@@ -158,39 +159,37 @@
         
         .blog-search-input input {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
         
         .blog-search-input input:focus {
             outline: none;
-            border-color: #20B2AA;
-            box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
         }
         
         .blog-search-btn {
-            background: #20B2AA;
-            color: white;
+            background: white;
+            color: #20B2AA;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 10px;
-            width: 100%;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            margin-top: 8px;
+            width: auto;
+            min-width: 80px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            float: right;
         }
         
         .blog-search-btn:hover {
-            background: #17a2b8;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.3);
+            background: #f0f0f0;
+            color: #17a2b8;
         }
         
         .pagination {
@@ -270,16 +269,22 @@
         
         /* Enhanced Search Box */
         .search-categories {
-            margin-top: 30px;
+            margin-top: 25px;
             padding-top: 20px;
-            border-top: 2px solid #e0e0e0;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .search-categories h4 {
-            color: #2c3e50;
-            font-size: 1.1rem;
+            color: white;
+            font-size: 1rem;
             font-weight: 700;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-categories h4 i {
+            color: white;
         }
         
         .category-list {
@@ -293,21 +298,20 @@
         }
         
         .category-list a {
-            color: #6c757d;
+            color: white;
             text-decoration: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
-            border-radius: 8px;
+            padding: 10px 0;
+            border-radius: 5px;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 400;
         }
         
         .category-list a:hover {
-            background: rgba(32, 178, 170, 0.1);
-            color: #20B2AA;
+            background: rgba(255, 255, 255, 0.1);
             padding-left: 10px;
             padding-right: 10px;
         }
@@ -319,10 +323,10 @@
         }
         
         .category-list a i {
-            font-size: 0.7rem;
-            margin-right: 10px;
+            font-size: 0.65rem;
+            margin-right: 8px;
             transition: transform 0.3s ease;
-            color: #20B2AA;
+            color: white;
         }
         
         .category-list a:hover i {
@@ -330,15 +334,15 @@
         }
         
         .category-count {
-            background: #e0e0e0;
-            color: #6c757d;
-            min-width: 28px;
-            height: 28px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            min-width: 26px;
+            height: 26px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
         }
         
