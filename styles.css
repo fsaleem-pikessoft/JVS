@@ -3504,6 +3504,17 @@ html {
     z-index: 2;
     border: 1px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.overall-rating:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(32, 178, 170, 0.15),
+        0 10px 20px rgba(32, 178, 170, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(32, 178, 170, 0.3);
 }
 
 .overall-rating::before {
