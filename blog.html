@@ -176,7 +176,6 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             margin-bottom: 30px;
-            height: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -201,7 +200,6 @@
         
         .blog-card-body {
             padding: 25px;
-            flex: 1;
             display: flex;
             flex-direction: column;
         }
@@ -225,7 +223,6 @@
             color: #6c757d;
             line-height: 1.7;
             margin-bottom: 20px;
-            flex: 1;
         }
         
         .blog-read-more {
@@ -344,6 +341,21 @@
             background: #20B2AA;
             border-color: #20B2AA;
             color: white;
+        }
+        
+        .pagination .page-item.disabled .page-link {
+            background: #f8f9fa;
+            border-color: #e0e0e0;
+            color: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .pagination .page-item.disabled .page-link:hover {
+            background: #f8f9fa;
+            color: #6c757d;
+            border-color: #e0e0e0;
+            transform: none;
         }
         
         /* Enhanced Blog Card Styling */
@@ -483,6 +495,44 @@
             100% { background-position: -200% 0; }
         }
         
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #17a2b8, #138496);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(32, 178, 170, 0.6);
+        }
+        
+        .scroll-to-top i {
+            font-size: 20px;
+        }
+        
         /* Responsive Design */
         @media (max-width: 1200px) {
             .blog-card-body {
@@ -569,6 +619,17 @@
             .pagination .page-link {
                 padding: 8px 12px;
                 font-size: 0.9rem;
+            }
+            
+            .scroll-to-top {
+                bottom: 80px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .scroll-to-top i {
+                font-size: 18px;
             }
         }
     </style>
@@ -712,184 +773,221 @@
             </div>
         </div>
     </section>
-
-    <!-- Blog Content -->
+    
+    <!-- Blog Content Section -->
     <section class="blog-content">
         <div class="container">
             <div class="row">
                 <!-- Blog Posts Column -->
                 <div class="col-lg-8 blog-posts-column">
                     <!-- Blog Post 1 -->
-                    <div class="blog-card">
+                    <article class="blog-card">
                         <div class="blog-card-image">
-                            <img src="images/tax-checklist.webp" alt="Tax Services for Financial Success">
+                            <span class="blog-card-category">Tax Tips</span>
+                            <img src="public/images/records-jvs.webp" alt="Financial Records Organization">
                         </div>
                         <div class="blog-card-body">
-                            <span class="blog-date">December 3, 2024</span>
-                            <h2 class="blog-card-title">Why Tax Services Are Essential for Financial Success</h2>
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 20, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    5 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">How to Organize Your Financial Records for Tax Season</h2>
                             <p class="blog-card-text">
-                                Tax services play a critical role in simplifying complex financial processes, ensuring compliance with regulations, and uncovering opportunities to maximize savings. By leveraging expert guidance, individuals and businesses can save time, reduce stress, and optimize their financial strategies for long-term success.
+                                Tax season can feel overwhelming, but staying organized can make all the difference. This guide covers practical tips for creating a storage system to manage your documents, whether physical or digital, and how to categorize essential records like income statements, expense receipts, and past returns. Learn how to track expenses year-round, reconcile discrepancies, and protect sensitive financial data with security best practices. By following these steps, you can save time, reduce stress, and ensure a smooth tax filing process. If your finances are complex, discover how a tax professional can help you maximize your deductions and stay compliant.
                             </p>
-                            <p class="blog-card-text">
-                                Whether it's identifying deductions, minimizing liabilities, or navigating audits, professional tax services provide peace of mind and strategic planning. Don't let taxes overwhelm you—let experts handle the details so you can focus on achieving your financial goals.
-                            </p>
-                            <a href="#" class="blog-read-more">Read more →</a>
+                            <a href="#" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Blog Post 2 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="blog-card">
-                                <div class="blog-card-image">
-                                    <img src="images/records-jvs.webp" alt="Tax Season Preparation">
-                                </div>
-                                <div class="blog-card-body">
-                                    <span class="blog-date">December 4, 2024</span>
-                                    <h2 class="blog-card-title">How to Prepare for Tax Season: A Checklist for Success</h2>
-                                    <p class="blog-card-text">
-                                        Tax season doesn't have to be stressful if you're well-prepared. A comprehensive checklist helps you gather essential documents, organize financial records and file your taxes accurately. Start by gathering essential documents like W-2s, 1099s, and receipts for deductions or credits.
-                                    </p>
-                                    <a href="#" class="blog-read-more">Read more →</a>
-                                </div>
-                            </div>
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Deductions</span>
+                            <img src="public/images/tax-checklist.webp" alt="Tax Deductions">
                         </div>
-                        <div class="col-md-6">
-                            <div class="blog-card">
-                                <div class="blog-card-image">
-                                    <img src="images/family pom.webp" alt="Tax Breaks for Families">
-                                </div>
-                                <div class="blog-card-body">
-                                    <span class="blog-date">December 10, 2024</span>
-                                    <h2 class="blog-card-title">Tax Breaks for Families: What You Need to Know</h2>
-                                    <p class="blog-card-text">
-                                        Discover essential tax breaks that can help families save money, including the Child Tax Credit, Dependent Care Credit, Earned Income Tax Credit, and more. Learn how to take advantage of educational tax benefits, standard deductions, and other valuable credits to reduce your tax liability.
-                                    </p>
-                                    <a href="#" class="blog-read-more">Read more →</a>
-                                </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 15, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    7 min read
+                                </span>
                             </div>
+                            <h2 class="blog-card-title">Top 10 Tax Deductions You Might Be Missing</h2>
+                            <p class="blog-card-text">
+                                Are you leaving money on the table? Many taxpayers overlook valuable deductions that could significantly reduce their tax liability. From home office expenses and charitable contributions to medical expenses and education costs, we'll walk you through the most commonly missed deductions. Learn about business expense deductions for self-employed individuals, retirement contribution benefits, and state and local tax deductions. We'll also cover student loan interest, energy-efficient home improvements, and job search expenses that many people don't realize they can claim.
+                            </p>
+                            <a href="#" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Blog Post 3 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="blog-card">
-                                <div class="blog-card-image">
-                                    <img src="images/brooklyn-jvs.webp" alt="Brooklyn Tax Service">
-                                </div>
-                                <div class="blog-card-body">
-                                    <span class="blog-date">December 15, 2024</span>
-                                    <h2 class="blog-card-title">Top 5 Reasons to Choose a Brooklyn-Based Tax Service Like JVS Tax Services</h2>
-                                    <p class="blog-card-text">
-                                        When it comes to managing your taxes, choosing a local tax service can provide significant advantages. In this blog, we explore the top 5 reasons why selecting a Brooklyn-based tax service like JVS Tax Services can make a difference for both individuals and businesses.
-                                    </p>
-                                    <a href="#" class="blog-read-more">Read more →</a>
-                                </div>
-                            </div>
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Business</span>
+                            <img src="public/images/small-businesses.webp" alt="Small Business Tax">
                         </div>
-                        <div class="col-md-6">
-                            <div class="blog-card">
-                                <div class="blog-card-image">
-                                    <img src="images/small business.webp" alt="Small Business Tax Tips">
-                                </div>
-                                <div class="blog-card-body">
-                                    <span class="blog-date">December 13, 2024</span>
-                                    <h2 class="blog-card-title">Tax Tips for Small Business Owners: Maximize Your Deductions</h2>
-                                    <p class="blog-card-text">
-                                        As a small business owner, knowing how to maximize your tax deductions is crucial for minimizing your tax liability. This blog covers essential tax tips, from deducting business expenses and home office costs to taking advantage of credits and retirement plan contributions.
-                                    </p>
-                                    <a href="#" class="blog-read-more">Read more →</a>
-                                </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 10, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    6 min read
+                                </span>
                             </div>
+                            <h2 class="blog-card-title">Essential Tax Planning Strategies for Small Business Owners</h2>
+                            <p class="blog-card-text">
+                                Running a small business comes with unique tax challenges and opportunities. This comprehensive guide covers essential tax planning strategies including choosing the right business structure, understanding quarterly estimated taxes, maximizing business expense deductions, and taking advantage of Section 179 deductions. Learn about retirement plan options for business owners, how to handle employee vs. contractor classifications, and strategies for managing cash flow around tax time.
+                            </p>
+                            <a href="#" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
                         </div>
-                    </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Refunds</span>
+                            <img src="public/images/family refund.webp" alt="Tax Refund">
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 5, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    4 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">When to Expect Your Tax Refund and How to Track It</h2>
+                            <p class="blog-card-text">
+                                Waiting for your tax refund can be stressful, but knowing what to expect can ease your mind. Learn about typical refund timelines for e-filed vs. paper returns, how to track your refund status using the IRS "Where's My Refund?" tool, and common reasons for delays. We'll explain the difference between direct deposit and paper check timing, what to do if your refund is taking longer than expected, and how choosing refund transfer options can affect your timeline.
+                            </p>
+                            <a href="#" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Tax Law</span>
+                            <img src="public/images/top mistakes-jvs.webp" alt="Tax Mistakes">
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    November 28, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    5 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">Common Tax Mistakes and How to Avoid Them</h2>
+                            <p class="blog-card-text">
+                                Even small errors on your tax return can lead to delays, audits, or penalties. This article highlights the most common tax filing mistakes including math errors, incorrect Social Security numbers, missing signatures, and choosing the wrong filing status. Learn how to avoid overlooked income reporting, improper deduction claims, and mistakes with dependent information. We'll also cover the importance of double-checking bank account numbers for direct deposit and keeping good records to support your claims.
+                            </p>
+                            <a href="#" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 6 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Planning</span>
+                            <img src="public/images/teamPlanning.webp" alt="Tax Planning">
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    November 20, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    6 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">Year-End Tax Planning Tips to Maximize Your Savings</h2>
+                            <p class="blog-card-text">
+                                As the year comes to a close, there are still strategic moves you can make to reduce your tax bill. Discover year-end tax planning strategies including maximizing retirement contributions, harvesting tax losses from investments, bunching deductions, and timing income and expenses. Learn about charitable giving strategies, the benefits of using flexible spending accounts, and how to take advantage of the annual gift tax exclusion before December 31st.
+                            </p>
+                            <a href="#" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </article>
 
                     <!-- Pagination -->
-                    <nav aria-label="Blog pagination">
+                    <nav aria-label="Blog pagination" id="blogPagination">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Newest</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Oldest</a>
-                            </li>
+                            <li class="page-item"><a class="page-link" href="#" data-page="prev"><i class="fas fa-arrow-left me-1"></i> Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>                           
+                            <li class="page-item"><a class="page-link" href="#" data-page="next">Next <i class="fas fa-arrow-right ms-1"></i></a></li>
                         </ul>
                     </nav>
                 </div>
 
                 <!-- Sidebar Column -->
                 <div class="col-lg-4 blog-sidebar-column">
+                    <!-- Search Box -->
                     <div class="blog-search-box">
-                        <h3><i class="fas fa-search me-2"></i>Search</h3>
+                        <h3><i class="fas fa-search me-2"></i> Search</h3>
                         <div class="blog-search-input">
-                            <input type="text" placeholder="Enter search term..." id="blogSearchInput">
-                            <button class="blog-search-btn" id="blogSearchBtn">
-                                GO
-                            </button>
+                            <input type="text" id="blogSearchInput" placeholder="Enter search term...">
+                            <button type="button" id="blogSearchBtn" class="blog-search-btn">Go!</button>
                         </div>
-                        
+
                         <!-- Categories -->
                         <div class="search-categories">
-                            <h4><i class="fas fa-folder-open me-2"></i>Categories</h4>
+                            <h4><i class="fas fa-folder-open me-2"></i> Categories</h4>
                             <ul class="category-list">
                                 <li>
                                     <a href="#">
-                                        <span>
-                                            <i class="fas fa-chevron-right"></i>
-                                            Tax Tips
-                                        </span>
+                                        <span><i class="fas fa-chevron-right"></i> Tax Tips</span>
                                         <span class="category-count">12</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span>
-                                            <i class="fas fa-chevron-right"></i>
-                                            Small Business
-                                        </span>
+                                        <span><i class="fas fa-chevron-right"></i> Deductions</span>
                                         <span class="category-count">8</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span>
-                                            <i class="fas fa-chevron-right"></i>
-                                            Tax Deductions
-                                        </span>
-                                        <span class="category-count">15</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span>
-                                            <i class="fas fa-chevron-right"></i>
-                                            Tax Planning
-                                        </span>
+                                        <span><i class="fas fa-chevron-right"></i> Business</span>
                                         <span class="category-count">10</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span>
-                                            <i class="fas fa-chevron-right"></i>
-                                            IRS Updates
-                                        </span>
+                                        <span><i class="fas fa-chevron-right"></i> Refunds</span>
                                         <span class="category-count">6</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span>
-                                            <i class="fas fa-chevron-right"></i>
-                                            Brooklyn Tax News
-                                        </span>
+                                        <span><i class="fas fa-chevron-right"></i> Tax Law</span>
+                                        <span class="category-count">9</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right"></i> Planning</span>
                                         <span class="category-count">5</span>
                                     </a>
                                 </li>
@@ -1028,6 +1126,11 @@
         <div class="accessibility-icon">
             <i class="fas fa-universal-access"></i>
         </div>
+        
+        <!-- Scroll to Top Button -->
+        <div class="scroll-to-top" id="scrollToTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
@@ -1051,6 +1154,109 @@
             if (e.key === 'Enter') {
                 document.getElementById('blogSearchBtn').click();
             }
+        });
+        
+        // Pagination functionality
+        let currentPage = 1;
+        const postsPerPage = 3;
+        const allPosts = document.querySelectorAll('.blog-card');
+        const totalPages = Math.ceil(allPosts.length / postsPerPage);
+        
+        function showPage(page) {
+            // Hide all posts
+            allPosts.forEach(post => {
+                post.style.display = 'none';
+            });
+            
+            // Calculate which posts to show
+            const start = (page - 1) * postsPerPage;
+            const end = start + postsPerPage;
+            
+            // Show posts for current page
+            for (let i = start; i < end && i < allPosts.length; i++) {
+                allPosts[i].style.display = 'flex';
+            }
+            
+            // Update pagination buttons
+            updatePaginationButtons(page);
+            
+            // Scroll to top of blog content
+            document.querySelector('.blog-content').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function updatePaginationButtons(page) {
+            const pageItems = document.querySelectorAll('#blogPagination .page-item');
+            
+            pageItems.forEach(item => {
+                item.classList.remove('active');
+                const link = item.querySelector('.page-link');
+                const pageNum = link.getAttribute('data-page');
+                
+                // Disable/enable previous button
+                if (pageNum === 'prev') {
+                    if (page === 1) {
+                        item.classList.add('disabled');
+                    } else {
+                        item.classList.remove('disabled');
+                    }
+                }
+                
+                // Disable/enable next button
+                if (pageNum === 'next') {
+                    if (page === totalPages) {
+                        item.classList.add('disabled');
+                    } else {
+                        item.classList.remove('disabled');
+                    }
+                }
+                
+                // Highlight active page
+                if (pageNum == page) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        
+        // Add click handlers to pagination links
+        document.querySelectorAll('#blogPagination .page-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                
+                if (page === 'prev' && currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                } else if (page === 'next' && currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                } else if (page !== 'prev' && page !== 'next') {
+                    currentPage = parseInt(page);
+                    showPage(currentPage);
+                }
+            });
+        });
+        
+        // Initialize - show first page
+        showPage(1);
+        
+        // Scroll to Top Button functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>

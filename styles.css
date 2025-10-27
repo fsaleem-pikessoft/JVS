@@ -2104,6 +2104,44 @@ html {
     box-shadow: 0 8px 30px rgba(32, 178, 170, 0.5);
 }
 
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(32, 178, 170, 0.6);
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .footer {
@@ -2286,6 +2324,17 @@ html {
         bottom: 20px;
         right: 20px;
         font-size: 1.1rem;
+    }
+    
+    .scroll-to-top {
+        bottom: 80px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-to-top i {
+        font-size: 18px;
     }
 }
 
