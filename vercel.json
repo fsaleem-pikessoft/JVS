@@ -40,6 +40,10 @@
       "dest": "/fast-money-card.html"
     },
     {
+      "src": "/privacy-policy",
+      "dest": "/privacy-policy.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
