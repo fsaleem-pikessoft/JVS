@@ -2080,8 +2080,8 @@ html {
 
 .accessibility-icon {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 30px;
+    right: 30px;
     width: 56px;
     height: 56px;
     background: linear-gradient(135deg, #20B2AA, #1a9b94);
@@ -2404,27 +2404,24 @@ html {
     position: fixed;
     bottom: 100px;
     right: 30px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #20B2AA, #17a2b8);
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #2c5aa0, #20B2AA);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.4);
+    box-shadow: 0 6px 20px rgba(32, 178, 170, 0.4);
     transition: all 0.3s ease;
     z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .scroll-to-top.show {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
 }
 
 .scroll-to-top:hover {
@@ -2434,7 +2431,7 @@ html {
 }
 
 .scroll-to-top i {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 /* Responsive adjustments */
@@ -2622,14 +2619,14 @@ html {
     }
     
     .scroll-to-top {
-        bottom: 80px;
+        bottom: 85px;
         right: 20px;
-        width: 45px;
-        height: 45px;
+        width: 52px;
+        height: 52px;
     }
     
     .scroll-to-top i {
-        font-size: 18px;
+        font-size: 22px;
     }
 }
 
@@ -2996,38 +2993,6 @@ html {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-/* Scroll to Top Button */
-.scroll-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: var(--shadow-medium);
-}
-
-.scroll-to-top:hover {
-    background: var(--accent-color);
-    color: var(--text-dark);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-heavy);
-}
-
-.scroll-to-top.show {
-    display: flex;
 }
 
 /* ========================================
