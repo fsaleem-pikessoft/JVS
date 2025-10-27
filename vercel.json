@@ -36,6 +36,10 @@
       "dest": "/refund-transfer.html"
     },
     {
+      "src": "/fast-money-card",
+      "dest": "/fast-money-card.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
