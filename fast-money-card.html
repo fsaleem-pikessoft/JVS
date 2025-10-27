@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faster Money Prepaid Visa Card - JVS Tax Services</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Fast Money Card Page Specific Styles */
+        .fm-hero {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .fm-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .fm-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fm-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: white;
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .fm-hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white !important;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
+        }
+        
+        .fm-hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .fm-info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fm-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fm-card-visual {
+            position: relative;
+            perspective: 1000px;
+            text-align: center;
+        }
+        
+        .fm-card-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 60px rgba(32, 178, 170, 0.3),
+                0 0 100px rgba(32, 178, 170, 0.2);
+            transition: transform 0.5s ease;
+            animation: cardFloat 6s ease-in-out infinite;
+        }
+        
+        .fm-card-visual:hover .fm-card-image {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .fm-features-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+            padding: 80px 0;
+        }
+        
+        .fm-section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .fm-section-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .fm-feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 2px solid rgba(32, 178, 170, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fm-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #20B2AA, #FFD700);
+        }
+        
+        .fm-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(32, 178, 170, 0.15);
+            border-color: #20B2AA;
+        }
+        
+        .fm-feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.3);
+        }
+        
+        .fm-feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .fm-feature-description {
+            color: #6c757d;
+            line-height: 1.6;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .fm-benefits-section {
+            background: linear-gradient(135deg, #20B2AA 0%, #17a2b8 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .fm-benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .fm-benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .fm-benefit-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+        
+        .fm-benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #FFD700;
+            flex-shrink: 0;
+        }
+        
+        .fm-benefit-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .fm-benefit-content p {
+            margin: 0;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .fm-how-it-works {
+            background: #ffffff;
+            padding: 80px 0;
+        }
+        
+        .fm-step-card {
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .fm-step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFD700, #FDB931);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fm-step-connector {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #20B2AA, #FFD700);
+            z-index: 1;
+        }
+        
+        .fm-step-card:last-child .fm-step-connector {
+            display: none;
+        }
+        
+        .fm-step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .fm-step-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .fm-cta-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .fm-cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .fm-cta-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-fm-primary {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-fm-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(32, 178, 170, 0.5);
+            color: white;
+        }
+        
+        .btn-fm-secondary {
+            background: transparent;
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-fm-secondary:hover {
+            background: #FFD700;
+            color: #2c3e50;
+            transform: translateY(-3px);
+        }
+        
+        .fm-disclaimer {
+            background: rgba(32, 178, 170, 0.05);
+            border: 1px solid rgba(32, 178, 170, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 60px;
+        }
+        
+        .fm-disclaimer h5 {
+            color: #20B2AA;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .fm-disclaimer p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .fm-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .fm-hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .fm-hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .fm-info-card {
+                padding: 30px;
+                margin-top: 2rem;
+            }
+            
+            .fm-card-image {
+                max-width: 100%;
+            }
+            
+            .fm-section-title {
+                font-size: 2rem;
+            }
+            
+            .fm-feature-card {
+                margin-bottom: 20px;
+            }
+            
+            .fm-step-connector {
+                display: none;
+            }
+            
+            .fm-cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="Get your tax refund faster with the Faster Money Prepaid Visa Card. No monthly fees, early direct deposit, and accepted everywhere Visa is accepted.">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>+1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope me-2"></i>info@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <!-- Logo Section -->
+            <a class="navbar-brand" href="/">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title">PEACE OF MIND</div>
+                        <div class="brand-subtitle">JVS TAX SERVICES</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="/pricing"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item active" href="/fast-money-card"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-search-dollar me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-blog me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faqs">FAQS</a>
+                    </li>
+                </ul>
+
+                <!-- Call-to-Action Buttons -->
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin">
+                        <i class="fas fa-user"></i>
+                        <span>SIGN IN</span>
+                    </a>
+                    <a href="#appointment" class="btn btn-appointment">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>BOOK YOUR APPOINTMENT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="fm-hero">
+        <div class="container">
+            <div class="row align-items-center" style="margin-top: 10px;">
+                <div class="col-lg-8" style="margin-top: 20px;">
+                    <div class="fm-badge animate-fade-in-up">
+                        <i class="fas fa-credit-card me-2"></i> Powered by Pathward®
+                    </div>
+                    <h1 class="fm-hero-title animate-fade-in-up" style="animation-delay: 0.1s;">
+                        The Fastest Way to Receive Your Refund
+                    </h1>
+                    <p class="fm-hero-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                        Find out about the Faster Money Prepaid Visa® Card today. Get instant access to your tax refund with no monthly fees and early direct deposit benefits.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="fm-info-card animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-bolt fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">Instant</div>
+                                    <div class="text-white-50 small">Access</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-ban fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">$0</div>
+                                    <div class="text-white-50 small">Monthly Fee*</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Visual Below Hero Content -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="fm-card-visual animate-fade-in-up" style="animation-delay: 0.5s;">
+                        <img src="images/fm debit card.webp" alt="Faster Money Prepaid Visa Card" class="fm-card-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manage Your Money Section -->
+    <section class="fm-features-section" id="features">
+        <div class="container">
+            <h2 class="fm-section-title">Manage Your Money</h2>
+            <p class="fm-section-subtitle">Great for tax time and all year long</p>
+            
+            <div class="row g-4">
+                <!-- Feature 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="fm-feature-card">
+                        <div class="fm-feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3 class="fm-feature-title">Get More with Early Direct Deposit</h3>
+                        <p class="fm-feature-description">
+                            Get your pay up to 2 days early with direct deposit and your government benefits up to 4 days early.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="fm-feature-card">
+                        <div class="fm-feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="fm-feature-title">No Monthly Fee</h3>
+                        <p class="fm-feature-description">
+                            With qualifying deposit, otherwise $7.95 per month. Other card fees apply.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="fm-feature-card">
+                        <div class="fm-feature-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="fm-feature-title">Shop Everywhere</h3>
+                        <p class="fm-feature-description">
+                            Where Visa® debit is accepted in the U.S. Plus pay with your mobile wallet including Apple Pay®, Google Pay™, and Samsung Pay®.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="fm-feature-card">
+                        <div class="fm-feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="fm-feature-title">Mobile Banking</h3>
+                        <p class="fm-feature-description">
+                            Mobile check cashing & deposit, online bill pay and track your spending 24/7.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="fm-feature-card">
+                        <div class="fm-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="fm-feature-title">Protect Your Money</h3>
+                        <p class="fm-feature-description">
+                            Lock and unlock your card if misplaced, fraud alerts via text message, chip-enabled card for extra protection.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="fm-feature-card">
+                        <div class="fm-feature-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3 class="fm-feature-title">Add Money Easily</h3>
+                        <p class="fm-feature-description">
+                            Bank transfer, cash or deposit checks using the app, or send money from one Green Dot card to another.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="fm-benefits-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="fm-section-title text-white mb-5">Why Choose Faster Money Card?</h2>
+                    
+                    <div class="fm-benefit-item">
+                        <div class="fm-benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="fm-benefit-content">
+                            <h4>FDIC Insured Security</h4>
+                            <p>Your funds are FDIC insured through Green Dot Bank, Member FDIC, ensuring your money is protected and secure.</p>
+                        </div>
+                    </div>
+
+                    <div class="fm-benefit-item">
+                        <div class="fm-benefit-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="fm-benefit-content">
+                            <h4>Instant Access to Your Refund</h4>
+                            <p>Get immediate access to your tax refund without waiting for checks to clear or dealing with bank processing times.</p>
+                        </div>
+                    </div>
+
+                    <div class="fm-benefit-item">
+                        <div class="fm-benefit-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="fm-benefit-content">
+                            <h4>No Hidden Fees or Surprises</h4>
+                            <p>Transparent fee structure with no monthly fees when you have qualifying deposits. Know exactly what you're paying.</p>
+                        </div>
+                    </div>
+
+                    <div class="fm-benefit-item">
+                        <div class="fm-benefit-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="fm-benefit-content">
+                            <h4>Accepted Worldwide</h4>
+                            <p>Use your card anywhere Visa is accepted – online, in-store, or withdraw cash at ATMs worldwide.</p>
+                        </div>
+                    </div>
+
+                    <div class="fm-benefit-item">
+                        <div class="fm-benefit-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="fm-benefit-content">
+                            <h4>24/7 Customer Support</h4>
+                            <p>Access customer service anytime you need help with your card, transactions, or account questions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="fm-how-it-works">
+        <div class="container">
+            <h2 class="fm-section-title">How It Works</h2>
+            <p class="fm-section-subtitle">Get started in 4 simple steps</p>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="fm-step-card">
+                        <div class="fm-step-number">1</div>
+                        <div class="fm-step-connector"></div>
+                        <h3 class="fm-step-title">File Your Taxes</h3>
+                        <p class="fm-step-description">
+                            Choose the Faster Money Card option when filing your taxes with JVS Tax Services.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="fm-step-card">
+                        <div class="fm-step-number">2</div>
+                        <div class="fm-step-connector"></div>
+                        <h3 class="fm-step-title">Receive Your Card</h3>
+                        <p class="fm-step-description">
+                            Your personalized Faster Money Prepaid Visa Card will be mailed to you or available for pickup.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="fm-step-card">
+                        <div class="fm-step-number">3</div>
+                        <div class="fm-step-connector"></div>
+                        <h3 class="fm-step-title">Activate Your Card</h3>
+                        <p class="fm-step-description">
+                            Activate your card online or by phone in minutes. Set up your PIN and security preferences.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="fm-step-card">
+                        <div class="fm-step-number">4</div>
+                        <h3 class="fm-step-title">Get Your Refund</h3>
+                        <p class="fm-step-description">
+                            Your tax refund is automatically loaded onto your card, ready to use immediately.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="fm-disclaimer">
+                <h5>
+                    <i class="fas fa-info-circle"></i>
+                    Important Information
+                </h5>
+                <p>
+                    Must be 18 or older. Activation requires online access, mobile number and identity verification (including SSN) to open an account and access all features. Activated, personalized card required to access some features. The Faster Money Visa® Prepaid Card is issued by Green Dot Bank, Member FDIC, pursuant to a license from Visa U.S.A. Inc. Visa is a registered trademark of Visa International Service Association. Green Dot Bank also operates under the following registered trade names: GO2bank, GoBank and Bonneville Bank. All of these registered trade names are used by, and refer to, a single FDIC-insured bank, Green Dot Bank. Deposits under any of these trade names are deposits with Green Dot Bank and are aggregated for deposit insurance coverage up to the allowable limits.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fm-cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fm-cta-title">Ready to Get Your Refund Faster?</h2>
+                    <p class="fm-cta-text">
+                        Choose the Faster Money Prepaid Visa Card when you file your taxes with JVS Tax Services and get instant access to your refund.
+                    </p>
+                    <div class="mt-4">
+                        <a href="/contact" class="btn btn-fm-primary me-3">
+                            <i class="fas fa-calendar-check me-2"></i>
+                            Book Your Appointment
+                        </a>
+                        <a href="https://fastermoney.com" target="_blank" class="btn btn-fm-secondary">
+                            <i class="fas fa-external-link-alt me-2"></i>
+                            Visit Faster Money Online
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- About JVS Tax Services -->
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>718-395-9663</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>support@jvstaxservices.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>147 Prince Street</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Brooklyn, NY 11201</span>
+                            </div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Hours -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item">
+                                <span class="day">Monday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Tuesday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Wednesday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Thursday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Friday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Sat - Sun:</span>
+                                <span class="time">11am - 3pm</span>
+                            </div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sitemap -->
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="#home" class="sitemap-link">Home</a>
+                            <a href="#contact" class="sitemap-link">Contact</a>
+                            <a href="/about" class="sitemap-link">About Us</a>
+                            <a href="#" class="sitemap-link">Protection Plan</a>
+                            <a href="#" class="sitemap-link">Pricing Sheet</a>
+                            <a href="#" class="sitemap-link">Refund Transfer</a>
+                            <a href="/fast-money-card" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="#" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="#" class="sitemap-link">Track Your State Refund</a>
+                            <a href="#" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="#" class="sitemap-link">Our Blog</a>
+                            <a href="#faqs" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo">
+                                    <div class="bbb-square">BBB</div>
+                                </div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accessibility Icon -->
+        <div class="accessibility-icon">
+            <i class="fas fa-universal-access"></i>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
+
