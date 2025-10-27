@@ -252,6 +252,17 @@ html {
     color: #20B2AA;
 }
 
+.dropdown-item.active,
+.dropdown-item:active {
+    background: #20B2AA;
+    color: white;
+}
+
+.dropdown-item.active i,
+.dropdown-item:active i {
+    color: white;
+}
+
 .dropdown-item i {
     color: #20B2AA;
     width: 18px;
