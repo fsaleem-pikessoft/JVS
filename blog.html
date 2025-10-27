@@ -21,23 +21,8 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: white;
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .blog-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+            padding: 80px 0 60px;
+            text-align: center;
         }
         
         @keyframes gradientShift {
@@ -46,109 +31,20 @@
             100% { background-position: 0% 50%; }
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        .blog-badge {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: inline-block;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            color: white;
-            animation: badgeGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes badgeGlow {
-            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
-            50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
-        }
-        
         .blog-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            color: white !important;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             font-family: 'Poppins', sans-serif;
-            letter-spacing: -1px;
         }
         
         .blog-subtitle {
             font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             font-weight: 400;
             font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-        }
-        
-        .blog-info-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .blog-info-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        
-        .animate-fade-in-right {
-            animation: fadeInRight 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
         
         .blog-content {
@@ -464,15 +360,11 @@
                 position: static;
                 margin-bottom: 40px;
             }
-            
-            .blog-title {
-                font-size: 3rem;
-            }
         }
         
         @media (max-width: 768px) {
             .blog-hero {
-                padding: 100px 0 60px;
+                padding: 80px 0 50px;
             }
             
             .blog-title {
@@ -498,14 +390,13 @@
             .blog-content {
                 padding: 40px 0;
             }
-            
-            .blog-info-card {
-                margin-top: 30px;
-                padding: 30px;
-            }
         }
         
         @media (max-width: 576px) {
+            .blog-hero {
+                padding: 70px 0 40px;
+            }
+            
             .blog-title {
                 font-size: 2rem;
             }
@@ -533,11 +424,6 @@
             .pagination .page-link {
                 padding: 8px 12px;
                 font-size: 0.9rem;
-            }
-            
-            .blog-badge {
-                font-size: 12px;
-                padding: 10px 18px;
             }
         }
     </style>
@@ -639,44 +525,10 @@
     <!-- Hero Section -->
     <section class="blog-hero">
         <div class="container">
-            <div class="row align-items-center" style="margin-top: 10px;">
-                <div class="col-lg-8" style="margin-top: 20px;">                    
-                    <h1 class="blog-title animate-fade-in-up" style="animation-delay: 0.1s;">                       
-                        JVS Blogs
-                    </h1>
-                    <div class="blog-badge animate-fade-in-up">
-                        <i class="fas fa-blog me-2"></i> Learn more information regarding taxes
-                    </div>
-                    <p class="blog-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
-                        Welcome to the JVS Tax Services blog! Here you'll find expert tax tips, financial advice, and strategies to help you navigate tax season with confidence. From maximizing deductions to understanding complex tax laws, our blog is your trusted resource for all things tax-related.
-                    </p>
-                    <p class="blog-subtitle animate-fade-in-up" style="animation-delay: 0.3s;">
-                        Stay informed with the latest tax news, deadlines, and money-saving tips from our experienced tax professionals. Whether you're an individual taxpayer or business owner, we're here to help you achieve financial success.
-                    </p>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-info-card animate-fade-in-right" style="animation-delay: 0.4s;">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="text-center">
-                                    <div class="text-white mb-2">
-                                        <i class="fas fa-newspaper fa-2x"></i>
-                                    </div>
-                                    <div class="text-white fw-bold">50+</div>
-                                    <div class="text-white-50 small">Articles</div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="text-center">
-                                    <div class="text-white mb-2">
-                                        <i class="fas fa-lightbulb fa-2x"></i>
-                                    </div>
-                                    <div class="text-white fw-bold">Expert</div>
-                                    <div class="text-white-50 small">Tax Tips</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="blog-title">Welcome to JVS Blogs</h1>
+                    <p class="blog-subtitle">Learn to get started on your taxes here!</p>
                 </div>
             </div>
         </div>
