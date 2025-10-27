@@ -21,8 +21,23 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: white;
-            padding: 100px 0 60px;
-            text-align: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
         }
         
         @keyframes gradientShift {
@@ -31,16 +46,109 @@
             100% { background-position: 0% 50%; }
         }
         
-        .blog-hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
         
-        .blog-hero p {
+        .blog-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: white;
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .blog-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white !important;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
+        }
+        
+        .blog-subtitle {
             font-size: 1.2rem;
-            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .blog-info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .blog-content {
@@ -208,19 +316,204 @@
             color: white;
         }
         
-        /* Responsive */
+        /* Enhanced Blog Card Styling */
+        .blog-card-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+        }
+        
+        .blog-card-image {
+            position: relative;
+        }
+        
+        .blog-card-title:hover {
+            color: #20B2AA;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+        
+        .blog-meta-item i {
+            color: #20B2AA;
+        }
+        
+        /* Enhanced Search Box */
+        .search-categories {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .search-categories h4 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        
+        .category-list a {
+            color: #6c757d;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .category-list a:hover {
+            background: rgba(32, 178, 170, 0.1);
+            color: #20B2AA;
+            padding-left: 15px;
+        }
+        
+        .category-count {
+            background: #e0e0e0;
+            color: #6c757d;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Loading Animation */
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .blog-card-body {
+                padding: 20px;
+            }
+            
+            .blog-card-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .blog-search-box {
+                position: static;
+                margin-bottom: 40px;
+            }
+            
+            .blog-title {
+                font-size: 3rem;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .blog-hero h1 {
+            .blog-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .blog-title {
+                font-size: 2.5rem;
+            }
+            
+            .blog-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .blog-card-image {
+                height: 220px;
+            }
+            
+            .blog-card-body {
+                padding: 20px;
+            }
+            
+            .blog-card-title {
+                font-size: 1.25rem;
+            }
+            
+            .blog-content {
+                padding: 40px 0;
+            }
+            
+            .blog-info-card {
+                margin-top: 30px;
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .blog-title {
                 font-size: 2rem;
+            }
+            
+            .blog-subtitle {
+                font-size: 1rem;
             }
             
             .blog-card-image {
                 height: 200px;
             }
             
-            .blog-search-box {
-                position: static;
-                margin-bottom: 30px;
+            .blog-card-body {
+                padding: 15px;
+            }
+            
+            .blog-card-title {
+                font-size: 1.1rem;
+            }
+            
+            .blog-card-text {
+                font-size: 0.95rem;
+            }
+            
+            .pagination .page-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .blog-badge {
+                font-size: 12px;
+                padding: 10px 18px;
             }
         }
     </style>
@@ -322,8 +615,46 @@
     <!-- Hero Section -->
     <section class="blog-hero">
         <div class="container">
-            <h1>Welcome to JVS Blogs</h1>
-            <p>Learn to get started on your taxes here!</p>
+            <div class="row align-items-center" style="margin-top: 10px;">
+                <div class="col-lg-8" style="margin-top: 20px;">                    
+                    <h1 class="blog-title animate-fade-in-up" style="animation-delay: 0.1s;">                       
+                        JVS Blogs
+                    </h1>
+                    <div class="blog-badge animate-fade-in-up">
+                        <i class="fas fa-blog me-2"></i> Learn more information regarding taxes
+                    </div>
+                    <p class="blog-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                        Welcome to the JVS Tax Services blog! Here you'll find expert tax tips, financial advice, and strategies to help you navigate tax season with confidence. From maximizing deductions to understanding complex tax laws, our blog is your trusted resource for all things tax-related.
+                    </p>
+                    <p class="blog-subtitle animate-fade-in-up" style="animation-delay: 0.3s;">
+                        Stay informed with the latest tax news, deadlines, and money-saving tips from our experienced tax professionals. Whether you're an individual taxpayer or business owner, we're here to help you achieve financial success.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog-info-card animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-newspaper fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">50+</div>
+                                    <div class="text-white-50 small">Articles</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-lightbulb fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">Expert</div>
+                                    <div class="text-white-50 small">Tax Tips</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -447,6 +778,49 @@
                             <button class="blog-search-btn" id="blogSearchBtn">
                                 <i class="fas fa-search me-2"></i>GO
                             </button>
+                        </div>
+                        
+                        <!-- Categories -->
+                        <div class="search-categories">
+                            <h4><i class="fas fa-folder-open me-2"></i>Categories</h4>
+                            <ul class="category-list">
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right me-2"></i>Tax Tips</span>
+                                        <span class="category-count">12</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right me-2"></i>Small Business</span>
+                                        <span class="category-count">8</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right me-2"></i>Tax Deductions</span>
+                                        <span class="category-count">15</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right me-2"></i>Tax Planning</span>
+                                        <span class="category-count">10</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right me-2"></i>IRS Updates</span>
+                                        <span class="category-count">6</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><i class="fas fa-chevron-right me-2"></i>Brooklyn Tax News</span>
+                                        <span class="category-count">5</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
