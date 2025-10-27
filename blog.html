@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JVS Blogs - Tax Tips & Financial Advice</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Blog Page Specific Styles */
+        .blog-hero {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .blog-content {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.2);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            position: relative;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .blog-card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .blog-card-text {
+            color: #6c757d;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .blog-read-more {
+            background: #20B2AA;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        
+        .blog-read-more:hover {
+            background: #17a2b8;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .blog-search-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .blog-search-box h3 {
+            color: #20B2AA;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .blog-search-input {
+            position: relative;
+        }
+        
+        .blog-search-input input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-search-input input:focus {
+            outline: none;
+            border-color: #20B2AA;
+            box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.1);
+        }
+        
+        .blog-search-btn {
+            background: #20B2AA;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-search-btn:hover {
+            background: #17a2b8;
+            transform: translateY(-2px);
+        }
+        
+        .pagination {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .pagination .page-link {
+            background: white;
+            border: 2px solid #e0e0e0;
+            color: #2c3e50;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination .page-link:hover {
+            background: #20B2AA;
+            color: white;
+            border-color: #20B2AA;
+        }
+        
+        .pagination .page-item.active .page-link {
+            background: #20B2AA;
+            border-color: #20B2AA;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-card-image {
+                height: 200px;
+            }
+            
+            .blog-search-box {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="JVS Tax Services Blog - Expert tax tips, financial advice, and strategies to help you maximize your refund and minimize your tax liability.">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>+1 (555) 123-4567</span>
+                        <span><i class="fas fa-envelope me-2"></i>info@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <!-- Logo Section -->
+            <a class="navbar-brand" href="/">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title">PEACE OF MIND</div>
+                        <div class="brand-subtitle">JVS TAX SERVICES</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact.html">CONTACT</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus.html"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="/pricing.html"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item" href="/fast-money-card.html"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="/track-federal-refund.html"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="/track-state-refund.html"><i class="fas fa-search-dollar me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="/privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item active" href="/blog.html"><i class="fas fa-blog me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>                  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faqs.html">FAQS</a>
+                    </li>
+                </ul>
+
+                <!-- Call-to-Action Buttons -->
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin">
+                        <i class="fas fa-user"></i>
+                        <span>SIGN IN</span>
+                    </a>
+                    <a href="#appointment" class="btn btn-appointment">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>BOOK YOUR APPOINTMENT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Welcome to JVS Blogs</h1>
+            <p>Learn to get started on your taxes here!</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Posts Column -->
+                <div class="col-lg-8">
+                    <!-- Blog Post 1 -->
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="images/tax-checklist.webp" alt="Tax Services for Financial Success">
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-date">December 3, 2024</span>
+                            <h2 class="blog-card-title">Why Tax Services Are Essential for Financial Success</h2>
+                            <p class="blog-card-text">
+                                Tax services play a critical role in simplifying complex financial processes, ensuring compliance with regulations, and uncovering opportunities to maximize savings. By leveraging expert guidance, individuals and businesses can save time, reduce stress, and optimize their financial strategies for long-term success.
+                            </p>
+                            <p class="blog-card-text">
+                                Whether it's identifying deductions, minimizing liabilities, or navigating audits, professional tax services provide peace of mind and strategic planning. Don't let taxes overwhelm you—let experts handle the details so you can focus on achieving your financial goals.
+                            </p>
+                            <a href="#" class="blog-read-more">Read more →</a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 2 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <div class="blog-card-image">
+                                    <img src="images/records-jvs.webp" alt="Tax Season Preparation">
+                                </div>
+                                <div class="blog-card-body">
+                                    <span class="blog-date">December 4, 2024</span>
+                                    <h2 class="blog-card-title">How to Prepare for Tax Season: A Checklist for Success</h2>
+                                    <p class="blog-card-text">
+                                        Tax season doesn't have to be stressful if you're well-prepared. A comprehensive checklist helps you gather essential documents, organize financial records and file your taxes accurately. Start by gathering essential documents like W-2s, 1099s, and receipts for deductions or credits.
+                                    </p>
+                                    <a href="#" class="blog-read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <div class="blog-card-image">
+                                    <img src="images/family pom.webp" alt="Tax Breaks for Families">
+                                </div>
+                                <div class="blog-card-body">
+                                    <span class="blog-date">December 10, 2024</span>
+                                    <h2 class="blog-card-title">Tax Breaks for Families: What You Need to Know</h2>
+                                    <p class="blog-card-text">
+                                        Discover essential tax breaks that can help families save money, including the Child Tax Credit, Dependent Care Credit, Earned Income Tax Credit, and more. Learn how to take advantage of educational tax benefits, standard deductions, and other valuable credits to reduce your tax liability.
+                                    </p>
+                                    <a href="#" class="blog-read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 3 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <div class="blog-card-image">
+                                    <img src="images/brooklyn-jvs.webp" alt="Brooklyn Tax Service">
+                                </div>
+                                <div class="blog-card-body">
+                                    <span class="blog-date">December 15, 2024</span>
+                                    <h2 class="blog-card-title">Top 5 Reasons to Choose a Brooklyn-Based Tax Service Like JVS Tax Services</h2>
+                                    <p class="blog-card-text">
+                                        When it comes to managing your taxes, choosing a local tax service can provide significant advantages. In this blog, we explore the top 5 reasons why selecting a Brooklyn-based tax service like JVS Tax Services can make a difference for both individuals and businesses.
+                                    </p>
+                                    <a href="#" class="blog-read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog-card">
+                                <div class="blog-card-image">
+                                    <img src="images/small business.webp" alt="Small Business Tax Tips">
+                                </div>
+                                <div class="blog-card-body">
+                                    <span class="blog-date">December 13, 2024</span>
+                                    <h2 class="blog-card-title">Tax Tips for Small Business Owners: Maximize Your Deductions</h2>
+                                    <p class="blog-card-text">
+                                        As a small business owner, knowing how to maximize your tax deductions is crucial for minimizing your tax liability. This blog covers essential tax tips, from deducting business expenses and home office costs to taking advantage of credits and retirement plan contributions.
+                                    </p>
+                                    <a href="#" class="blog-read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Blog pagination">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Newest</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Oldest</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Sidebar Column -->
+                <div class="col-lg-4">
+                    <div class="blog-search-box">
+                        <h3>Search</h3>
+                        <div class="blog-search-input">
+                            <input type="text" placeholder="Enter search term..." id="blogSearchInput">
+                            <button class="blog-search-btn" id="blogSearchBtn">
+                                <i class="fas fa-search me-2"></i>GO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- About JVS Tax Services -->
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>718-395-9663</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>support@jvstaxservices.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>147 Prince Street</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Brooklyn, NY 11201</span>
+                            </div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Hours -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item">
+                                <span class="day">Monday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Tuesday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Wednesday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Thursday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Friday:</span>
+                                <span class="time">10am - 6pm</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Sat - Sun:</span>
+                                <span class="time">11am - 3pm</span>
+                            </div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sitemap -->
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="/index.html" class="sitemap-link">Home</a>
+                            <a href="/contact.html" class="sitemap-link">Contact</a>
+                            <a href="/about.html" class="sitemap-link">About Us</a>
+                            <a href="/protection-plus.html" class="sitemap-link">Protection Plan</a>
+                            <a href="/pricing.html" class="sitemap-link">Pricing Sheet</a>
+                            <a href="/refund-transfer.html" class="sitemap-link">Refund Transfer</a>
+                            <a href="/fast-money-card.html" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="/track-federal-refund.html" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="/track-state-refund.html" class="sitemap-link">Track Your State Refund</a>
+                            <a href="privacy-policy.html" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="/blog.html" class="sitemap-link">Our Blog</a>
+                            <a href="/faqs.html" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo">
+                                    <div class="bbb-square">BBB</div>
+                                </div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accessibility Icon -->
+        <div class="accessibility-icon">
+            <i class="fas fa-universal-access"></i>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+    <script>
+        // Blog search functionality
+        document.getElementById('blogSearchBtn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('blogSearchInput').value;
+            if (searchTerm) {
+                console.log('Searching for:', searchTerm);
+                // Add search functionality here
+                alert('Search functionality coming soon! Searching for: ' + searchTerm);
+            }
+        });
+        
+        // Allow enter key to search
+        document.getElementById('blogSearchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('blogSearchBtn').click();
+            }
+        });
+    </script>
+</body>
+</html>
+

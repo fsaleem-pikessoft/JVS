@@ -44,6 +44,10 @@
       "dest": "/privacy-policy.html"
     },
     {
+      "src": "/blog",
+      "dest": "/blog.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
