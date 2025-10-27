@@ -4,7 +4,7 @@
 :root {
     --primary-color: #2c5aa0;
     --secondary-color: #f8f9fa;
-    --accent-color: #ffc107;
+    --accent-color: #20B2AA;
     --text-dark: #2c3e50;
     --text-light: #6c757d;
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -3153,7 +3153,7 @@ html {
 }
 
 .review-card-preview .review-rating {
-    color: #ffc107;
+    color: #20B2AA;
     font-size: 0.9rem;
     margin-top: 0.25rem;
 }
@@ -3277,7 +3277,7 @@ html {
 .rating-input .star-label:hover,
 .rating-input .star-label:hover ~ .star-label,
 .rating-input input[type="radio"]:checked ~ .star-label {
-    color: #ffc107;
+    color: #20B2AA;
 }
 
 .rating-input input[type="radio"]:checked ~ .star-label {
@@ -3475,7 +3475,7 @@ html {
     background: 
         radial-gradient(circle at 20% 20%, rgba(44, 90, 160, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(32, 178, 170, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 40% 60%, rgba(255, 193, 7, 0.02) 0%, transparent 50%);
+        radial-gradient(circle at 40% 60%, rgba(32, 178, 170, 0.02) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -3495,7 +3495,7 @@ html {
 .reviews-section .section-title {
     font-size: 3.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #20B2AA 50%, #ffc107 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #20B2AA 50%, #17a2b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -3548,7 +3548,7 @@ html {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, var(--primary-color), #20B2AA, #ffc107);
+    background: linear-gradient(135deg, var(--primary-color), #20B2AA, #17a2b8);
     border-radius: 25px;
     z-index: -1;
     opacity: 0.1;
@@ -3556,16 +3556,16 @@ html {
 
 .rating-stars {
     font-size: 2.5rem;
-    color: #ffc107;
+    color: #20B2AA;
     margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
     gap: 0.3rem;
-    filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+    filter: drop-shadow(0 2px 4px rgba(32, 178, 170, 0.3));
 }
 
 .rating-stars i {
-    text-shadow: 0 2px 4px rgba(255, 193, 7, 0.4);
+    text-shadow: 0 2px 4px rgba(32, 178, 170, 0.4);
     transition: transform 0.3s ease;
 }
 
@@ -3701,8 +3701,8 @@ html {
     display: flex;
     gap: 0.15rem;
     font-size: 1rem;
-    color: #ffc107;
-    filter: drop-shadow(0 1px 2px rgba(255, 193, 7, 0.3));
+    color: #20B2AA;
+    filter: drop-shadow(0 1px 2px rgba(32, 178, 170, 0.3));
 }
 
 .review-rating i {
