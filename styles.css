@@ -2406,7 +2406,7 @@ html {
     right: 30px;
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #2c5aa0, #20B2AA);
+    background: linear-gradient(135deg, #20B2AA, #1a9b94);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -2425,9 +2425,9 @@ html {
 }
 
 .scroll-to-top:hover {
-    background: linear-gradient(135deg, #17a2b8, #138496);
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(32, 178, 170, 0.6);
+    background: linear-gradient(135deg, #1a9b94, #20B2AA);
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(32, 178, 170, 0.5);
 }
 
 .scroll-to-top i {
