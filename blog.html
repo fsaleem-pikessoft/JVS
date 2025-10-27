@@ -48,8 +48,28 @@
         }
         
         .blog-content {
-            padding: 60px 0;
+            padding: 60px 0 80px;
             background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .blog-content .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .blog-content .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .blog-posts-column {
+            padding-right: 20px;
+        }
+        
+        .blog-sidebar-column {
+            padding-left: 20px;
         }
         
         .blog-card {
@@ -157,6 +177,12 @@
             position: relative;
         }
         
+        .blog-search-input::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
         .blog-search-input input {
             width: 100%;
             padding: 10px 12px;
@@ -194,9 +220,11 @@
         
         .pagination {
             margin-top: 40px;
+            margin-bottom: 40px;
             display: flex;
             justify-content: center;
             gap: 10px;
+            clear: both;
         }
         
         .pagination .page-link {
@@ -373,6 +401,12 @@
             .blog-search-box {
                 position: static;
                 margin-bottom: 40px;
+            }
+            
+            .blog-posts-column,
+            .blog-sidebar-column {
+                padding-left: 15px;
+                padding-right: 15px;
             }
         }
         
@@ -553,7 +587,7 @@
         <div class="container">
             <div class="row">
                 <!-- Blog Posts Column -->
-                <div class="col-lg-8">
+                <div class="col-lg-8 blog-posts-column">
                     <!-- Blog Post 1 -->
                     <div class="blog-card">
                         <div class="blog-card-image">
@@ -660,7 +694,7 @@
                 </div>
 
                 <!-- Sidebar Column -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 blog-sidebar-column">
                     <div class="blog-search-box">
                         <h3><i class="fas fa-search me-2"></i>Search</h3>
                         <div class="blog-search-input">
