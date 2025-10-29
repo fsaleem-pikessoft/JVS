@@ -26,7 +26,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     overflow-x: hidden;
-    background: linear-gradient(135deg, #f7fbff 0%, #f5f7ff 40%, #f2fbfa 100%);
+    background: linear-gradient(135deg, #e8f4f8 0%, #e6f2ff 40%, #e0f7f4 100%);
 }
 
 /* Global Image Responsiveness */
@@ -1260,7 +1260,7 @@ html {
 }
 
 .about-section {
-    background: #fbfcfd;
+    background: #eef7fb;
 }
 
 .values-grid {
@@ -1317,7 +1317,7 @@ html {
 
 /* Features Quad (Appointment & Help) */
 .features-quad {
-    background: #fbfcfd;
+    background: #eef7fb;
     position: relative;
 }
 
@@ -2102,7 +2102,7 @@ html {
 
 /* How It Works Section */
 .how-it-works-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, #e8f4f8 0%, #dfe8ed 100%);
     position: relative;
     overflow: hidden;
 }
@@ -2801,7 +2801,7 @@ html {
 .commitment-media img { border:1px solid rgba(0,0,0,.06); }
 
 /* About - Transparency */
-.about-transparency { background:#fbfcfd; }
+.about-transparency { background:#eef7fb; }
 .transparency-title { color:#20B2AA; font-weight:800; text-align:left; }
 .transparency-text { color:#2c3e50; font-size:1.05rem; }
 .transparency-list { list-style:none; padding:0; margin:0; }
@@ -2810,8 +2810,8 @@ html {
 .transparency-media img { border:1px solid rgba(0,0,0,.06); }
 
 /* About - Alternating Sections */
-.about-alt { background:#eaf2ef; }
-.about-improvement { background:#fbfcfd; }
+.about-alt { background:#dfeee8; }
+.about-improvement { background:#eef7fb; }
 .alt-title { color:#20B2AA; font-weight:800; }
 .alt-text { color:#2c3e50; font-size:1.05rem; }
 .alt-media img { border:1px solid rgba(0,0,0,.06); width:100%; height:auto; max-width:640px; }
@@ -3419,7 +3419,7 @@ html {
    ======================================== */
 
 .reviews-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
+    background: linear-gradient(135deg, #e8f4f8 0%, #dfe8ed 50%, #e5eff2 100%);
     position: relative;
     overflow: hidden;
     padding: 5rem 0;
@@ -4024,5 +4024,186 @@ html {
     .review-content p::before,
     .review-content p::after {
         font-size: 2rem;
+    }
+}
+
+/* ==========================================
+   LARGE SCREEN OPTIMIZATIONS (1440p & 4K)
+   ========================================== */
+
+/* 1440p Resolution (2560px width) */
+@media (min-width: 2560px) {
+    .container,
+    .container-fluid {
+        max-width: 2200px;
+        margin: 0 auto;
+    }
+    
+    /* Hero Section Optimization */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+    
+    /* Navigation */
+    .navbar {
+        padding: 1.5rem 0;
+    }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.2rem;
+    }
+    
+    /* Service Cards */
+    .service-card {
+        padding: 2.5rem;
+    }
+    
+    .card-description {
+        font-size: 1.1rem;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    /* Footer */
+    .footer {
+        font-size: 1.1rem;
+    }
+    
+    /* Buttons */
+    .btn-hero-primary,
+    .btn-hero-secondary,
+    .btn-appointment {
+        font-size: 1.1rem;
+        padding: 1rem 2.5rem;
+    }
+}
+
+/* 4K Resolution (3840px width) */
+@media (min-width: 3840px) {
+    .container,
+    .container-fluid {
+        max-width: 3200px;
+        margin: 0 auto;
+    }
+    
+    /* Hero Section Optimization */
+    .hero-title {
+        font-size: 6rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2.5rem;
+    }
+    
+    /* Navigation */
+    .navbar {
+        padding: 2rem 0;
+    }
+    
+    .tree-logo {
+        height: 70px;
+    }
+    
+    .nav-link {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    /* Service Cards */
+    .service-card {
+        padding: 3.5rem;
+    }
+    
+    .card-image img {
+        max-width: 280px;
+    }
+    
+    .card-description {
+        font-size: 1.3rem;
+        line-height: 1.8;
+    }
+    
+    /* Icons */
+    .contact-icon,
+    .feature-icon,
+    .category-icon {
+        width: 120px;
+        height: 120px;
+        font-size: 3rem;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 2rem;
+    }
+    
+    /* Cards */
+    .contact-card,
+    .feature-card,
+    .category-card {
+        padding: 3.5rem;
+    }
+    
+    .contact-title-card,
+    .feature-title,
+    .category-title {
+        font-size: 2rem;
+    }
+    
+    /* Footer */
+    .footer {
+        font-size: 1.3rem;
+        padding: 4rem 0;
+    }
+    
+    .footer-heading {
+        font-size: 2rem;
+    }
+    
+    /* Buttons */
+    .btn-hero-primary,
+    .btn-hero-secondary,
+    .btn-appointment,
+    .btn-card,
+    .btn-submit {
+        font-size: 1.3rem;
+        padding: 1.3rem 3rem;
+    }
+    
+    /* Form Elements */
+    .form-control {
+        font-size: 1.2rem;
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .form-label {
+        font-size: 1.2rem;
+    }
+    
+    /* Top Bar */
+    .top-bar {
+        font-size: 1.1rem;
+    }
+    
+    /* Spacing Adjustments */
+    section {
+        padding: 8rem 0;
     }
 }
