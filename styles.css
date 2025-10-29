@@ -139,9 +139,8 @@ html {
 }
 
 .logo-circle {
-    width: 50px;
+    width: auto;
     height: 50px;   
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,15 +151,13 @@ html {
 
 .logo-circle:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
 }
 
 .tree-logo {
-    width: 100px;
-    height: 30px;
+    height: 50px;
+    width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
-    border-radius: 50%;
 }
 
 .brand-text {
@@ -2938,9 +2935,8 @@ html {
     
     /* Logo images */
     .tree-logo {
-        width: 100%;
-        height: auto;
-        max-width: 60px;
+        height: 40px;
+        width: auto;
         object-fit: contain;
     }
     
