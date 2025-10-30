@@ -1012,8 +1012,7 @@ html {
 }
 
 /* Card Images */
-.card-image {
-    height: 200px;
+.card-image {  
     background: #f8f9fa;
     display: flex;
     align-items: center;
