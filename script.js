@@ -363,24 +363,24 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     }
     
-    // Parallax effect for hero section
-    function initParallaxEffect() {
-        const heroSection = document.querySelector('.hero-section');
-        const heroContent = document.querySelector('.hero-content');
-        const heroImage = document.querySelector('.hero-image');
-        
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            
-            if (heroSection && scrolled < heroSection.offsetHeight) {
-                heroSection.style.transform = `translateY(${rate}px)`;
-            }
-        });
-    }
+    // Parallax effect for hero section - DISABLED
+    // function initParallaxEffect() {
+    //     const heroSection = document.querySelector('.hero-section');
+    //     const heroContent = document.querySelector('.hero-content');
+    //     const heroImage = document.querySelector('.hero-image');
+    //     
+    //     window.addEventListener('scroll', function() {
+    //         const scrolled = window.pageYOffset;
+    //         const rate = scrolled * -0.5;
+    //         
+    //         if (heroSection && scrolled < heroSection.offsetHeight) {
+    //             heroSection.style.transform = `translateY(${rate}px)`;
+    //         }
+    //     });
+    // }
     
-    // Initialize parallax effect
-    initParallaxEffect();
+    // Initialize parallax effect - DISABLED
+    // initParallaxEffect();
     
     // Add hover effects to service cards
     const serviceCards = document.querySelectorAll('.service-card');

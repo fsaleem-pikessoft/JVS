@@ -594,7 +594,7 @@ html {
     align-items: center;
     overflow: hidden;
     padding-top: 120px; /* Account for top bar + navbar */
-    padding-bottom: 0;
+    padding-bottom: 3rem;
 }
 
 /* Floating animation overlay for hero section */
@@ -961,7 +961,7 @@ html {
     
     /* Remove spacing between hero and service cards on mobile */
     #services.py-5 {
-        padding-top: 0 !important;
+        padding-top: 3rem !important;
     }
 }
 
