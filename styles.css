@@ -818,9 +818,9 @@ html {
     z-index: 4;
     height: 600px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    padding: 0;
+    padding: 0; /* remove extra gap under image */
 }
 
 .hero-person {
