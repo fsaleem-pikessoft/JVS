@@ -1017,8 +1017,7 @@ html {
     background: #f8f9fa;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    justify-content: center;  
     position: relative;
     overflow: hidden;
 }
