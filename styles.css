@@ -2642,10 +2642,6 @@ html {
     object-fit: contain;
 }
 
-.business-svg,
-.family-svg {
-    max-height: 150px;
-}
 
 .portrait-svg {
     max-height: 400px;
