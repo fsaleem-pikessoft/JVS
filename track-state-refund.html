@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your State Tax Refund | JVS Tax Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="Find official links to track your state tax refund for all 50 states and the District of Columbia. Search by state, get phone help lines, and navigate quickly.">
+    <style>
+        .state-hero { background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%); background-size: 400% 400%; animation: gradientShift 14s ease infinite; color: white; padding: 120px 0 80px; position: relative; overflow: hidden; }
+        .state-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(600px 300px at 10% -10%, rgba(255,255,255,.18), transparent 40%), radial-gradient(600px 300px at 90% 110%, rgba(255,255,255,.12), transparent 50%); }
+        .state-title { font-weight: 800; letter-spacing: -.5px; text-shadow: 0 0 18px rgba(255,255,255,.28); }
+        .state-lead { color: rgba(255,255,255,.92); }
+        .search-card { background: #fff; border: 1px solid rgba(32,178,170,.15); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,.08); padding: 18px; margin-top: -38px; position: relative; z-index: 5; }
+        .search-input { border: 2px solid #e9ecef; border-radius: 12px; padding: 12px 14px; font-weight: 500; }
+        .search-input:focus { border-color: #20B2AA; box-shadow: 0 0 0 .15rem rgba(32,178,170,.25); }
+        .az-nav { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+        .az-btn { border: 1px solid rgba(32,178,170,.25); color: #20B2AA; background: #fff; padding: .4rem .65rem; border-radius: 8px; font-weight: 700; width: 36px; text-align: center; }
+        .az-btn:hover { background: rgba(32,178,170,.08); }
+        .state-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
+        .state-card { background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 12px; padding: .9rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+        .state-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,.08); border-color: rgba(32,178,170,.25); }
+        .state-name { font-weight: 700; color: #2c3e50; margin: 0; }
+        .state-actions { display: flex; gap: .35rem; }
+        .state-actions a { text-decoration: none; }
+        .btn-state { background: #20B2AA; color: #fff !important; border: none; padding: .45rem .65rem; border-radius: 8px; font-weight: 700; font-size: .85rem; }
+        .btn-outline { background: #fff; color: #20B2AA !important; border: 2px solid #20B2AA; }
+        .btn-state:hover { filter: brightness(.95); }
+        .muted { color: #6b7a90; font-size: .9rem; }
+        .sr-empty { text-align: center; color: #6b7a90; padding: 2rem 0; }
+        .sticky-helper { position: sticky; top: 76px; z-index: 4; }
+        @media (max-width: 576px){ .state-actions { width: 100%; justify-content: flex-end; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>718-395-9663</span>
+                        <span><i class="fas fa-envelope me-2"></i>support@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">CONTACT</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">RESOURCES <i class="fas fa-chevron-down ms-1"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus.html"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="/pricing.html"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item" href="/fast-money-card.html"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="https://www.irs.gov/refunds" target="_blank" rel="noopener"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="/track-state-refund.html"><i class="fas fa-search-dollar me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="/privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="/blog.html"><i class="fas fa-blog me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/faqs.html">FAQS</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin"><i class="fas fa-user"></i><span>SIGN IN</span></a>
+                    <a href="#appointment" class="btn btn-appointment"><i class="fas fa-calendar-check"></i><span>BOOK YOUR APPOINTMENT</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section hero-gradient">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-content text-left">
+                        <span class="home-hero-badge"><i class="fas fa-shield-alt me-2"></i>Official Links • Safe & Secure</span>
+                        <h1 class="hero-title">Track Your State Tax Refund</h1>
+                        <p class="hero-description">Select your state below to check your refund status quickly and securely. We link directly to official state portals—no third‑party forms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4">
+        <div class="container">
+            <div class="search-card sticky-helper">
+                <div class="row g-2 align-items-center">
+                    <div class="col-lg-6 col-md-7">
+                        <label for="stateSearch" class="form-label mb-1 fw-semibold text-muted">Search state</label>
+                        <input id="stateSearch" type="search" class="form-control search-input" placeholder="Start typing… e.g. New York, Texas, CA" autocomplete="off" aria-label="Search states">
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="az-nav mt-3 mt-md-4" id="azNav" aria-label="Alphabet quick filter"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-3 pb-5">
+        <div class="container">
+            <div id="stateSummary" class="muted mb-2"></div>
+            <div id="stateGrid" class="state-grid" role="list"></div>
+            <div id="emptyState" class="sr-empty d-none">No states match your search. Try a different name or letter.</div>
+        </div>
+    </section>
+
+    <!-- Guidance section styled like About page values grid -->
+    <section class="about-section py-4">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Quick Tips Before You Check</h2>
+                    <p class="section-subtitle">Most delays come from identity verification and return mismatches</p>
+                </div>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-id-card"></i></div>
+                    <div class="value-title">Match Personal Details</div>
+                    <div class="value-text">Ensure SSN, filing status, and exact refund amount match your state return.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-clock"></i></div>
+                    <div class="value-title">Timing Expectations</div>
+                    <div class="value-text">E‑filed returns usually post in 2–3 weeks; paper returns can take 8–12+ weeks.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="value-title">Security First</div>
+                    <div class="value-text">Use only official state portals. We link directly—no third‑party data collection.</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-headset"></i></div>
+                    <div class="value-title">Need Help?</div>
+                    <div class="value-text">Click the phone icon next to your state to call the refund hotline.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Compliance notice -->
+    <section class="py-4">
+        <div class="container">
+            <div class="professional-disclaimer">
+                <div class="disclaimer-icon"><i class="fas fa-lock"></i></div>
+                <div class="disclaimer-content">
+                    <h4>Privacy & Data Security</h4>
+                    <p>JVS Tax Services does not collect or store any refund status data from state websites. All links go to official government portals over HTTPS. For identity protection, never share your refund amount or SSN outside the official checker.</p>
+                </div>
+                <div class="disclaimer-action">
+                    <a class="btn btn-jvs-info" href="/privacy-policy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ styled with existing accordion components -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">State Refund FAQs</h2>
+                    <p class="section-subtitle">Clear answers for common questions</p>
+                </div>
+            </div>
+            <div class="accordion" id="stateRefundFaq">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            My state site can’t find my refund. What should I check?
+                        </button>
+                    </h3>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#stateRefundFaq">
+                        <div class="accordion-body">Confirm you’re using the exact refund amount from your filed return, your correct filing status, and the primary filer’s SSN. If you recently filed, allow processing time per your state’s guidance.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How long should I wait before contacting the state?
+                        </button>
+                    </h3>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#stateRefundFaq">
+                        <div class="accordion-body">For e‑filed returns, most states recommend waiting at least 2–3 weeks; for paper returns, 8–12+ weeks. Use the phone icon next to your state for official assistance if it’s past these windows.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Why is my refund reduced or offset?
+                        </button>
+                    </h3>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#stateRefundFaq">
+                        <div class="accordion-body">States may offset refunds for past‑due obligations (child support, taxes, student loans). Your state notice will explain any offsets and next steps.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item"><i class="fas fa-phone"></i><span>718-395-9663</span></div>
+                            <div class="contact-item"><i class="fas fa-envelope"></i><span>support@jvstaxservices.com</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>147 Prince Street</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Brooklyn, NY 11201</span></div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item"><span class="day">Mon - Fri:</span><span class="time">10am - 6pm</span></div>
+                            <div class="hours-item"><span class="day">Sat - Sun:</span><span class="time">11am - 3pm</span></div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="/index.html" class="sitemap-link">Home</a>
+                            <a href="/contact.html" class="sitemap-link">Contact</a>
+                            <a href="/about.html" class="sitemap-link">About Us</a>
+                            <a href="/protection-plus.html" class="sitemap-link">Protection Plan</a>
+                            <a href="/pricing.html" class="sitemap-link">Pricing Sheet</a>
+                            <a href="/refund-transfer.html" class="sitemap-link">Refund Transfer</a>
+                            <a href="/fast-money-card.html" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="/track-federal-refund.html" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="/track-state-refund.html" class="sitemap-link">Track Your State Refund</a>
+                            <a href="/privacy-policy.html" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="/blog.html" class="sitemap-link">Our Blog</a>
+                            <a href="/faqs.html" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo"><div class="bbb-square">BBB</div></div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accessibility-icon"><i class="fas fa-universal-access"></i></div>
+        <div class="scroll-to-top" id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    // State refund data: official status URLs and phone help lines
+    const STATE_REFUNDS = [
+      { code:'AL', name:'Alabama', url:'https://myalabamataxes.alabama.gov/tap/_/', phone:'334-242-1170' },
+      { code:'AZ', name:'Arizona', url:'https://azdor.gov/wheres-my-refund', phone:'602-255-3381' },
+      { code:'AR', name:'Arkansas', url:'https://www.dfa.arkansas.gov/office/taxes/income-tax-administration/individual-income-tax/', phone:'501-682-1100' },
+      { code:'CA', name:'California', url:'https://webapp.ftb.ca.gov/refund/login', phone:'800-852-5711' },
+      { code:'CO', name:'Colorado', url:'https://tax.colorado.gov/refund', phone:'303-238-7378' },
+      { code:'CT', name:'Connecticut', url:'https://portal.ct.gov/drs/individuals/individual-tax-page/status-of-refund', phone:'860-297-5962' },
+      { code:'DC', name:'District of Columbia', url:'https://mytax.dc.gov/_/', phone:'202-727-4TAX' },
+      { code:'DE', name:'Delaware', url:'https://revenue.delaware.gov/', phone:'302-577-8200' },
+      { code:'GA', name:'Georgia', url:'https://dor.georgia.gov/taxes/check-my-refund-status', phone:'877-423-6711' },
+      { code:'HI', name:'Hawaii', url:'https://hitax.hawaii.gov/_/', phone:'808-587-4242' },
+      { code:'ID', name:'Idaho', url:'https://idahotap.gentax.com/tap/_/', phone:'208-334-7660' },
+      { code:'IL', name:'Illinois', url:'https://mytax.illinois.gov/_/', phone:'800-732-8866' },
+      { code:'IN', name:'Indiana', url:'https://www.in.gov/dor/i-am-a/individual/check-refund/', phone:'317-232-2240' },
+      { code:'IA', name:'Iowa', url:'https://govconnect.iowa.gov/tap', phone:'515-281-3114' },
+      { code:'KS', name:'Kansas', url:'https://www.kdor.ks.gov/Apps/kcsc/increfundstatus.aspx', phone:'785-368-8222' },
+      { code:'KY', name:'Kentucky', url:'https://refund.ky.gov/', phone:'502-564-4581' },
+      { code:'LA', name:'Louisiana', url:'https://latap.revenue.louisiana.gov/?Link=WMR', phone:'888-829-3071' },
+      { code:'ME', name:'Maine', url:'https://www.maine.gov/revenue/taxes/income-estate-tax/individual-income-tax-1040me', phone:'207-626-8475' },
+      { code:'MD', name:'Maryland', url:'https://interactive.marylandtaxes.gov/INDIV/refundstatus/home.aspx', phone:'410-260-7701' },
+      { code:'MA', name:'Massachusetts', url:'https://www.mass.gov/how-to/check-the-status-of-your-ma-income-tax-refund', phone:'617-887-6367' },
+      { code:'MI', name:'Michigan', url:'https://www.revenue.state.mn.us/wheres-my-refund', phone:'517-636-4486' },
+      { code:'MN', name:'Minnesota', url:'https://www.revenue.state.mn.us/wheres-my-refund', phone:'651-296-4444' },
+      { code:'MS', name:'Mississippi', url:'https://tap.dor.ms.gov/_/', phone:'601-923-7801' },
+      { code:'MO', name:'Missouri', url:'https://dor.mo.gov/taxation/return-status', phone:'573-751-3505' },
+      { code:'MT', name:'Montana', url:'https://revenue.mt.gov/WheresMyRefund%20or%20https:/MTRevenue.gov/taxes/individual-income-tax/individual-refunds/', phone:'406-444-6900' },
+      { code:'NE', name:'Nebraska', url:'https://azdor.gov/wheres-my-refund', phone:'402-471-5729' },
+      { code:'NJ', name:'New Jersey', url:'https://www16.state.nj.us/TYTR_TGI_INQ/jsp/prompt.jsp', phone:'609-292-6400' },
+      { code:'NM', name:'New Mexico', url:'https://tap.state.nm.us/tap/_/#1', phone:'866-285-2996' },
+      { code:'NY', name:'New York', url:'https://www.tax.ny.gov/pit/file/refund.htm', phone:'518-457-5149' },
+      { code:'NC', name:'North Carolina', url:'https://www.ncdor.gov/refund', phone:'877-252-4052' },
+      { code:'ND', name:'North Dakota', url:'http://tax.nd.gov/refund', phone:'701-328-1247' },
+      { code:'OH', name:'Ohio', url:'https://tax.ohio.gov/individual/refund-status', phone:'800-282-1780' },
+      { code:'OK', name:'Oklahoma', url:'https://www.refundstatus.com/oklahoma/', phone:'405-521-3160' },
+      { code:'OR', name:'Oregon', url:'https://revenueonline.dor.oregon.gov/tap/_/', phone:'503-378-4988' },
+      { code:'PA', name:'Pennsylvania', url:'https://www.mypath.pa.gov/_/', phone:'717-787-8201' },
+      { code:'RI', name:'Rhode Island', url:'https://tax.ri.gov/online-services/wheres-my-refund', phone:'401-574-8829' },
+      { code:'SC', name:'South Carolina', url:'https://mydorway.dor.sc.gov/?link=refund', phone:'844-898-8542' },,
+      { code:'UT', name:'Utah', url:'https://incometax.utah.gov/refunds', phone:'801-297-2200' },
+      { code:'VT', name:'Vermont', url:'https://myvtax.vermont.gov/', phone:'802-828-2865' },
+      { code:'VA', name:'Virginia', url:'https://www.individual.tax.virginia.gov/IOP/#/refund', phone:'804-367-2486' },
+      { code:'WV', name:'West Virginia', url:'https://mytaxes.wvtax.gov/_/', phone:'304-558-3333' },
+      { code:'WI', name:'Wisconsin', url:'https://tap.revenue.wi.gov/mta/_/', phone:'608-266-2486' },
+    ];
+
+    const gridEl = document.getElementById('stateGrid');
+    const searchEl = document.getElementById('stateSearch');
+    const emptyEl = document.getElementById('emptyState');
+    const summaryEl = document.getElementById('stateSummary');
+    const azEl = document.getElementById('azNav');
+
+    // Build A–Z quick filter
+    (() => {
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      letters.forEach(l => {
+        const btn = document.createElement('button');
+        btn.className = 'az-btn';
+        btn.type = 'button';
+        btn.textContent = l;
+        btn.setAttribute('aria-label', 'Filter states beginning with ' + l);
+        btn.addEventListener('click', () => {
+          searchEl.value = l;
+          render();
+          searchEl.focus();
+          searchEl.setSelectionRange(1, 1);
+        });
+        azEl.appendChild(btn);
+      });
+    })();
+
+    function render() {
+      const q = (searchEl.value || '').trim().toLowerCase();
+      const items = STATE_REFUNDS
+        .slice()
+        .sort((a,b) => a.name.localeCompare(b.name))
+        .filter(s => !q || s.name.toLowerCase().startsWith(q) || s.code.toLowerCase() === q);
+
+      gridEl.innerHTML = '';
+      items.forEach(s => {
+        const li = document.createElement('div');
+        li.className = 'state-card';
+        li.setAttribute('role', 'listitem');
+        li.innerHTML = `<p class="state-name mb-0">${s.name}</p>
+          <div class="state-actions">
+            <a class="btn-state btn-outline" href="tel:${s.phone.replace(/[^0-9]/g,'')}" aria-label="Call ${s.name} help line"><i class="fas fa-phone"></i></a>
+            <a class="btn-state" href="${s.url}" target="_blank" rel="noopener" aria-label="Open ${s.name} refund status">Check</a>
+          </div>`;
+        gridEl.appendChild(li);
+      });
+
+      emptyEl.classList.toggle('d-none', items.length !== 0);
+      summaryEl.textContent = `${items.length} of ${STATE_REFUNDS.length} shown`;
+    }
+
+    searchEl.addEventListener('input', render);
+    document.addEventListener('DOMContentLoaded', render);
+
+    // Scroll to top button behavior
+    (function(){
+      const btn = document.getElementById('scrollToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) btn.classList.add('show'); else btn.classList.remove('show');
+      });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+    </script>
+</body>
+</html>
+
+
