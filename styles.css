@@ -140,7 +140,7 @@ html {
 
 .logo-circle {
     width: auto;
-    height: 50px;   
+    height: 70px;   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,7 +154,7 @@ html {
 }
 
 .tree-logo {
-    height: 50px;
+    height: 70px;
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
@@ -2927,7 +2927,7 @@ html {
     
     /* Logo images */
     .tree-logo {
-        height: 40px;
+        height: 56px;
         width: auto;
         object-fit: contain;
     }
