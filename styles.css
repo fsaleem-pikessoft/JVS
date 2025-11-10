@@ -236,6 +236,53 @@ html {
     min-width: 200px;
 }
 
+/* Mobile Dropdown - Make scrollable */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        position: absolute !important;
+        will-change: transform;
+    }
+    
+    .dropdown-menu.show {
+        display: block !important;
+    }
+    
+    .dropdown-item {
+        white-space: nowrap;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .dropdown-menu::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .dropdown-menu::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    .dropdown-menu::-webkit-scrollbar-thumb {
+        background: #20B2AA;
+        border-radius: 10px;
+    }
+    
+    .dropdown-menu::-webkit-scrollbar-thumb:hover {
+        background: #17a2b8;
+    }
+    
+    /* Ensure dropdown doesn't get cut off */
+    .navbar-collapse {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
 .dropdown-item {
     padding: 0.75rem 1.5rem;
     color: #2c3e50;
