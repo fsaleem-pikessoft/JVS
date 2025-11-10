@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║        FIND YOUR CORRECT SERVICE ID                          ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+The Service ID "service_gxyt33s" is not found. Let's find the correct one:
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ STEP 1: Go to EmailJS Dashboard                             │
+└─────────────────────────────────────────────────────────────┘
+
+1. Go to: https://dashboard.emailjs.com
+
+2. Make sure you're logged in
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ STEP 2: Check Email Services                                │
+└─────────────────────────────────────────────────────────────┘
+
+1. Look at the LEFT SIDE MENU
+
+2. Click on "Email Services"
+
+3. You should see a list of services
+
+4. Do you see any service listed?
+   
+   ✅ YES - Go to Step 3
+   ❌ NO - Go to Step 4 (Create a new service)
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ STEP 3: Get the Service ID                                  │
+└─────────────────────────────────────────────────────────────┘
+
+1. Click on the service name (it might say "Gmail" or "Email Service 1")
+
+2. You'll see the service details
+
+3. Look for "Service ID" - it will look like:
+   service_abc123xyz
+   or
+   service_xxxxxxxxx
+
+4. COPY that Service ID (the whole thing starting with "service_")
+
+5. Tell me: "My Service ID is: [paste it here]"
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ STEP 4: Create a New Service (If You Don't Have One)      │
+└─────────────────────────────────────────────────────────────┘
+
+1. Click "Add New Service" button
+
+2. Choose "Gmail" (since you're using Gmail)
+
+3. Click "Connect Account"
+
+4. Sign in with: heelofaizan222@gmail.com
+
+5. Click "Allow" to give permission
+
+6. After connecting, you'll see the Service ID
+
+7. COPY that Service ID
+
+8. Tell me: "My Service ID is: [paste it here]"
+
+
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║  IMPORTANT:                                                  ║
+║                                                              ║
+║  The Service ID should:                                      ║
+║  - Start with "service_"                                     ║
+║  - Be something like: service_abc123xyz                     ║
+║  - NOT be "service_gxyt33s" (that one doesn't exist)        ║
+║                                                              ║
+║  Once you find the correct Service ID, I'll update the code! ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator - JVS Tax Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="Calculate your estimated tax liability with JVS Tax Services professional tax calculator. Get instant estimates for your tax return.">
+    <style>
+        .calculator-hero {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .calculator-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .calculator-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: white;
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .calculator-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white !important;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
+        }
+        
+        .calculator-subtitle {
+            font-size: 17px;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .calculator-info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .calculator-content {
+            padding: 60px 0 80px;
+            background: #f8f9fa;
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .calculator-card h3 {
+            color: #20B2AA;
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .calculator-card h3 i {
+            font-size: 1.3rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #20B2AA;
+            box-shadow: 0 0 0 0.2rem rgba(32, 178, 170, 0.25);
+        }
+        
+        .input-group-text {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border: none;
+            border-radius: 10px 0 0 10px;
+            font-weight: 600;
+        }
+        
+        .input-group .form-control {
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .btn-calculate {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(32, 178, 170, 0.3);
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn-calculate:hover {
+            background: linear-gradient(135deg, #17a2b8, #138496);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
+            color: white;
+        }
+        
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-reset:hover {
+            background: #5a6268;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .results-card {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(32, 178, 170, 0.3);
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .results-card.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .results-card h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        .result-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-item-label {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .result-item-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .result-item.highlight {
+            background: rgba(255, 255, 255, 0.25);
+            font-size: 1.1rem;
+        }
+        
+        .result-item.highlight .result-item-value {
+            font-size: 2rem;
+        }
+        
+        .info-box {
+            background: #e7f5f4;
+            border-left: 4px solid #20B2AA;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box i {
+            color: #20B2AA;
+            margin-right: 10px;
+        }
+        
+        .info-box p {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-title {
+                font-size: 2.5rem;
+            }
+            
+            .calculator-subtitle {
+                font-size: 1rem;
+            }
+            
+            .calculator-info-card {
+                padding: 30px;
+                margin-top: 2rem;
+            }
+            
+            .calculator-card {
+                padding: 25px;
+            }
+            
+            .results-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>718-395-9663</span>
+                        <span><i class="fas fa-envelope me-2"></i>support@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">CONTACT</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus.html"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="/pricing.html"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item active" href="/tax-calculator.html"><i class="fas fa-calculator me-2"></i>Tax Calculator</a></li>
+                            <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item" href="/fast-money-card.html"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="https://www.irs.gov/refunds" target="_blank" rel="noopener"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="/track-state-refund.html"><i class="fas fa-search-dollar me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="/privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="/blog.html"><i class="fas fa-blog me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/faqs.html">FAQS</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin"><i class="fas fa-user"></i><span>SIGN IN</span></a>
+                    <a href="#appointment" class="btn btn-appointment"><i class="fas fa-calendar-check"></i><span>BOOK YOUR APPOINTMENT</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="calculator-hero">
+        <div class="container">
+            <div class="row align-items-center" style="margin-top: 10px;">
+                <div class="col-lg-8" style="margin-top: 20px;">
+                    <h1 class="calculator-title animate-fade-in-up" style="animation-delay: 0.1s;">
+                        Tax Calculator
+                    </h1>
+                    <div class="calculator-badge animate-fade-in-up">
+                        <i class="fas fa-calculator me-2"></i> Calculate Your Tax Estimate
+                    </div>
+                    <p class="calculator-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                        Get an instant estimate of your tax liability or refund. This calculator provides an approximation based on 2024 tax brackets and should be used for estimation purposes only. Simply enter your financial information below to receive a quick estimate of what you might owe or receive as a refund.
+                    </p>
+                    <p class="calculator-subtitle animate-fade-in-up" style="animation-delay: 0.3s;">
+                        For accurate tax preparation and personalized advice, consult with our experienced tax professionals at JVS Tax Services. We're here to help you maximize your deductions and ensure compliance with all tax regulations.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="calculator-info-card animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-calculator fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">Instant</div>
+                                    <div class="text-white-50 small">Calculations</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-shield-check fa-2x"></i>
+                                    </div>
+                                    <div class="text-white fw-bold">Secure</div>
+                                    <div class="text-white-50 small">Privacy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Content -->
+    <section class="calculator-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle"></i><strong>Disclaimer:</strong> This calculator provides estimates only and should not be considered as professional tax advice. Actual tax amounts may vary. Please consult with a tax professional for accurate calculations.</p>
+                    </div>
+
+                    <div class="calculator-card">
+                        <h3><i class="fas fa-file-invoice-dollar"></i> Tax Information</h3>
+                        <form id="taxCalculatorForm">
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Filing Status</label>
+                                    <select class="form-select" id="filingStatus" required>
+                                        <option value="">Select Filing Status</option>
+                                        <option value="single">Single</option>
+                                        <option value="married_jointly">Married Filing Jointly</option>
+                                        <option value="married_separately">Married Filing Separately</option>
+                                        <option value="head_of_household">Head of Household</option>
+                                        <option value="qualifying_widow">Qualifying Widow(er)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tax Year</label>
+                                    <select class="form-select" id="taxYear" required>
+                                        <option value="2024" selected>2024</option>
+                                        <option value="2023">2023</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <h3 class="mt-4 mb-3"><i class="fas fa-dollar-sign"></i> Income Information</h3>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Gross Income</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="grossIncome" placeholder="0.00" min="0" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Adjustments to Income</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="adjustments" placeholder="0.00" min="0" step="0.01" value="0">
+                                </div>
+                                <small class="text-muted">IRA contributions, student loan interest, etc.</small>
+                            </div>
+
+                            <h3 class="mt-4 mb-3"><i class="fas fa-receipt"></i> Deductions</h3>
+
+                            <div class="mb-3">
+                                <label class="form-label">Standard Deduction</label>
+                                <select class="form-select" id="deductionType">
+                                    <option value="standard" selected>Use Standard Deduction</option>
+                                    <option value="itemized">Itemize Deductions</option>
+                                </select>
+                            </div>
+
+                            <div id="itemizedDeductions" style="display: none;">
+                                <div class="mb-3">
+                                    <label class="form-label">Medical Expenses</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="medicalExpenses" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">State and Local Taxes</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="stateLocalTaxes" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Mortgage Interest</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="mortgageInterest" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Charitable Contributions</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="charitableContributions" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Other Itemized Deductions</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="otherDeductions" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="mt-4 mb-3"><i class="fas fa-percent"></i> Credits & Withholdings</h3>
+
+                            <div class="mb-3">
+                                <label class="form-label">Tax Credits</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="taxCredits" placeholder="0.00" min="0" step="0.01" value="0">
+                                </div>
+                                <small class="text-muted">Child Tax Credit, EITC, etc.</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Federal Tax Withheld</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="taxWithheld" placeholder="0.00" min="0" step="0.01" value="0">
+                                </div>
+                                <small class="text-muted">Total federal taxes already paid</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-calculate">
+                                <i class="fas fa-calculator me-2"></i>Calculate Tax
+                            </button>
+                            <button type="button" class="btn btn-reset" onclick="resetCalculator()">
+                                <i class="fas fa-redo me-2"></i>Reset
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Results Card -->
+                    <div class="results-card" id="resultsCard">
+                        <h3><i class="fas fa-chart-line me-2"></i> Tax Calculation Results</h3>
+                        
+                        <div class="result-item">
+                            <span class="result-item-label">Gross Income</span>
+                            <span class="result-item-value" id="resultGrossIncome">$0.00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-item-label">Adjusted Gross Income (AGI)</span>
+                            <span class="result-item-value" id="resultAGI">$0.00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-item-label">Total Deductions</span>
+                            <span class="result-item-value" id="resultDeductions">$0.00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-item-label">Taxable Income</span>
+                            <span class="result-item-value" id="resultTaxableIncome">$0.00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-item-label">Estimated Tax Owed</span>
+                            <span class="result-item-value" id="resultTaxOwed">$0.00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-item-label">Tax Credits</span>
+                            <span class="result-item-value" id="resultCredits">$0.00</span>
+                        </div>
+
+                        <div class="result-item">
+                            <span class="result-item-label">Tax Withheld</span>
+                            <span class="result-item-value" id="resultWithheld">$0.00</span>
+                        </div>
+
+                        <div class="result-item highlight">
+                            <span class="result-item-label">Estimated Refund / Amount Owed</span>
+                            <span class="result-item-value" id="resultRefund">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item"><i class="fas fa-phone"></i><span>718-395-9663</span></div>
+                            <div class="contact-item"><i class="fas fa-envelope"></i><span>support@jvstaxservices.com</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>147 Prince Street</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Brooklyn, NY 11201</span></div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item"><span class="day">Mon - Fri:</span><span class="time">10am - 6pm</span></div>
+                            <div class="hours-item"><span class="day">Sat - Sun:</span><span class="time">11am - 3pm</span></div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="/index.html" class="sitemap-link">Home</a>
+                            <a href="/contact.html" class="sitemap-link">Contact</a>
+                            <a href="/about.html" class="sitemap-link">About Us</a>
+                            <a href="/protection-plus.html" class="sitemap-link">Protection Plan</a>
+                            <a href="/pricing.html" class="sitemap-link">Pricing Sheet</a>
+                            <a href="/tax-calculator.html" class="sitemap-link">Tax Calculator</a>
+                            <a href="/refund-transfer.html" class="sitemap-link">Refund Transfer</a>
+                            <a href="/fast-money-card.html" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="https://www.irs.gov/refunds" target="_blank" rel="noopener" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="/track-state-refund.html" class="sitemap-link">Track Your State Refund</a>
+                            <a href="/privacy-policy.html" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="/blog.html" class="sitemap-link">Our Blog</a>
+                            <a href="/faqs.html" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo"><div class="bbb-square">BBB</div></div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accessibility-icon"><i class="fas fa-universal-access"></i></div>
+        <div class="scroll-to-top" id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Show/hide itemized deductions
+        document.getElementById('deductionType').addEventListener('change', function() {
+            const itemizedDiv = document.getElementById('itemizedDeductions');
+            if (this.value === 'itemized') {
+                itemizedDiv.style.display = 'block';
+            } else {
+                itemizedDiv.style.display = 'none';
+            }
+        });
+
+        // Standard deduction amounts for 2024
+        const standardDeductions2024 = {
+            single: 14600,
+            married_jointly: 29200,
+            married_separately: 14600,
+            head_of_household: 21900,
+            qualifying_widow: 29200
+        };
+
+        // Tax brackets for 2024 (Single filer example - simplified)
+        function calculateTax(taxableIncome, filingStatus) {
+            // 2024 Tax Brackets (simplified progressive tax calculation)
+            let tax = 0;
+            
+            if (filingStatus === 'single' || filingStatus === 'married_separately') {
+                if (taxableIncome > 0) {
+                    if (taxableIncome <= 11600) {
+                        tax = taxableIncome * 0.10;
+                    } else if (taxableIncome <= 47150) {
+                        tax = 1160 + (taxableIncome - 11600) * 0.12;
+                    } else if (taxableIncome <= 100525) {
+                        tax = 5426 + (taxableIncome - 47150) * 0.22;
+                    } else if (taxableIncome <= 191950) {
+                        tax = 17168.50 + (taxableIncome - 100525) * 0.24;
+                    } else if (taxableIncome <= 243725) {
+                        tax = 39110.50 + (taxableIncome - 191950) * 0.32;
+                    } else if (taxableIncome <= 609350) {
+                        tax = 55678.50 + (taxableIncome - 243725) * 0.35;
+                    } else {
+                        tax = 183647.25 + (taxableIncome - 609350) * 0.37;
+                    }
+                }
+            } else if (filingStatus === 'married_jointly' || filingStatus === 'qualifying_widow') {
+                if (taxableIncome > 0) {
+                    if (taxableIncome <= 23200) {
+                        tax = taxableIncome * 0.10;
+                    } else if (taxableIncome <= 94300) {
+                        tax = 2320 + (taxableIncome - 23200) * 0.12;
+                    } else if (taxableIncome <= 201050) {
+                        tax = 10852 + (taxableIncome - 94300) * 0.22;
+                    } else if (taxableIncome <= 383900) {
+                        tax = 34337 + (taxableIncome - 201050) * 0.24;
+                    } else if (taxableIncome <= 487450) {
+                        tax = 78221 + (taxableIncome - 383900) * 0.32;
+                    } else if (taxableIncome <= 731200) {
+                        tax = 111357 + (taxableIncome - 487450) * 0.35;
+                    } else {
+                        tax = 196670.50 + (taxableIncome - 731200) * 0.37;
+                    }
+                }
+            } else if (filingStatus === 'head_of_household') {
+                if (taxableIncome > 0) {
+                    if (taxableIncome <= 16550) {
+                        tax = taxableIncome * 0.10;
+                    } else if (taxableIncome <= 63100) {
+                        tax = 1655 + (taxableIncome - 16550) * 0.12;
+                    } else if (taxableIncome <= 100500) {
+                        tax = 7235 + (taxableIncome - 63100) * 0.22;
+                    } else if (taxableIncome <= 191950) {
+                        tax = 15475 + (taxableIncome - 100500) * 0.24;
+                    } else if (taxableIncome <= 243700) {
+                        tax = 37363 + (taxableIncome - 191950) * 0.32;
+                    } else if (taxableIncome <= 609350) {
+                        tax = 53835 + (taxableIncome - 243700) * 0.35;
+                    } else {
+                        tax = 181955.50 + (taxableIncome - 609350) * 0.37;
+                    }
+                }
+            }
+            
+            return Math.max(0, tax);
+        }
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        // Calculate tax
+        document.getElementById('taxCalculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const filingStatus = document.getElementById('filingStatus').value;
+            const grossIncome = parseFloat(document.getElementById('grossIncome').value) || 0;
+            const adjustments = parseFloat(document.getElementById('adjustments').value) || 0;
+            const deductionType = document.getElementById('deductionType').value;
+            const taxCredits = parseFloat(document.getElementById('taxCredits').value) || 0;
+            const taxWithheld = parseFloat(document.getElementById('taxWithheld').value) || 0;
+            
+            // Calculate AGI
+            const agi = grossIncome - adjustments;
+            
+            // Calculate deductions
+            let totalDeductions = 0;
+            if (deductionType === 'standard') {
+                totalDeductions = standardDeductions2024[filingStatus] || 0;
+            } else {
+                const medicalExpenses = parseFloat(document.getElementById('medicalExpenses').value) || 0;
+                const stateLocalTaxes = parseFloat(document.getElementById('stateLocalTaxes').value) || 0;
+                const mortgageInterest = parseFloat(document.getElementById('mortgageInterest').value) || 0;
+                const charitableContributions = parseFloat(document.getElementById('charitableContributions').value) || 0;
+                const otherDeductions = parseFloat(document.getElementById('otherDeductions').value) || 0;
+                totalDeductions = medicalExpenses + stateLocalTaxes + mortgageInterest + charitableContributions + otherDeductions;
+            }
+            
+            // Calculate taxable income
+            const taxableIncome = Math.max(0, agi - totalDeductions);
+            
+            // Calculate tax
+            const taxOwed = calculateTax(taxableIncome, filingStatus);
+            
+            // Calculate final amount
+            const finalTax = Math.max(0, taxOwed - taxCredits);
+            const refundOrOwed = taxWithheld - finalTax;
+            
+            // Display results
+            document.getElementById('resultGrossIncome').textContent = formatCurrency(grossIncome);
+            document.getElementById('resultAGI').textContent = formatCurrency(agi);
+            document.getElementById('resultDeductions').textContent = formatCurrency(totalDeductions);
+            document.getElementById('resultTaxableIncome').textContent = formatCurrency(taxableIncome);
+            document.getElementById('resultTaxOwed').textContent = formatCurrency(taxOwed);
+            document.getElementById('resultCredits').textContent = formatCurrency(taxCredits);
+            document.getElementById('resultWithheld').textContent = formatCurrency(taxWithheld);
+            
+            const refundElement = document.getElementById('resultRefund');
+            if (refundOrOwed >= 0) {
+                refundElement.textContent = formatCurrency(refundOrOwed);
+                refundElement.parentElement.classList.remove('text-danger');
+                refundElement.parentElement.classList.add('text-success');
+            } else {
+                refundElement.textContent = formatCurrency(Math.abs(refundOrOwed));
+                refundElement.parentElement.classList.remove('text-success');
+                refundElement.parentElement.classList.add('text-danger');
+            }
+            
+            // Show results card
+            document.getElementById('resultsCard').classList.add('show');
+            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Reset calculator
+        function resetCalculator() {
+            document.getElementById('taxCalculatorForm').reset();
+            document.getElementById('itemizedDeductions').style.display = 'none';
+            document.getElementById('resultsCard').classList.remove('show');
+            document.getElementById('grossIncome').focus();
+        }
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) scrollToTopBtn.classList.add('show');
+            else scrollToTopBtn.classList.remove('show');
+        });
+        scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
+

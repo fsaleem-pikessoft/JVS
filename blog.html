@@ -180,6 +180,7 @@
             flex-direction: column;
         }
         
+        
         .blog-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(32, 178, 170, 0.2);
@@ -696,6 +697,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/protection-plus.html"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
                             <li><a class="dropdown-item" href="/pricing.html"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="/tax-calculator.html"><i class="fas fa-calculator me-2"></i>Tax Calculator</a></li>
                             <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
                             <li><a class="dropdown-item" href="/fast-money-card.html"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
                             <li><a class="dropdown-item" href="/track-federal-refund.html"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
@@ -776,7 +778,82 @@
             <div class="row">
                 <!-- Blog Posts Column -->
                 <div class="col-lg-8 blog-posts-column">
-                    <!-- Blog Post 1 -->
+                    <!-- Blog Post 1 - New -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Tax Tips</span>
+                            <img src="public/images/family pom.webp" alt="Tax Breaks for Families">
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 12, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    6 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">Tax Breaks for Families: What You Need to Know</h2>
+                            <p class="blog-card-text">
+                                Discover essential tax breaks that can help families save money, including the Child Tax Credit, Dependent Care FSA, Earned Income Tax Credit, and more. Learn how to take advantage of educational tax benefits, standard deductions, and other valuable credits to reduce your tax liability and keep more money in your pocket.
+                            </p>
+                            <a href="/blog-tax-breaks-for-families.html" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 - New -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Tax Law</span>
+                            <img src="public/images/amended-jvs.webp" alt="Amended Tax Return">
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 30, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    5 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">Should You Amend Your Tax Return? Signs It's Necessary</h2>
+                            <p class="blog-card-text">
+                                Filing your tax return is stressful, and it's easy to make mistakes. If you've already submitted your return and realize something is wrong, you might need to amend it. Common signs you should amend your tax return include errors in income reporting, missed deductions or credits, math mistakes, and more. This blog will walk you through these signs and help you understand the steps to amend your tax return correctly.
+                            </p>
+                            <a href="/blog-amend-tax-return.html" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 - New -->
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <span class="blog-card-category">Tax Tips</span>
+                            <img src="public/images/tax pro-jvs.webp" alt="Tax Professional vs DIY">
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-meta">
+                                <span class="blog-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    December 20, 2024
+                                </span>
+                                <span class="blog-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    7 min read
+                                </span>
+                            </div>
+                            <h2 class="blog-card-title">The Benefits of Hiring a Tax Professional vs. DIY Tax Software</h2>
+                            <p class="blog-card-text">
+                                As tax season approaches, many individuals and business owners face the dilemma of whether to hire a tax professional or rely on DIY tax software. While tax software can be convenient and cost-effective for simple returns, there are significant benefits to working with a professional tax preparer. This article explores the advantages of each approach, helping you make an informed decision based on your unique tax situation, complexity of your finances, and long-term tax planning goals.
+                            </p>
+                            <a href="/blog-tax-professional-vs-diy.html" class="blog-read-more">Read more <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
                     <article class="blog-card">
                         <div class="blog-card-image">
                             <span class="blog-card-category">Tax Tips</span>
@@ -1153,87 +1230,167 @@
         });
         
         // Pagination functionality
-        let currentPage = 1;
-        const postsPerPage = 3;
-        const allPosts = document.querySelectorAll('.blog-card');
-        const totalPages = Math.ceil(allPosts.length / postsPerPage);
-        
-        function showPage(page) {
-            // Hide all posts
-            allPosts.forEach(post => {
-                post.style.display = 'none';
-            });
+        (function() {
+            let currentPage = 1;
+            let totalPages = 1;
+            const postsPerPage = 3;
+            let allPosts = [];
             
-            // Calculate which posts to show
-            const start = (page - 1) * postsPerPage;
-            const end = start + postsPerPage;
-            
-            // Show posts for current page
-            for (let i = start; i < end && i < allPosts.length; i++) {
-                allPosts[i].style.display = 'flex';
+            function showPage(page) {
+                if (page < 1 || page > totalPages) return;
+                
+                currentPage = page;
+                
+                // Hide all posts
+                allPosts.forEach(post => {
+                    post.style.display = 'none';
+                });
+                
+                // Calculate which posts to show
+                const start = (page - 1) * postsPerPage;
+                const end = start + postsPerPage;
+                
+                // Show posts for current page
+                for (let i = start; i < end && i < allPosts.length; i++) {
+                    allPosts[i].style.display = 'flex';
+                }
+                
+                // Update pagination buttons
+                updatePaginationButtons(page);
             }
             
-            // Update pagination buttons
-            updatePaginationButtons(page);
-            
-            // Scroll to top of blog content
-            document.querySelector('.blog-content').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function updatePaginationButtons(page) {
-            const pageItems = document.querySelectorAll('#blogPagination .page-item');
-            
-            pageItems.forEach(item => {
-                item.classList.remove('active');
-                const link = item.querySelector('.page-link');
-                const pageNum = link.getAttribute('data-page');
+            function updatePaginationButtons(page) {
+                const pageItems = document.querySelectorAll('#blogPagination .page-item');
                 
-                // Disable/enable previous button
-                if (pageNum === 'prev') {
-                    if (page === 1) {
-                        item.classList.add('disabled');
-                    } else {
-                        item.classList.remove('disabled');
+                pageItems.forEach(item => {
+                    const link = item.querySelector('.page-link');
+                    if (!link) return;
+                    
+                    const pageNum = link.getAttribute('data-page');
+                    
+                    // Remove active and disabled classes
+                    item.classList.remove('active', 'disabled');
+                    
+                    // Handle previous button
+                    if (pageNum === 'prev') {
+                        if (page === 1) {
+                            item.classList.add('disabled');
+                        }
+                    }
+                    // Handle next button
+                    else if (pageNum === 'next') {
+                        if (page === totalPages) {
+                            item.classList.add('disabled');
+                        }
+                    }
+                    // Handle page number buttons
+                    else {
+                        const pageNumber = parseInt(pageNum);
+                        if (pageNumber === page) {
+                            item.classList.add('active');
+                        }
+                    }
+                });
+            }
+            
+            function createPaginationButtons() {
+                const paginationNav = document.getElementById('blogPagination');
+                if (!paginationNav) return;
+                
+                const paginationUl = paginationNav.querySelector('.pagination');
+                if (!paginationUl) return;
+                
+                // Find next button to insert page numbers before it
+                const nextLink = paginationUl.querySelector('[data-page="next"]');
+                const nextButton = nextLink ? nextLink.closest('.page-item') : null;
+                
+                // Remove existing page number buttons (keep prev/next)
+                const existingItems = Array.from(paginationUl.querySelectorAll('.page-item'));
+                existingItems.forEach(item => {
+                    const link = item.querySelector('.page-link');
+                    if (link) {
+                        const pageNum = link.getAttribute('data-page');
+                        if (pageNum !== 'prev' && pageNum !== 'next') {
+                            item.remove();
+                        }
+                    }
+                });
+                
+                // Add page number buttons
+                if (nextButton) {
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageItem = document.createElement('li');
+                        pageItem.className = 'page-item';
+                        if (i === 1) pageItem.classList.add('active');
+                        
+                        const pageLink = document.createElement('a');
+                        pageLink.className = 'page-link';
+                        pageLink.href = '#';
+                        pageLink.setAttribute('data-page', i.toString());
+                        pageLink.textContent = i.toString();
+                        
+                        pageItem.appendChild(pageLink);
+                        paginationUl.insertBefore(pageItem, nextButton);
                     }
                 }
+            }
+            
+            function initPagination() {
+                allPosts = document.querySelectorAll('.blog-card');
                 
-                // Disable/enable next button
-                if (pageNum === 'next') {
-                    if (page === totalPages) {
-                        item.classList.add('disabled');
-                    } else {
-                        item.classList.remove('disabled');
-                    }
+                if (allPosts.length === 0) {
+                    console.error('No blog posts found!');
+                    return;
                 }
                 
-                // Highlight active page
-                if (pageNum == page) {
-                    item.classList.add('active');
-                }
-            });
-        }
-        
-        // Add click handlers to pagination links
-        document.querySelectorAll('#blogPagination .page-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const page = this.getAttribute('data-page');
+                totalPages = Math.ceil(allPosts.length / postsPerPage);
+                console.log('Pagination initialized:', allPosts.length, 'posts,', totalPages, 'pages');
                 
-                if (page === 'prev' && currentPage > 1) {
-                    currentPage--;
-                    showPage(currentPage);
-                } else if (page === 'next' && currentPage < totalPages) {
-                    currentPage++;
-                    showPage(currentPage);
-                } else if (page !== 'prev' && page !== 'next') {
-                    currentPage = parseInt(page);
-                    showPage(currentPage);
+                // Create pagination buttons
+                createPaginationButtons();
+                
+                // Add click handler using event delegation
+                const paginationNav = document.getElementById('blogPagination');
+                if (paginationNav) {
+                    paginationNav.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const link = e.target.closest('.page-link');
+                        if (!link || link.closest('.disabled')) return;
+                        
+                        const page = link.getAttribute('data-page');
+                        
+                        if (page === 'prev') {
+                            if (currentPage > 1) {
+                                showPage(currentPage - 1);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        } else if (page === 'next') {
+                            if (currentPage < totalPages) {
+                                showPage(currentPage + 1);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        } else {
+                            const pageNum = parseInt(page);
+                            if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+                                showPage(pageNum);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }
+                    });
                 }
-            });
-        });
-        
-        // Initialize - show first page
-        showPage(1);
+                
+                // Show first page
+                showPage(1);
+            }
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initPagination);
+            } else {
+                initPagination();
+            }
+        })();
         
         // Scroll to Top Button functionality
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');

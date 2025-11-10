@@ -482,6 +482,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/protection-plus.html"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
                             <li><a class="dropdown-item" href="/pricing.html"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item" href="/tax-calculator.html"><i class="fas fa-calculator me-2"></i>Tax Calculator</a></li>
                             <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
                             <li><a class="dropdown-item" href="/fast-money-card.html"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
                             <li><a class="dropdown-item" href="/track-federal-refund.html"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
@@ -616,6 +617,7 @@
                     </div>
                     <div class="contact-form animate-fade-in-up" style="animation-delay: 0.2s;">
                         <form id="contactForm">
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -785,6 +787,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Custom JS -->
     <script src="script.js"></script>
     
@@ -803,35 +807,177 @@
         scrollToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        
     </script>
     
     <script>
-        // Contact form handling
+        // Contact form handling - Automatic email sending
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('.btn-submit');
+            const form = this;
+            const submitBtn = form.querySelector('.btn-submit');
             const originalText = submitBtn.innerHTML;
             
-            // Show loading state
+            // Validate form
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            // Show loading
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
             submitBtn.disabled = true;
             
-            // Simulate form submission
-            setTimeout(() => {
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const serviceType = document.getElementById('serviceType').value || 'Not specified';
+            
+            // Create formatted email body
+            const emailBody = `New Contact Form Submission from JVS Tax Services Website
+
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+Subject: ${subject}
+Service Type: ${serviceType}
+
+Message:
+${message}
+
+---
+This email was sent from the JVS Tax Services contact form.`;
+            
+            // ============================================================
+            // EMAIL SETUP - USE EMAILJS (EASIER THAN WEB3FORMS!)
+            // ============================================================
+            // Follow these 3 simple steps:
+            // 
+            // STEP 1: Go to https://www.emailjs.com and sign up (free)
+            // STEP 2: Create a service and template (see EMAILJS_SIMPLE_SETUP.txt)
+            // STEP 3: Copy your 3 keys below (replace the YOUR_... values)
+            // ============================================================
+            
+            // Replace these 3 values with your EmailJS keys:
+            const EMAILJS_PUBLIC_KEY = '7HzCweLY6Hl3tFNBo';    // ✅ Public Key - DONE!
+            const EMAILJS_SERVICE_ID = 'service_9vftvds';      // ✅ Service ID - UPDATED!
+            const EMAILJS_TEMPLATE_ID = 'template_g819tzc';    // ✅ Template ID - DONE!
+            
+            // Check if EmailJS is configured
+            const isEmailJSReady = EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' && 
+                                  EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' && 
+                                  EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
+            
+            if (isEmailJSReady) {
+                // EmailJS is configured - use it!
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                
+                const templateParams = {
+                    to_email: 'heelofaizan222@gmail.com',
+                    from_name: `${firstName} ${lastName}`,
+                    from_email: email,
+                    reply_to: email,
+                    phone: phone,
+                    subject: subject,
+                    message: message,
+                    service_type: serviceType,
+                    full_name: `${firstName} ${lastName}`,
+                    email_body: emailBody
+                };
+                
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function(response) {
+                        console.log('EmailJS Success:', response);
+                        showNotification('Thank you! Your message has been sent successfully to heelofaizan222@gmail.com. We\'ll get back to you within 24 hours.', 'success');
+                        form.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, function(error) {
+                        console.error('EmailJS Error Details:', error);
+                        console.error('Error Text:', error.text);
+                        console.error('Error Status:', error.status);
+                        
+                        // Show detailed error message
+                        let errorMsg = 'Error sending email. ';
+                        if (error.text) {
+                            errorMsg += 'Error: ' + error.text + '. ';
+                        }
+                        errorMsg += 'Please check your EmailJS template variables match: {{full_name}}, {{from_email}}, {{phone}}, {{subject}}, {{message}}, {{service_type}}';
+                        
+                        showNotification(errorMsg, 'error');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+            } else {
+                // EmailJS not configured yet - use FormSubmit as fallback
+                sendViaFormSubmit();
+            }
+            
+            function sendViaFormSubmit() {
+                // Use FormSubmit as primary/fallback method
+                const formSubmitData = new FormData();
+                formSubmitData.append('name', `${firstName} ${lastName}`);
+                formSubmitData.append('email', email);
+                formSubmitData.append('phone', phone);
+                formSubmitData.append('subject', subject);
+                formSubmitData.append('message', message);
+                formSubmitData.append('serviceType', serviceType);
+                formSubmitData.append('_to', 'heelofaizan222@gmail.com');
+                formSubmitData.append('_subject', `Contact Form: ${subject}`);
+                formSubmitData.append('_template', 'box');
+                formSubmitData.append('_captcha', 'false');
+                
+                // Try direct form submission (more reliable than fetch for FormSubmit)
+                const tempForm = document.createElement('form');
+                tempForm.method = 'POST';
+                tempForm.action = 'https://formsubmit.co/heelofaizan222@gmail.com';
+                tempForm.style.display = 'none';
+                tempForm.target = '_blank';
+                
+                // Add all form fields
+                const fields = {
+                    'name': `${firstName} ${lastName}`,
+                    'email': email,
+                    'phone': phone,
+                    'subject': subject,
+                    'message': message,
+                    'serviceType': serviceType,
+                    '_subject': `Contact Form: ${subject}`,
+                    '_template': 'box',
+                    '_captcha': 'false',
+                    '_next': window.location.href + '?success=true'
+                };
+                
+                for (const [key, value] of Object.entries(fields)) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = value;
+                    tempForm.appendChild(input);
+                }
+                
+                document.body.appendChild(tempForm);
+                
                 // Show success message
-                showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button
+                showNotification('Thank you! Your message is being sent to heelofaizan222@gmail.com. If this is your first submission, please check your email (including spam folder) for a verification link from FormSubmit and click it to activate.', 'success');
+                form.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 2000);
+                
+                // Submit form
+                tempForm.submit();
+                
+                // Remove form after a delay
+                setTimeout(() => {
+                    if (tempForm.parentNode) {
+                        tempForm.parentNode.removeChild(tempForm);
+                    }
+                }, 1000);
+            }
         });
         
         // Notification system
