@@ -714,7 +714,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         if (!downloadBtn) return;
         
-        downloadBtn.addEventListener('click', function(e) {
+        downloadBtn.addEventListener('click', async function(e) {
             e.preventDefault();
             
             // Show loading state
@@ -722,24 +722,34 @@ document.addEventListener('DOMContentLoaded', async function() {
             this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Downloading...';
             this.disabled = true;
             
-            // Create a sample PDF content (in a real app, this would be a server endpoint)
-            const pdfContent = createSamplePDF();
-            
-            // Create blob and download
-            const blob = new Blob([pdfContent], { type: 'application/pdf' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'JVS_Tax_Services_Info.pdf';
-            
-            // Trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-            
-            // Show success message
-            showNotification('JVS Info PDF downloaded successfully!', 'success');
+            const candidates = [
+                '/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf',
+                '/public/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf',
+                'JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf',
+                'public/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf'
+            ];
+            let blob = null;
+            for (const base of candidates) {
+                try {
+                    const res = await fetch(base + '?v=' + Date.now(), { cache: 'no-store' });
+                    if (!res.ok) continue;
+                    blob = await res.blob();
+                    break;
+                } catch (_e) {}
+            }
+            if (blob) {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'JVS Tax Services - Pricing Sheet 2025.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+                showNotification('Pricing Sheet downloaded successfully!', 'success');
+            } else {
+                showNotification('Unable to download the Pricing Sheet. Please try again.', 'error');
+            }
             
             // Reset button
             setTimeout(() => {
@@ -749,7 +759,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     }
     
-    // Create sample PDF content (this would typically come from a server)
+    // Create sample PDF content (legacy fallback; no longer used)
     function createSamplePDF() {
         // This is a simplified example - in reality, you'd use a PDF library like jsPDF
         // or make an API call to generate the PDF on the server

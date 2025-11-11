@@ -1633,6 +1633,44 @@
         scrollToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // Download Pricing Sheet PDF (force download, no-cache, multi-path fallback)
+        const downloadBtn = document.getElementById('downloadJVSInfo');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', async function () {
+                const candidates = [
+                    '/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf',
+                    '/public/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf',
+                    'JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf',
+                    'public/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf'
+                ];
+
+                let blob = null;
+                let lastUrl = null;
+                for (const base of candidates) {
+                    lastUrl = base;
+                    try {
+                        const res = await fetch(base + '?v=' + Date.now(), { cache: 'no-store' });
+                        if (!res.ok) continue;
+                        blob = await res.blob();
+                        break;
+                    } catch (_e) {}
+                }
+
+                if (blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'JVS Tax Services - Pricing Sheet 2025.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                } else if (lastUrl) {
+                    window.location.href = lastUrl;
+                }
+            });
+        }
     </script>
 </body>
 </html>
