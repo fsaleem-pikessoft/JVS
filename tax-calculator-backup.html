@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator - JVS Tax Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/JVS Official Logo 200x200.webp">
+    <meta name="description" content="Calculate your estimated tax liability with JVS Tax Services professional tax calculator. Get instant estimates for your tax return.">
+    <style>
+        .calculator-hero {
+            background: linear-gradient(135deg, #20B2AA 0%, #17A2B8 100%);
+            color: white;
+            padding: 100px 0 60px;
+            position: relative;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .calculator-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .calculator-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: white;
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .calculator-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: white !important;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .calculator-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .calculator-info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .calculator-content {
+            padding: 60px 0 80px;
+            background: #f8f9fa;
+        }
+        
+        .calculator-content .container {
+            max-width: 900px;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 25px;
+            padding: 60px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            margin-bottom: 50px;
+            border: 1px solid rgba(32, 178, 170, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #20B2AA, #17a2b8, #20B2AA);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .content-section h2 {
+            color: #20B2AA;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #20B2AA, #17a2b8);
+            border-radius: 2px;
+        }
+        
+        .content-section h2 i {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .content-section p {
+            color: #2c3e50;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            border: 2px solid #e9ecef;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #20B2AA, #17a2b8);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(32, 178, 170, 0.15);
+            border-color: #20B2AA;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card i {
+            color: #20B2AA;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.1), rgba(23, 162, 184, 0.1));
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.2), rgba(23, 162, 184, 0.2));
+        }
+        
+        .feature-card h4 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: #6c757d;
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .btn-reveal-calculator {
+            background: linear-gradient(135deg, #20B2AA 0%, #17a2b8 50%, #20B2AA 100%);
+            background-size: 200% 100%;
+            color: white;
+            border: none;
+            padding: 25px 60px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(32, 178, 170, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-reveal-calculator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-reveal-calculator:hover::before {
+            left: 100%;
+        }
+        
+        .btn-reveal-calculator:hover {
+            background-position: 100% 0;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(32, 178, 170, 0.5);
+            color: white;
+        }
+        
+        .btn-reveal-calculator:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .btn-reveal-calculator i {
+            font-size: 1.6rem;
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .calculator-card.show {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .calculator-wrapper {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.05), rgba(23, 162, 184, 0.05));
+            border-radius: 25px;
+            margin: 50px 0;
+            width: 100%;
+        }
+        
+        .calculator-card h3 {
+            color: #20B2AA;
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .calculator-card h3 i {
+            font-size: 1.3rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: block;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #20B2AA;
+            box-shadow: 0 0 0 4px rgba(32, 178, 170, 0.1);
+            background: white;
+            outline: none;
+        }
+        
+        .input-group-text {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            font-weight: 600;
+            padding: 14px 18px;
+        }
+        
+        .input-group .form-control {
+            border-left: none;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .btn-calculate {
+            background: linear-gradient(135deg, #20B2AA 0%, #17a2b8 50%, #20B2AA 100%);
+            background-size: 200% 100%;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.4);
+            width: 100%;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-calculate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-calculate:hover::before {
+            left: 100%;
+        }
+        
+        .btn-calculate:hover {
+            background-position: 100% 0;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(32, 178, 170, 0.5);
+            color: white;
+        }
+        
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .btn-reset:hover {
+            background: #5a6268;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+        
+        .results-card {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(32, 178, 170, 0.3);
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .results-card.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .results-card h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        .result-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-item-label {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .result-item-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .result-item.highlight {
+            background: rgba(255, 255, 255, 0.25);
+            font-size: 1.1rem;
+        }
+        
+        .result-item.highlight .result-item-value {
+            font-size: 2rem;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.1), rgba(23, 162, 184, 0.1));
+            border-left: 5px solid #20B2AA;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(32, 178, 170, 0.1);
+        }
+        
+        .info-box i {
+            color: #20B2AA;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .info-box p {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        /* Step-by-Step Wizard Styles */
+        .calculator-progress {
+            margin-bottom: 40px;
+        }
+        
+        .progress-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border: 3px solid #e9ecef;
+        }
+        
+        .step-item.active .step-number {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border-color: #20B2AA;
+            box-shadow: 0 5px 15px rgba(32, 178, 170, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .step-item.completed .step-number {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        
+        .step-label {
+            font-size: 0.85rem;
+            color: #6c757d;
+            font-weight: 500;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+        
+        .step-item.active .step-label {
+            color: #20B2AA;
+            font-weight: 600;
+        }
+        
+        .step-line {
+            flex: 1;
+            height: 3px;
+            background: #e9ecef;
+            margin: 0 10px;
+            position: relative;
+            top: -25px;
+            z-index: 1;
+        }
+        
+        .step-line.completed {
+            background: linear-gradient(90deg, #20B2AA, #17a2b8);
+        }
+        
+        .calculator-step {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .calculator-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .step-description {
+            color: #6c757d;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .step-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .btn-next, .btn-prev, .btn-calculate-final {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .btn-next, .btn-calculate-final {
+            background: linear-gradient(135deg, #20B2AA 0%, #17a2b8 50%, #20B2AA 100%);
+            background-size: 200% 100%;
+            color: white;
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.4);
+        }
+        
+        .btn-next:hover, .btn-calculate-final:hover {
+            background-position: 100% 0;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(32, 178, 170, 0.5);
+            color: white;
+        }
+        
+        .btn-prev {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-prev:hover {
+            background: #5a6268;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .results-summary {
+            background: linear-gradient(135deg, rgba(32, 178, 170, 0.05), rgba(23, 162, 184, 0.05));
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .result-item {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .result-item:hover {
+            border-color: #20B2AA;
+            box-shadow: 0 5px 15px rgba(32, 178, 170, 0.1);
+        }
+        
+        .result-item-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .result-item-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #20B2AA;
+        }
+        
+        .result-item.highlight {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border: none;
+            padding: 35px;
+        }
+        
+        .result-item.highlight .result-item-label {
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .result-item.highlight .result-item-value {
+            color: white;
+            font-size: 2.2rem;
+        }
+        
+        .result-item.refund {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+        
+        .result-item.owed {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-title {
+                font-size: 2.5rem;
+            }
+            
+            .calculator-subtitle {
+                font-size: 1rem;
+            }
+            
+            .calculator-info-card {
+                padding: 30px;
+                margin-top: 2rem;
+            }
+            
+            .calculator-content {
+                padding: 50px 0 70px;
+            }
+            
+            .content-section {
+                padding: 35px 25px;
+                margin-bottom: 30px;
+                border-radius: 20px;
+            }
+            
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .content-section p {
+                font-size: 1rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 25px;
+            }
+            
+            .calculator-wrapper {
+                padding: 50px 20px;
+                margin: 30px 0;
+            }
+            
+            .btn-reveal-calculator {
+                padding: 18px 35px;
+                font-size: 1.1rem;
+                width: 90%;
+            }
+            
+            .calculator-card {
+                padding: 30px 20px;
+            }
+            
+            .results-card {
+                padding: 25px 20px;
+            }
+            
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .step-item {
+                flex: 0 0 calc(20% - 8px);
+                min-width: 60px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .step-label {
+                font-size: 0.7rem;
+            }
+            
+            .step-line {
+                display: none;
+            }
+            
+            .step-title {
+                font-size: 1.4rem;
+            }
+            
+            .step-description {
+                font-size: 0.95rem;
+            }
+            
+            .step-actions {
+                flex-direction: column;
+            }
+            
+            .btn-next, .btn-prev, .btn-calculate-final {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .results-summary {
+                padding: 25px 15px;
+            }
+            
+            .result-item {
+                padding: 20px 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .result-item-value {
+                font-size: 1.3rem;
+            }
+            
+            .result-item.highlight .result-item-value {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone me-2"></i>718-395-9663</span>
+                        <span><i class="fas fa-envelope me-2"></i>support@jvstaxservices.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-bar-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <div class="brand-container">
+                    <div class="logo-circle">
+                        <img src="images/JVS Official Logo.webp" alt="JVS Tax Services Logo" class="tree-logo">
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">CONTACT</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            RESOURCES <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/protection-plus.html"><i class="fas fa-shield-alt me-2"></i>Protection Plus Plan</a></li>
+                            <li><a class="dropdown-item" href="/pricing.html"><i class="fas fa-calculator me-2"></i>Pricing Sheet</a></li>
+                            <li><a class="dropdown-item active" href="/tax-calculator.html"><i class="fas fa-calculator me-2"></i>Tax Calculator</a></li>
+                            <li><a class="dropdown-item" href="/refund-transfer.html"><i class="fas fa-book me-2"></i>Refund Transfer</a></li>
+                            <li><a class="dropdown-item" href="/fast-money-card.html"><i class="fas fa-credit-card me-2"></i>Fast Money Visa Prepaid Card</a></li>
+                            <li><a class="dropdown-item" href="https://www.irs.gov/refunds" target="_blank" rel="noopener"><i class="fas fa-search-dollar me-2"></i>Track Federal Refund</a></li>
+                            <li><a class="dropdown-item" href="/track-state-refund.html"><i class="fas fa-search-dollar me-2"></i>Track State Refund</a></li>
+                            <li><a class="dropdown-item" href="/privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="/blog.html"><i class="fas fa-blog me-2"></i>Our Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/faqs.html">FAQS</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="#signin" class="btn btn-signin"><i class="fas fa-user"></i><span>SIGN IN</span></a>
+                    <a href="#appointment" class="btn btn-appointment"><i class="fas fa-calendar-check"></i><span>BOOK YOUR APPOINTMENT</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Simplified like H&R Block -->
+    <section class="calculator-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="calculator-title text-center">
+                        Free Tax Calculator
+                    </h1>
+                    <p class="calculator-subtitle text-center">
+                        Estimate your tax refund or how much you may owe. Get started with a few simple questions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Content - Immediately Visible -->
+    <section class="calculator-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Disclaimer Notice -->
+                    <div class="info-box mb-4">
+                        <p class="mb-0"><i class="fas fa-info-circle"></i><strong>Note:</strong> This calculator provides estimates only. For accurate tax preparation, consult with a tax professional.</p>
+                    </div>
+
+                    <!-- Calculator Form - Step by Step Wizard -->
+                    <div class="calculator-card show" id="calculatorCard">
+                        <!-- Progress Indicator -->
+                        <div class="calculator-progress mb-4">
+                            <div class="progress-steps">
+                                <div class="step-item active" data-step="1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-label">Filing Status</div>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-item" data-step="2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-label">Income</div>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-item" data-step="3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-label">Deductions</div>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-item" data-step="4">
+                                    <div class="step-number">4</div>
+                                    <div class="step-label">Credits</div>
+                                </div>
+                                <div class="step-line"></div>
+                                <div class="step-item" data-step="5">
+                                    <div class="step-number">5</div>
+                                    <div class="step-label">Results</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="taxCalculatorForm">
+                            <!-- Step 1: Filing Status -->
+                            <div class="calculator-step active" id="step1">
+                                <h3 class="step-title">What's your filing status?</h3>
+                                <p class="step-description">Your filing status affects your standard deduction and tax brackets.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Filing Status</label>
+                                        <select class="form-select form-select-lg" id="filingStatus" required>
+                                            <option value="">Select your filing status</option>
+                                            <option value="single">Single</option>
+                                            <option value="married_jointly">Married Filing Jointly</option>
+                                            <option value="married_separately">Married Filing Separately</option>
+                                            <option value="head_of_household">Head of Household</option>
+                                            <option value="qualifying_widow">Qualifying Widow(er)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Tax Year</label>
+                                        <select class="form-select form-select-lg" id="taxYear" required>
+                                            <option value="2024" selected>2024</option>
+                                            <option value="2023">2023</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-next" onclick="nextStep(2)">
+                                        Continue <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Income Information -->
+                            <div class="calculator-step" id="step2">
+                                <h3 class="step-title">What was your total income?</h3>
+                                <p class="step-description">Enter your total income from all sources for the tax year.</p>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label">Total Gross Income</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="grossIncome" placeholder="0.00" min="0" step="0.01" required>
+                                    </div>
+                                    <small class="text-muted mt-2 d-block">Include wages, tips, interest, dividends, and other income.</small>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Adjustments to Income <span class="text-muted">(Optional)</span></label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="adjustments" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                    <small class="text-muted mt-2 d-block">IRA contributions, student loan interest, educator expenses.</small>
+                                </div>
+
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-prev" onclick="prevStep(1)">
+                                        <i class="fas fa-arrow-left me-2"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-next" onclick="nextStep(3)">
+                                        Continue <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Deductions -->
+                            <div class="calculator-step" id="step3">
+                                <h3 class="step-title">Do you want to itemize deductions?</h3>
+                                <p class="step-description">Most taxpayers use the standard deduction. Choose itemized if your itemized deductions exceed the standard deduction.</p>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label">Deduction Type</label>
+                                    <select class="form-select form-select-lg" id="deductionType">
+                                        <option value="standard" selected>Standard Deduction (Recommended)</option>
+                                        <option value="itemized">Itemize Deductions</option>
+                                    </select>
+                                </div>
+
+                                <div id="itemizedDeductions" style="display: none;">
+                                    <p class="text-muted mb-3">Enter your itemized deductions below:</p>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Medical Expenses</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="medicalExpenses" placeholder="0.00" min="0" step="0.01" value="0">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">State and Local Taxes</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="stateLocalTaxes" placeholder="0.00" min="0" step="0.01" value="0">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Mortgage Interest</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="mortgageInterest" placeholder="0.00" min="0" step="0.01" value="0">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Charitable Contributions</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="charitableContributions" placeholder="0.00" min="0" step="0.01" value="0">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label class="form-label">Other Itemized Deductions</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="otherDeductions" placeholder="0.00" min="0" step="0.01" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-prev" onclick="prevStep(2)">
+                                        <i class="fas fa-arrow-left me-2"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-next" onclick="nextStep(4)">
+                                        Continue <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Credits & Withholdings -->
+                            <div class="calculator-step" id="step4">
+                                <h3 class="step-title">Any tax credits or withholdings?</h3>
+                                <p class="step-description">Enter any tax credits you're eligible for and federal taxes already withheld.</p>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label">Tax Credits <span class="text-muted">(Optional)</span></label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="taxCredits" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                    <small class="text-muted mt-2 d-block">Child Tax Credit, EITC, education credits, etc.</small>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Federal Tax Withheld</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="taxWithheld" placeholder="0.00" min="0" step="0.01" value="0">
+                                    </div>
+                                    <small class="text-muted mt-2 d-block">Total federal taxes already paid through withholding.</small>
+                                </div>
+
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-prev" onclick="prevStep(3)">
+                                        <i class="fas fa-arrow-left me-2"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-calculate-final" onclick="calculateTax()">
+                                        Calculate <i class="fas fa-calculator ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Results -->
+                            <div class="calculator-step" id="step5">
+                                <h3 class="step-title">Your Tax Estimate</h3>
+                                <p class="step-description">Here's your estimated tax calculation based on the information provided.</p>
+                                
+                                <div class="results-summary" id="resultsSummary">
+                                    <!-- Results will be inserted here -->
+                                </div>
+
+                                <div class="step-actions mt-4">
+                                    <button type="button" class="btn btn-prev" onclick="prevStep(4)">
+                                        <i class="fas fa-arrow-left me-2"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-reset" onclick="resetCalculator()">
+                                        <i class="fas fa-redo me-2"></i> Start Over
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">About JVS Tax Services</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-contact">
+                            <div class="contact-item"><i class="fas fa-phone"></i><span>718-395-9663</span></div>
+                            <div class="contact-item"><i class="fas fa-envelope"></i><span>support@jvstaxservices.com</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>147 Prince Street</span></div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Brooklyn, NY 11201</span></div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h4 class="footer-heading">Our Hours</h4>
+                        <div class="footer-divider"></div>
+                        <div class="footer-hours">
+                            <div class="hours-item"><span class="day">Mon - Fri:</span><span class="time">10am - 6pm</span></div>
+                            <div class="hours-item"><span class="day">Sat - Sun:</span><span class="time">11am - 3pm</span></div>
+                        </div>
+                        <div class="footer-logo mt-4">
+                            <div class="logo-watermark">
+                                <img src="images/JVS Official Logo 200x200.webp" alt="JVS Tax Services Logo" class="watermark-svg">
+                                <div class="watermark-text">
+                                    <div class="watermark-title">PEACE OF MIND</div>
+                                    <div class="watermark-subtitle">JVS TAX SERVICES</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-section text-center">
+                        <h4 class="footer-heading">Sitemap</h4>
+                        <div class="footer-sitemap">
+                            <a href="/index.html" class="sitemap-link">Home</a>
+                            <a href="/contact.html" class="sitemap-link">Contact</a>
+                            <a href="/about.html" class="sitemap-link">About Us</a>
+                            <a href="/protection-plus.html" class="sitemap-link">Protection Plan</a>
+                            <a href="/pricing.html" class="sitemap-link">Pricing Sheet</a>
+                            <a href="/tax-calculator.html" class="sitemap-link">Tax Calculator</a>
+                            <a href="/refund-transfer.html" class="sitemap-link">Refund Transfer</a>
+                            <a href="/fast-money-card.html" class="sitemap-link">Faster Money Prepaid Visa® Card</a>
+                            <a href="https://www.irs.gov/refunds" target="_blank" rel="noopener" class="sitemap-link">Track Your Federal Refund</a>
+                            <a href="/track-state-refund.html" class="sitemap-link">Track Your State Refund</a>
+                            <a href="/privacy-policy.html" class="sitemap-link">Our Privacy Policy</a>
+                            <a href="/blog.html" class="sitemap-link">Our Blog</a>
+                            <a href="/faqs.html" class="sitemap-link">FAQs</a>
+                        </div>
+                        <div class="bbb-accreditation mt-4">
+                            <div class="bbb-badge">
+                                <div class="bbb-logo"><div class="bbb-square">BBB</div></div>
+                                <div class="bbb-text">
+                                    <div class="bbb-title">ACCREDITED BUSINESS</div>
+                                    <div class="bbb-rating">BBB Rating: A-</div>
+                                    <div class="bbb-date">As of 10/8/2025</div>
+                                    <div class="bbb-link">Click for Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="footer-copyright">
+                        <p>&copy; Copyright 2025, JVS Tax Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accessibility-icon"><i class="fas fa-universal-access"></i></div>
+        <div class="scroll-to-top" id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+	<!-- Fixed Download Button for Pricing PDF -->
+	<a id="downloadPricingPdfBtn"
+	   href="/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf"
+	   download="JVS-Tax-Services-Pricing-2025.pdf"
+	   class="btn btn-appointment"
+	   style="position: fixed; right: 16px; bottom: 16px; z-index: 1000;">
+		<i class="fas fa-download me-2"></i> Pricing PDF
+	</a>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        // Show/hide itemized deductions
+        document.getElementById('deductionType').addEventListener('change', function() {
+            const itemizedDiv = document.getElementById('itemizedDeductions');
+            if (this.value === 'itemized') {
+                itemizedDiv.style.display = 'block';
+            } else {
+                itemizedDiv.style.display = 'none';
+            }
+        });
+
+        // Step Navigation Functions
+        function nextStep(step) {
+            // Validate current step before proceeding
+            if (currentStep === 1) {
+                const filingStatus = document.getElementById('filingStatus').value;
+                if (!filingStatus) {
+                    alert('Please select your filing status.');
+                    return;
+                }
+            } else if (currentStep === 2) {
+                const grossIncome = document.getElementById('grossIncome').value;
+                if (!grossIncome || parseFloat(grossIncome) <= 0) {
+                    alert('Please enter your gross income.');
+                    return;
+                }
+            }
+
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.add('completed');
+            
+            // Mark line as completed
+            if (currentStep < totalSteps) {
+                const lines = document.querySelectorAll('.step-line');
+                if (lines[currentStep - 1]) {
+                    lines[currentStep - 1].classList.add('completed');
+                }
+            }
+
+            // Show next step
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.add('active');
+            
+            // Scroll to top of calculator
+            document.getElementById('calculatorCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function prevStep(step) {
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.remove('active');
+            
+            // Remove completed status
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.remove('completed');
+            if (currentStep > 1) {
+                const lines = document.querySelectorAll('.step-line');
+                if (lines[currentStep - 2]) {
+                    lines[currentStep - 2].classList.remove('completed');
+                }
+            }
+
+            // Show previous step
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.add('active');
+            document.querySelector(`.step-item[data-step="${currentStep}"]`).classList.remove('completed');
+            
+            // Scroll to top of calculator
+            document.getElementById('calculatorCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Standard deduction amounts for 2024
+        const standardDeductions2024 = {
+            single: 14600,
+            married_jointly: 29200,
+            married_separately: 14600,
+            head_of_household: 21900,
+            qualifying_widow: 29200
+        };
+
+        // Tax brackets for 2024
+        function calculateTaxAmount(taxableIncome, filingStatus) {
+            let tax = 0;
+            
+            if (filingStatus === 'single' || filingStatus === 'married_separately') {
+                if (taxableIncome > 0) {
+                    if (taxableIncome <= 11600) {
+                        tax = taxableIncome * 0.10;
+                    } else if (taxableIncome <= 47150) {
+                        tax = 1160 + (taxableIncome - 11600) * 0.12;
+                    } else if (taxableIncome <= 100525) {
+                        tax = 5426 + (taxableIncome - 47150) * 0.22;
+                    } else if (taxableIncome <= 191950) {
+                        tax = 17168.50 + (taxableIncome - 100525) * 0.24;
+                    } else if (taxableIncome <= 243725) {
+                        tax = 39110.50 + (taxableIncome - 191950) * 0.32;
+                    } else if (taxableIncome <= 609350) {
+                        tax = 55678.50 + (taxableIncome - 243725) * 0.35;
+                    } else {
+                        tax = 183647.25 + (taxableIncome - 609350) * 0.37;
+                    }
+                }
+            } else if (filingStatus === 'married_jointly' || filingStatus === 'qualifying_widow') {
+                if (taxableIncome > 0) {
+                    if (taxableIncome <= 23200) {
+                        tax = taxableIncome * 0.10;
+                    } else if (taxableIncome <= 94300) {
+                        tax = 2320 + (taxableIncome - 23200) * 0.12;
+                    } else if (taxableIncome <= 201050) {
+                        tax = 10852 + (taxableIncome - 94300) * 0.22;
+                    } else if (taxableIncome <= 383900) {
+                        tax = 34337 + (taxableIncome - 201050) * 0.24;
+                    } else if (taxableIncome <= 487450) {
+                        tax = 78221 + (taxableIncome - 383900) * 0.32;
+                    } else if (taxableIncome <= 731200) {
+                        tax = 111357 + (taxableIncome - 487450) * 0.35;
+                    } else {
+                        tax = 196670.50 + (taxableIncome - 731200) * 0.37;
+                    }
+                }
+            } else if (filingStatus === 'head_of_household') {
+                if (taxableIncome > 0) {
+                    if (taxableIncome <= 16550) {
+                        tax = taxableIncome * 0.10;
+                    } else if (taxableIncome <= 63100) {
+                        tax = 1655 + (taxableIncome - 16550) * 0.12;
+                    } else if (taxableIncome <= 100500) {
+                        tax = 7235 + (taxableIncome - 63100) * 0.22;
+                    } else if (taxableIncome <= 191950) {
+                        tax = 15475 + (taxableIncome - 100500) * 0.24;
+                    } else if (taxableIncome <= 243700) {
+                        tax = 37363 + (taxableIncome - 191950) * 0.32;
+                    } else if (taxableIncome <= 609350) {
+                        tax = 53835 + (taxableIncome - 243700) * 0.35;
+                    } else {
+                        tax = 181955.50 + (taxableIncome - 609350) * 0.37;
+                    }
+                }
+            }
+            
+            return Math.max(0, tax);
+        }
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        // Calculate tax and show results
+        function calculateTax() {
+            // Get form values
+            const filingStatus = document.getElementById('filingStatus').value;
+            const grossIncome = parseFloat(document.getElementById('grossIncome').value) || 0;
+            const adjustments = parseFloat(document.getElementById('adjustments').value) || 0;
+            const deductionType = document.getElementById('deductionType').value;
+            const taxCredits = parseFloat(document.getElementById('taxCredits').value) || 0;
+            const taxWithheld = parseFloat(document.getElementById('taxWithheld').value) || 0;
+            
+            // Calculate AGI
+            const agi = grossIncome - adjustments;
+            
+            // Calculate deductions
+            let totalDeductions = 0;
+            if (deductionType === 'standard') {
+                totalDeductions = standardDeductions2024[filingStatus] || 0;
+            } else {
+                const medicalExpenses = parseFloat(document.getElementById('medicalExpenses').value) || 0;
+                const stateLocalTaxes = parseFloat(document.getElementById('stateLocalTaxes').value) || 0;
+                const mortgageInterest = parseFloat(document.getElementById('mortgageInterest').value) || 0;
+                const charitableContributions = parseFloat(document.getElementById('charitableContributions').value) || 0;
+                const otherDeductions = parseFloat(document.getElementById('otherDeductions').value) || 0;
+                totalDeductions = medicalExpenses + stateLocalTaxes + mortgageInterest + charitableContributions + otherDeductions;
+            }
+            
+            // Calculate taxable income
+            const taxableIncome = Math.max(0, agi - totalDeductions);
+            
+            // Calculate tax
+            const taxOwed = calculateTaxAmount(taxableIncome, filingStatus);
+            
+            // Calculate final amount
+            const finalTax = Math.max(0, taxOwed - taxCredits);
+            const refundOrOwed = taxWithheld - finalTax;
+            
+            // Display results in step 5
+            const resultsSummary = document.getElementById('resultsSummary');
+            resultsSummary.innerHTML = `
+                <div class="result-item">
+                    <span class="result-item-label">Gross Income</span>
+                    <span class="result-item-value">${formatCurrency(grossIncome)}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-item-label">Adjusted Gross Income (AGI)</span>
+                    <span class="result-item-value">${formatCurrency(agi)}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-item-label">Total Deductions</span>
+                    <span class="result-item-value">${formatCurrency(totalDeductions)}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-item-label">Taxable Income</span>
+                    <span class="result-item-value">${formatCurrency(taxableIncome)}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-item-label">Estimated Tax Owed</span>
+                    <span class="result-item-value">${formatCurrency(taxOwed)}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-item-label">Tax Credits</span>
+                    <span class="result-item-value">${formatCurrency(taxCredits)}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-item-label">Tax Withheld</span>
+                    <span class="result-item-value">${formatCurrency(taxWithheld)}</span>
+                </div>
+                <div class="result-item highlight ${refundOrOwed >= 0 ? 'refund' : 'owed'}">
+                    <span class="result-item-label">${refundOrOwed >= 0 ? 'Estimated Refund' : 'Amount Owed'}</span>
+                    <span class="result-item-value">${formatCurrency(Math.abs(refundOrOwed))}</span>
+                </div>
+            `;
+            
+            // Move to results step
+            nextStep(5);
+        }
+
+        // Reset calculator
+        function resetCalculator() {
+            document.getElementById('taxCalculatorForm').reset();
+            document.getElementById('itemizedDeductions').style.display = 'none';
+            
+            // Reset steps
+            currentStep = 1;
+            document.querySelectorAll('.calculator-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+            
+            document.querySelectorAll('.step-item').forEach((item, index) => {
+                item.classList.remove('active', 'completed');
+                if (index === 0) item.classList.add('active');
+            });
+            
+            document.querySelectorAll('.step-line').forEach(line => line.classList.remove('completed'));
+            
+            // Clear results
+            document.getElementById('resultsSummary').innerHTML = '';
+            
+            // Scroll to top
+            document.getElementById('calculatorCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) scrollToTopBtn.classList.add('show');
+            else scrollToTopBtn.classList.remove('show');
+        });
+        scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
+
