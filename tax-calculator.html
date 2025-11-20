@@ -2047,7 +2047,7 @@
                     <div class="calculator-step" id="step6" style="display: none;">
                         <div style="background: linear-gradient(135deg, #20B2AA, #17a2b8); color: white; padding: 60px 40px; border-radius: 20px; text-align: center; margin-bottom: 40px;">
                             <h2 style="color: white; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Way to get prepared!</h2>
-                            <div style="font-size: 1.2rem; margin-bottom: 10px;">Your estimated refund:</div>
+                            <div id="finalRefundLabel" style="font-size: 1.2rem; margin-bottom: 10px;">Your estimated refund:</div>
                             <div id="finalRefundAmount" style="font-size: 4rem; font-weight: 700; color: #48CAE4;">$0</div>
                         </div>
 
@@ -2098,7 +2098,7 @@
                                     <span style="color: #2c3e50; font-weight: 600;" id="resultCredits">$0</span>
                                 </div>
                                 <div style="display: flex; justify-content: space-between; padding: 15px 0; background: #20B2AA; color: white; border-radius: 10px; margin-top: 15px; padding: 20px;">
-                                    <span style="font-weight: 700; font-size: 1.1rem;">Total tax refund</span>
+                                    <span id="resultTotalLabel" style="font-weight: 700; font-size: 1.1rem;">Total tax refund</span>
                                     <span style="font-weight: 700; font-size: 1.3rem;" id="resultTotalRefund">$0</span>
                                 </div>
                             </div>
@@ -2211,14 +2211,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-	<!-- Fixed Download Button for Pricing PDF -->
-	<a id="downloadPricingPdfBtn"
-	   href="/JVS%20Tax%20Services%20-%20Pricing%20Sheet%202025.pdf"
-	   download="JVS-Tax-Services-Pricing-2025.pdf"
-	   class="btn btn-appointment"
-	   style="position: fixed; right: 16px; bottom: 16px; z-index: 1000;">
-		<i class="fas fa-download me-2"></i> Pricing PDF
-	</a>
     <script>
         let currentStep = 1;
         const totalSteps = 6;
@@ -2672,7 +2664,8 @@
             const taxOwed = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
             const credits = calculatorData.credits.length * 500; // Simple credit estimate
             const finalTax = Math.max(0, taxOwed - credits);
-            const refund = Math.max(0, withheld - finalTax);
+            const netAmount = withheld - finalTax;
+            const refund = Math.max(0, netAmount);
             
             // Determine tax bracket
             let taxBracket = '0%';
@@ -2689,19 +2682,24 @@
             }
             
             // Display results
-            document.getElementById('finalRefundAmount').textContent = formatCurrency(refund);
+            const headerLabel = netAmount >= 0 ? 'Your estimated refund:' : 'Your estimated balance due:';
+            document.getElementById('finalRefundLabel').textContent = headerLabel;
+            document.getElementById('finalRefundAmount').textContent = formatCurrency(netAmount);
             document.getElementById('resultIncome').textContent = formatCurrency(income);
             document.getElementById('resultDeductions').textContent = formatCurrency(deduction);
             document.getElementById('resultTaxableIncome').textContent = formatCurrency(taxableIncome);
             document.getElementById('resultTaxBracket').textContent = taxBracket;
-            document.getElementById('resultEffectiveRate').textContent = effectiveRate.toFixed(1) + '%';
+            const displayedEffectiveRate = effectiveRate > 0 ? Math.ceil(effectiveRate) : 0;
+            document.getElementById('resultEffectiveRate').textContent = displayedEffectiveRate + '%';
             document.getElementById('resultTaxesOwed').textContent = formatCurrency(taxOwed);
             document.getElementById('resultWithheld').textContent = formatCurrency(withheld);
             document.getElementById('resultCredits').textContent = formatCurrency(credits);
-            document.getElementById('resultTotalRefund').textContent = formatCurrency(refund);
+            const totalLabel = netAmount >= 0 ? 'Total tax refund' : 'Total balance due';
+            document.getElementById('resultTotalLabel').textContent = totalLabel;
+            document.getElementById('resultTotalRefund').textContent = formatCurrency(netAmount);
             
             // Update header refund display
-            document.getElementById('estimatedRefundDisplay').textContent = formatCurrency(refund);
+            document.getElementById('estimatedRefundDisplay').textContent = formatCurrency(netAmount);
         }
 
         // Reset calculator
