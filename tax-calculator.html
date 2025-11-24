@@ -2238,13 +2238,6 @@
             head_of_household: 23650
         };
 
-        // Aligns calculator output with H&R Block/TurboTax style estimators
-        const FEDERAL_TAX_ALIGNMENT_FACTOR = 0.9922612568;
-
-        function alignTaxToIndustryEstimates(amount) {
-            return Math.max(0, amount * FEDERAL_TAX_ALIGNMENT_FACTOR);
-        }
-
         // Initialize Step 1 interactions
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize first step as active
@@ -2444,8 +2437,7 @@
             const withheld = calculatorData.taxWithheld || 0;
             const deduction = calculatorData.standardDeduction || 15750;
             const taxableIncome = Math.max(0, income - deduction);
-            const taxOwedRaw = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
-            const taxOwed = alignTaxToIndustryEstimates(taxOwedRaw);
+            const taxOwed = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
             const refund = Math.max(0, withheld - taxOwed);
             
             const display = document.getElementById('estimatedRefundDisplay');
@@ -2669,8 +2661,7 @@
             const withheld = calculatorData.taxWithheld || 0;
             const deduction = calculatorData.standardDeduction || 15750;
             const taxableIncome = Math.max(0, income - deduction);
-            const rawTaxOwed = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
-            const taxOwed = alignTaxToIndustryEstimates(rawTaxOwed);
+            const taxOwed = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
             const credits = calculatorData.credits.length * 500; // Simple credit estimate
             const finalTax = Math.max(0, taxOwed - credits);
             const netAmount = withheld - finalTax;
