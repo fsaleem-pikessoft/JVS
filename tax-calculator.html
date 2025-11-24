@@ -1237,6 +1237,121 @@
             font-weight: 400;
         }
 
+        /* Step 1 mobile-inspired hero */
+        .step1-intro {
+            margin-bottom: 35px;
+        }
+
+        .step1-intro-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #047857;
+            background: rgba(4, 120, 87, 0.1);
+            padding: 6px 14px;
+            border-radius: 999px;
+        }
+
+        .step1-intro h2 {
+            font-size: 2.1rem;
+            color: #113e21;
+            margin-top: 18px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .step1-intro p {
+            margin: 0;
+            color: #4b5c53;
+            font-size: 1rem;
+        }
+
+        .step1-layout {
+            display: flex;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .step1-illustration {
+            flex: 0 0 260px;
+            border-radius: 22px;
+            background: linear-gradient(140deg, #e9fdf3 0%, #f5fcff 60%, #ecf7ff 100%);
+            position: relative;
+            padding: 30px;
+            overflow: hidden;
+            min-height: 220px;
+        }
+
+        .step1-illustration::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('images/taxReturn.webp') center/contain no-repeat;
+            opacity: 0.45;
+        }
+
+        .step1-illustration-content {
+            position: relative;
+            z-index: 2;
+            color: #0f5132;
+            font-weight: 600;
+        }
+
+        .step1-mobile-card {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px 26px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 12px 40px rgba(15, 81, 50, 0.08);
+        }
+
+        .step1-mobile-card .mobile-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .step1-mobile-card .mobile-field-group:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .mobile-field-label {
+            color: #0f5132;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .mobile-field-wrapper {
+            width: 100%;
+        }
+
+        .mobile-help {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(4, 120, 87, 0.12);
+            color: #047857;
+            font-size: 0.8rem;
+            margin-left: 6px;
+        }
+
+        .deduction-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
         /* Income Type Buttons */
         .income-type-btn,
         .credit-btn {
@@ -1592,6 +1707,19 @@
             .results-actions {
                 justify-content: flex-start;
             }
+
+            .step1-layout {
+                flex-direction: column;
+            }
+
+            .step1-illustration {
+                flex: none;
+                width: 100%;
+            }
+
+            .deduction-options-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1670,6 +1798,14 @@
             #creditsGrid {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
             }
+
+            .step1-intro h2 {
+                font-size: 1.8rem;
+            }
+
+            .step1-mobile-card {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1708,6 +1844,18 @@
 
             #creditsGrid {
                 grid-template-columns: 1fr !important;
+            }
+
+            .step1-intro {
+                text-align: left;
+            }
+
+            .step1-illustration {
+                min-height: 180px;
+            }
+
+            .mobile-help {
+                margin-top: 6px;
             }
         }
 
@@ -1918,83 +2066,108 @@
                 <form id="taxCalculatorForm">
                     <!-- Step 1: Personal Info (Matching Screenshot Design) -->
                     <div class="calculator-step active" id="step1" style="display: block;">
-                        <div class="form-field-row" style="display: flex; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">I'm</span>
-                            <div style="flex: 1; position: relative;">
-                                <select class="form-select-custom" id="maritalStatus" style="width: 100%; padding: 12px 40px 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #20B2AA; font-weight: 600; cursor: pointer;">
-                                    <option value="">single or married</option>
-                                    <option value="single">Single</option>
-                                    <option value="married">Married</option>
-                                </select>
-                                <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #20B2AA; pointer-events: none;"></i>
-                                <i class="fas fa-check-circle" id="maritalStatusCheck" style="position: absolute; right: 45px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
+                        <div class="step1-intro">
+                            <span class="step1-intro-tag"><i class="fas fa-calculator"></i> Tax Calculator</span>
+                            <h2>Start your estimate with a few basic details</h2>
+                            <p>You can add more info later to get a more accurate estimate.</p>
+                        </div>
+
+                        <div class="step1-layout">
+                            <div class="step1-mobile-card">
+                                <div class="mobile-field-group">
+                                    <div class="mobile-field-label">I'm</div>
+                                    <div class="mobile-field-control" style="position: relative;">
+                                        <select class="form-select-custom" id="maritalStatus" style="width: 100%; padding: 12px 45px 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; background: #fdfdfd; font-size: 1.05rem; color: #0f5132; font-weight: 600; cursor: pointer;">
+                                            <option value="">single or married</option>
+                                            <option value="single">Single</option>
+                                            <option value="married">Married</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #047857; pointer-events: none;"></i>
+                                        <i class="fas fa-check-circle" id="maritalStatusCheck" style="position: absolute; right: 48px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group" id="filingStatusRow" style="display: none;">
+                                    <div class="mobile-field-label">and my filing status is</div>
+                                    <div class="mobile-field-control" style="position: relative;">
+                                        <select class="form-select-custom" id="filingStatus" style="width: 100%; padding: 12px 45px 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; background: #fff;">
+                                            <option value="">enter filing status</option>
+                                            <option value="single">Single</option>
+                                            <option value="married_jointly">Married Filing Jointly</option>
+                                            <option value="married_separately">Married Filing Separately</option>
+                                            <option value="head_of_household">Head of Household</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #047857; pointer-events: none;"></i>
+                                        <i class="fas fa-check-circle" id="filingStatusCheck" style="position: absolute; right: 48px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group">
+                                    <div class="mobile-field-label">I'm <span class="mobile-help"><i class="fas fa-question"></i></span></div>
+                                    <div class="mobile-field-control" style="display: flex; gap: 12px; align-items: center;">
+                                        <input type="number" id="age" placeholder="enter your age" style="flex: 1; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 1.05rem; color: #2c3e50; background: #fff;">
+                                        <span style="color: #0f5132; font-weight: 600;">years old</span>
+                                        <i class="fas fa-check-circle" id="ageCheck" style="color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group" id="spouseAgeRow" style="display: none;">
+                                    <div class="mobile-field-label">My spouse is</div>
+                                    <div class="mobile-field-control" style="display: flex; gap: 12px; align-items: center;">
+                                        <input type="number" id="spouseAge" placeholder="enter their age" style="flex: 1; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 1.05rem; color: #2c3e50; background: #fff;">
+                                        <span style="color: #0f5132; font-weight: 600;">years old</span>
+                                        <i class="fas fa-check-circle" id="spouseAgeCheck" style="color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group">
+                                    <div class="mobile-field-label">My income</div>
+                                    <div class="mobile-field-control" style="position: relative;">
+                                        <select class="form-select-custom" id="incomeType" style="width: 100%; padding: 12px 45px 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; background: #fff;">
+                                            <option value="">select</option>
+                                            <option value="includes_wages">Includes wages (W-2)</option>
+                                            <option value="no_wages">Does not include wages</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #047857; pointer-events: none;"></i>
+                                        <i class="fas fa-check-circle" id="incomeTypeCheck" style="position: absolute; right: 48px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group" id="wageIncomeRow" style="display: none;">
+                                    <div class="mobile-field-label">My total wage income in 2025 was</div>
+                                    <div class="mobile-field-control" style="display: flex; gap: 10px; align-items: center;">
+                                        <span style="color: #0f5132; font-weight: 600;">$</span>
+                                        <input type="number" id="wageIncome" placeholder="0" value="0" style="flex: 1; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 1.05rem; color: #2c3e50;">
+                                        <i class="fas fa-check-circle" id="wageIncomeCheck" style="color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group">
+                                    <div class="mobile-field-label">My total federal withholdings in 2025 were</div>
+                                    <div class="mobile-field-control" style="display: flex; gap: 10px; align-items: center;">
+                                        <span style="color: #0f5132; font-weight: 600;">$</span>
+                                        <input type="number" id="taxWithheld" placeholder="0" value="0" style="flex: 1; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 1.05rem; color: #2c3e50;">
+                                        <i class="fas fa-check-circle" id="taxWithheldCheck" style="color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-field-group">
+                                    <div class="mobile-field-label">I typically file my taxes</div>
+                                    <div class="mobile-field-control" style="position: relative;">
+                                        <select class="form-select-custom" id="filingMethod" style="width: 100%; padding: 12px 45px 12px 15px; border: 1px solid #e0e0e0; border-radius: 12px; background: #fff;">
+                                            <option value="">select</option>
+                                            <option value="on_own">On my own</option>
+                                            <option value="with_professional">Using a tax professional</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #047857; pointer-events: none;"></i>
+                                        <i class="fas fa-check-circle" id="filingMethodCheck" style="position: absolute; right: 48px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-field-row" id="filingStatusRow" style="display: none; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">and</span>
-                            <div style="flex: 1; position: relative;">
-                                <select class="form-select-custom" id="filingStatus" style="width: 100%; padding: 12px 40px 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d; cursor: pointer;">
-                                    <option value="">enter filing status</option>
-                                    <option value="single">Single</option>
-                                    <option value="married_jointly">Married Filing Jointly</option>
-                                    <option value="married_separately">Married Filing Separately</option>
-                                    <option value="head_of_household">Head of Household</option>
-                                </select>
-                                <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #20B2AA; pointer-events: none;"></i>
-                                <i class="fas fa-check-circle" id="filingStatusCheck" style="position: absolute; right: 45px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
-                            </div>
-                        </div>
-
-                        <div class="form-field-row" style="display: flex; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">I'm</span>
-                            <input type="number" id="age" placeholder="enter your age" style="flex: 1; padding: 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">years old</span>
-                            <i class="fas fa-check-circle" id="ageCheck" style="color: #20B2AA; display: none;"></i>
-                        </div>
-
-                        <div class="form-field-row" id="spouseAgeRow" style="display: none; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">My spouse is</span>
-                            <input type="number" id="spouseAge" placeholder="enter their age" style="flex: 1; padding: 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">years old</span>
-                            <i class="fas fa-check-circle" id="spouseAgeCheck" style="color: #20B2AA; display: none;"></i>
-                        </div>
-
-                        <div class="form-field-row" style="display: flex; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">My income</span>
-                            <div style="flex: 1; position: relative;">
-                                <select class="form-select-custom" id="incomeType" style="width: 100%; padding: 12px 40px 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d; cursor: pointer;">
-                                    <option value="">select</option>
-                                    <option value="includes_wages">Includes wages (W-2)</option>
-                                    <option value="no_wages">Does not include wages</option>
-                                </select>
-                                <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #20B2AA; pointer-events: none;"></i>
-                                <i class="fas fa-check-circle" id="incomeTypeCheck" style="position: absolute; right: 45px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
-                            </div>
-                        </div>
-
-                        <div class="form-field-row" id="wageIncomeRow" style="display: none; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">My total wage income in 2025 was $</span>
-                            <input type="number" id="wageIncome" placeholder="0" value="0" style="flex: 1; padding: 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d;">
-                            <i class="fas fa-check-circle" id="wageIncomeCheck" style="color: #20B2AA; display: none;"></i>
-                        </div>
-
-                        <div class="form-field-row" style="display: flex; align-items: center; margin-bottom: 25px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">My total federal withholdings in 2025 were $</span>
-                            <input type="number" id="taxWithheld" placeholder="0" value="0" style="flex: 1; padding: 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d;">
-                            <i class="fas fa-check-circle" id="taxWithheldCheck" style="color: #20B2AA; display: none;"></i>
-                        </div>
-
-                        <div class="form-field-row" style="display: flex; align-items: center; margin-bottom: 30px; gap: 10px;">
-                            <span style="color: #20B2AA; font-weight: 600; font-size: 1.1rem;">I typically file my taxes</span>
-                            <div style="flex: 1; position: relative;">
-                                <select class="form-select-custom" id="filingMethod" style="width: 100%; padding: 12px 40px 12px 15px; border: none; border-bottom: 2px solid #e0e0e0; background: transparent; font-size: 1.1rem; color: #6c757d; cursor: pointer;">
-                                    <option value="">select</option>
-                                    <option value="on_own">On my own</option>
-                                    <option value="with_professional">Using a tax professional</option>
-                                </select>
-                                <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #20B2AA; pointer-events: none;"></i>
-                                <i class="fas fa-check-circle" id="filingMethodCheck" style="position: absolute; right: 45px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
+                            <div class="step1-illustration">
+                                <div class="step1-illustration-content">
+                                    Relax, we’ll crunch the numbers for you.
+                                </div>
                             </div>
                         </div>
 
@@ -2094,7 +2267,7 @@
                     <div class="calculator-step" id="step4" style="display: none;">
                         <h2 style="color: #20B2AA; font-size: 2rem; font-weight: 700; margin-bottom: 30px;">Which deduction option will you take?</h2>
                         
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                        <div class="deduction-options-grid">
                             <!-- Standard Deduction Card -->
                             <div style="background: #f5f5f5; border-radius: 15px; padding: 30px; position: relative; cursor: pointer; transition: all 0.3s;" onclick="selectDeduction('standard')">
                                 <div style="position: absolute; top: 15px; left: 15px; background: #20B2AA; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">
@@ -2457,23 +2630,29 @@
             // Wage income input
             const wageIncome = document.getElementById('wageIncome');
             if (wageIncome) {
-                wageIncome.addEventListener('input', function() {
-                    calculatorData.wageIncome = parseFloat(this.value) || 0;
+                initCommaInput(wageIncome, (value) => {
+                    calculatorData.wageIncome = value;
                     const check = document.getElementById('wageIncomeCheck');
-                    if (check) check.style.display = this.value ? 'block' : 'none';
+                    if (check) check.style.display = value ? 'block' : 'none';
                     updateEstimatedRefund();
                 });
+                if (wageIncome.value) {
+                    wageIncome.value = formatWithCommas(parseCommaNumber(wageIncome.value), true);
+                }
             }
 
             // Tax withheld input
             const taxWithheld = document.getElementById('taxWithheld');
             if (taxWithheld) {
-                taxWithheld.addEventListener('input', function() {
-                    calculatorData.taxWithheld = parseFloat(this.value) || 0;
+                initCommaInput(taxWithheld, (value) => {
+                    calculatorData.taxWithheld = value;
                     const check = document.getElementById('taxWithheldCheck');
-                    if (check) check.style.display = this.value ? 'block' : 'none';
+                    if (check) check.style.display = value ? 'block' : 'none';
                     updateEstimatedRefund();
                 });
+                if (taxWithheld.value) {
+                    taxWithheld.value = formatWithCommas(parseCommaNumber(taxWithheld.value), true);
+                }
             }
 
             // Filing method change
@@ -2584,6 +2763,48 @@
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             }).format(amount);
+        }
+
+        function formatWithCommas(value, allowZero = false) {
+            if (value === null || value === undefined) return '';
+            if (!allowZero && (value === 0 || value === '')) return '';
+            const parts = value.toString().split('.');
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            return parts.join('.');
+        }
+
+        function parseCommaNumber(value) {
+            if (!value) return 0;
+            const normalized = value.toString().replace(/,/g, '');
+            if (normalized.trim() === '') return 0;
+            const parsed = parseFloat(normalized);
+            return isNaN(parsed) ? 0 : parsed;
+        }
+
+        function initCommaInput(input, onValueChange) {
+            if (!input) return;
+            const notify = (numeric) => onValueChange(typeof numeric === 'number' ? numeric : 0);
+            input.addEventListener('input', () => {
+                const caretEnd = input.selectionEnd;
+                const numeric = parseCommaNumber(input.value);
+                const formatted = numeric ? formatWithCommas(numeric, true) : '';
+                input.value = formatted;
+                notify(numeric);
+                if (document.activeElement === input && typeof caretEnd === 'number') {
+                    const newPos = formatted.length;
+                    input.setSelectionRange(newPos, newPos);
+                }
+            });
+            input.addEventListener('focus', () => {
+                const raw = input.value.replace(/,/g, '');
+                input.value = raw;
+                const pos = raw.length;
+                input.setSelectionRange(pos, pos);
+            });
+            input.addEventListener('blur', () => {
+                const numeric = parseCommaNumber(input.value);
+                input.value = numeric ? formatWithCommas(numeric, true) : '';
+            });
         }
 
         // Step Navigation Functions
