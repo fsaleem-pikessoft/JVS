@@ -1414,6 +1414,7 @@
             border: 1px solid rgba(32, 178, 170, 0.12);
             position: relative;
             overflow: hidden;
+            margin-bottom: 30px;
         }
 
         #resultsBreakdown::before {
@@ -1428,40 +1429,83 @@
             animation: gradientShift 3s ease infinite;
         }
 
-        #breakdownDetails > div {
-            padding: 20px 24px;
-            border-bottom: 1px solid rgba(240, 240, 240, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        #breakdownDetails {
+            margin-top: 20px;
+        }
+
+        .breakdown-header,
+        .breakdown-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .breakdown-footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #e0e0e0;
+            border-bottom: none;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(240, 240, 240, 0.9);
             background: rgba(255, 255, 255, 0.3);
             border-radius: 12px;
-            margin-bottom: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 10px;
         }
 
-        #breakdownDetails > div:hover {
+        .breakdown-row:hover {
             background: rgba(32, 178, 170, 0.05);
-            padding-left: 32px;
             transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.1);
+            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.12);
         }
 
-        #breakdownDetails > div:last-of-type {
+        .breakdown-label {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .breakdown-value {
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .breakdown-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
             background: linear-gradient(135deg, #20B2AA 0%, #17a2b8 100%);
             color: white;
             border-radius: 16px;
-            padding: 32px;
-            margin-top: 24px;
-            border: none;
+            padding: 28px;
+            margin-top: 28px;
             box-shadow: 0 8px 28px rgba(32, 178, 170, 0.3);
         }
 
-        #breakdownDetails > div:last-of-type:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 36px rgba(32, 178, 170, 0.4);
+        .breakdown-total span {
+            color: white;
+            font-weight: 700;
         }
 
-        #breakdownDetails > div:last-of-type span {
-            color: white !important;
-            font-weight: 700;
+        .results-actions {
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         /* Radio and Checkbox Styling */
@@ -1518,6 +1562,38 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .calculator-card-new,
+            .calculator-header {
+                padding: 40px 30px;
+            }
+
+            #step6 > div:first-child {
+                padding: 60px 40px;
+            }
+
+            #resultsBreakdown {
+                padding: 35px 28px;
+            }
+
+            .breakdown-header,
+            .breakdown-footer,
+            .breakdown-row,
+            .breakdown-total {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .breakdown-row,
+            .breakdown-total {
+                width: 100%;
+            }
+
+            .results-actions {
+                justify-content: flex-start;
+            }
+        }
+
         @media (max-width: 768px) {
             .calculator-hero {
                 padding: 120px 0 60px;
@@ -1589,6 +1665,49 @@
 
             #resultsBreakdown {
                 padding: 30px 20px;
+            }
+
+            #creditsGrid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-field-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+            .form-field-row span {
+                margin-bottom: 6px;
+            }
+
+            #step6 > div:first-child {
+                padding: 40px 20px;
+            }
+
+            #finalRefundAmount {
+                font-size: 2.8rem;
+            }
+
+            #resultsBreakdown {
+                padding: 24px 16px;
+            }
+
+            .breakdown-row,
+            .breakdown-total,
+            .breakdown-header,
+            .breakdown-footer {
+                padding: 16px;
+            }
+
+            .results-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #creditsGrid {
+                grid-template-columns: 1fr !important;
             }
         }
 
@@ -2051,58 +2170,58 @@
                             <div id="finalRefundAmount" style="font-size: 4rem; font-weight: 700; color: #48CAE4;">$0</div>
                         </div>
 
-                        <div id="resultsBreakdown" style="background: #f8f9fa; border-radius: 15px; padding: 30px; margin-bottom: 30px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e0e0e0;">
+                        <div id="resultsBreakdown">
+                            <div class="breakdown-header">
                                 <h3 style="color: #2c3e50; font-size: 1.3rem; font-weight: 700; margin: 0;">
                                     <i class="fas fa-user me-2" style="color: #20B2AA;"></i>My details
                                 </h3>
                                 <i class="fas fa-chevron-down" style="color: #6c757d; cursor: pointer;"></i>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e0e0e0;">
+                            <div class="breakdown-header">
                                 <h3 style="color: #2c3e50; font-size: 1.3rem; font-weight: 700; margin: 0;">
                                     <i class="fas fa-file-alt me-2" style="color: #20B2AA;"></i>Estimate breakdown
                                 </h3>
                                 <i class="fas fa-chevron-up" style="color: #6c757d; cursor: pointer;"></i>
                             </div>
-                            <div id="breakdownDetails" style="margin-top: 20px;">
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Income</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultIncome">$0</span>
+                            <div id="breakdownDetails">
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Income</span>
+                                    <span class="breakdown-value" id="resultIncome">$0</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Deductions</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultDeductions">$0</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Deductions</span>
+                                    <span class="breakdown-value" id="resultDeductions">$0</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Taxable income</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultTaxableIncome">$0</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Taxable income</span>
+                                    <span class="breakdown-value" id="resultTaxableIncome">$0</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Tax bracket</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultTaxBracket">0%</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Tax bracket</span>
+                                    <span class="breakdown-value" id="resultTaxBracket">0%</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Effective tax rate</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultEffectiveRate">0%</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Effective tax rate</span>
+                                    <span class="breakdown-value" id="resultEffectiveRate">0%</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Taxes owed</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultTaxesOwed">$0</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Taxes owed</span>
+                                    <span class="breakdown-value" id="resultTaxesOwed">$0</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Payments and federal taxes withheld</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultWithheld">$0</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Payments and federal taxes withheld</span>
+                                    <span class="breakdown-value" id="resultWithheld">$0</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e0e0e0;">
-                                    <span style="color: #6c757d;">Refundable credits</span>
-                                    <span style="color: #2c3e50; font-weight: 600;" id="resultCredits">$0</span>
+                                <div class="breakdown-row">
+                                    <span class="breakdown-label">Refundable credits</span>
+                                    <span class="breakdown-value" id="resultCredits">$0</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; padding: 15px 0; background: #20B2AA; color: white; border-radius: 10px; margin-top: 15px; padding: 20px;">
-                                    <span id="resultTotalLabel" style="font-weight: 700; font-size: 1.1rem;">Total tax refund</span>
-                                    <span style="font-weight: 700; font-size: 1.3rem;" id="resultTotalRefund">$0</span>
+                                <div class="breakdown-total">
+                                    <span id="resultTotalLabel">Total tax refund</span>
+                                    <span id="resultTotalRefund">$0</span>
                                 </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 2px solid #e0e0e0;">
+                            <div class="breakdown-footer">
                                 <h3 style="color: #2c3e50; font-size: 1.3rem; font-weight: 700; margin: 0;">
                                     <i class="fas fa-clipboard-check me-2" style="color: #20B2AA;"></i>Tax doc checklist
                                 </h3>
@@ -2110,8 +2229,8 @@
                             </div>
                         </div>
 
-                        <div style="text-align: center; margin-top: 40px;">
-                            <button type="button" class="btn-reset" onclick="resetCalculator()" style="background: #6c757d; color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-right: 15px;">
+                        <div class="results-actions">
+                            <button type="button" class="btn-reset" onclick="resetCalculator()" style="background: #6c757d; color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
                                 Start Over
                             </button>
                             <a href="/contact.html" class="btn-contact" style="background: #20B2AA; color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">
