@@ -11,12 +11,13 @@
     <link rel="icon" href="images/JVS Official Logo 200x200.webp">
     <meta name="description" content="Calculate your estimated tax liability with JVS Tax Services professional tax calculator. Get instant estimates for your tax return.">
     <style>
-        .calculator-hero {
+        /* About Hero Section - Matching About Page */
+        .about-hero {
             background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: white;
-            padding: 140px 0 80px;
+            padding: 120px 0 80px;
             position: relative;
             overflow: hidden;
         }
@@ -27,7 +28,7 @@
             100% { background-position: 0% 50%; }
         }
         
-        .calculator-hero::before {
+        .about-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -46,7 +47,7 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
         
-        .calculator-badge {
+        .about-badge {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -65,6 +66,124 @@
         @keyframes badgeGlow {
             0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
             50% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .about-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white !important;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
+        }
+        
+        .about-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .about-info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn-start-estimate {
+            background: linear-gradient(135deg, #20B2AA, #00ff88, #20B2AA);
+            background-size: 200% 200%;
+            animation: buttonGradient 3s ease-in-out infinite;
+            border: none;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            box-shadow: 0 10px 30px rgba(32, 178, 170, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-start-estimate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: buttonShine 2s ease-in-out infinite;
+        }
+        
+        .btn-start-estimate:hover {
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(32, 178, 170, 0.45);
+        }
+        
+        @keyframes buttonGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes buttonShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .calculator-hero {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: white;
+            animation: badgeGlow 3s ease-in-out infinite;
         }
         
         .calculator-title {
@@ -134,6 +253,117 @@
             to {
                 opacity: 1;
                 transform: translateX(0);
+            }
+        }
+        
+        /* CTA Banner - Matching App Theme */
+        .cta-banner {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 50%, #20B2AA 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            border-radius: 20px;
+            padding: 40px 50px;
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(32, 178, 170, 0.25);
+        }
+        
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .calculator-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-banner:hover .calculator-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .cta-banner-text {
+            flex: 1;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-cta-estimate {
+            background: linear-gradient(135deg, #20B2AA, #00ff88, #20B2AA);
+            background-size: 200% 200%;
+            animation: buttonGradient 3s ease-in-out infinite;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-cta-estimate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: buttonShine 2s ease-in-out infinite;
+        }
+        
+        .btn-cta-estimate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 25px;
+            }
+            
+            .cta-banner-text {
+                font-size: 1.2rem;
+            }
+            
+            .calculator-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
             }
         }
         
@@ -324,6 +554,228 @@
         
         .btn-reveal-calculator i {
             font-size: 1.6rem;
+        }
+        
+        /* Professional Card Style - Senior Level Design */
+        .simple-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 45px 35px;
+            border: 1px solid rgba(32, 178, 170, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .simple-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #20B2AA, #17a2b8, #20B2AA);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .simple-card:hover::before {
+            opacity: 1;
+        }
+        
+        .simple-card:hover {
+            box-shadow: 0 12px 40px rgba(32, 178, 170, 0.18);
+            transform: translateY(-8px);
+            border-color: rgba(32, 178, 170, 0.25);
+        }
+        
+        .simple-card h3, .simple-card h4 {
+            color: #0f5132;
+            font-weight: 700;
+            margin-bottom: 18px;
+            font-size: 1.35rem;
+            line-height: 1.3;
+        }
+        
+        .simple-card p {
+            color: #5b6b7e;
+            line-height: 1.7;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #eaf7f7, #ffffff);
+            border: 2px solid rgba(32, 178, 170, 0.15);
+            color: #20B2AA;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .value-icon::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .simple-card:hover .value-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(32, 178, 170, 0.25);
+        }
+        
+        .simple-card:hover .value-icon::before {
+            opacity: 1;
+        }
+        
+        /* Professional Pricing Cards - Clean Minimal Design */
+        .pricing-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 40px 35px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-top: 4px solid #20B2AA;
+            border-color: #e0e0e0;
+            box-shadow: 0 4px 16px rgba(32, 178, 170, 0.1);
+        }
+        
+        .pricing-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+        
+        .pricing-card-title {
+            color: #0f5132;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .pricing-card-subtitle {
+            color: #5b6b7e;
+            line-height: 1.5;
+            margin: 0 0 25px 0;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+        
+        .pricing-features-list li {
+            color: #5b6b7e;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .pricing-features-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .pricing-features-list li i {
+            color: #20B2AA;
+            font-size: 1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-learn-more {
+            color: #20B2AA;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-learn-more:hover {
+            color: #17a2b8;
+        }
+        
+        .pricing-amount {
+            margin-bottom: 25px;
+            margin-top: auto;
+        }
+        
+        .pricing-starting {
+            display: block;
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f5132;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        
+        .pricing-note {
+            display: block;
+            font-size: 0.75rem;
+            color: #6c757d;
+            font-weight: 400;
+        }
+        
+        .btn-filing-pricing {
+            background: linear-gradient(135deg, #20B2AA, #17a2b8);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.25);
+        }
+        
+        .btn-filing-pricing:hover {
+            background: linear-gradient(135deg, #17a2b8, #20B2AA);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
         }
         
         .calculator-card {
@@ -1957,58 +2409,51 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Professional Design -->
-    <section class="calculator-hero">
+    <!-- Hero Section - Matching About Page -->
+    <section class="about-hero">
         <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="calculator-badge animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="row align-items-center" style="margin-top: 10px;">
+                <div class="col-lg-8" style="margin-top: 20px;">                    
+                    <h1 class="about-title animate-fade-in-up" style="animation-delay: 0.1s;">                       
+                        Get a clear estimate with our tax calculator
+                    </h1>
+                    <div class="about-badge animate-fade-in-up">
                         <i class="fas fa-calculator me-2"></i> Professional Tax Estimation Tool
                     </div>
-                    <h1 class="calculator-title text-center animate-fade-in-up" style="animation-delay: 0.2s;">
-                        Free Tax Calculator
-                    </h1>
-                    <p class="calculator-subtitle text-center animate-fade-in-up" style="animation-delay: 0.3s;">
-                        Get an accurate estimate of your tax refund or liability. Our professional calculator guides you through each step with clarity and precision.
+                    <p class="about-subtitle animate-fade-in-up" style="animation-delay: 0.2s;font-size:17px;">
+                        Know what to expect this tax season with our tax refund calculator, now supporting the latest tax law changes. Get an accurate estimate of your tax refund or liability with our professional calculator that guides you through each step with clarity and precision.
                     </p>
-                    <div class="text-center mt-4 animate-fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="calculator-info-card d-inline-block">
-                            <div class="row g-4">
-                                <div class="col-6 col-md-3">
-                                    <div class="text-center">
-                                        <div class="text-white mb-2">
-                                            <i class="fas fa-shield-check fa-2x"></i>
-                                        </div>
-                                        <div class="text-white fw-bold fs-5">100%</div>
-                                        <div class="text-white-50 small">Accurate</div>
+                    <p class="about-subtitle animate-fade-in-up" style="animation-delay: 0.2s;font-size:17px;">
+                        Our calculator helps you understand your tax situation before filing, allowing you to plan ahead and make informed decisions about your finances. Whether you're expecting a refund or might owe taxes, we're here to help you navigate the process with confidence.
+                    </p>
+                    <div class="animate-fade-in-up mt-4" style="animation-delay: 0.3s; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#calculator" class="btn-start-estimate" id="startCalculatorBtn" style="text-decoration: none; display: inline-block; flex-shrink: 0;">
+                            Start my estimate
+                        </a>
+                        <a href="/contact.html" class="btn btn-hero-secondary" style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(16px); border: 2px solid rgba(255, 255, 255, 0.35); color: white; padding: 1rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block; flex-shrink: 0;">
+                            File my taxes
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="about-info-card animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-calculator fa-2x"></i>
                                     </div>
+                                    <div class="text-white fw-bold">100%</div>
+                                    <div class="text-white-50 small">Accurate</div>
                                 </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="text-center">
-                                        <div class="text-white mb-2">
-                                            <i class="fas fa-clock fa-2x"></i>
-                                        </div>
-                                        <div class="text-white fw-bold fs-5">Fast</div>
-                                        <div class="text-white-50 small">Results</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="text-white mb-2">
+                                        <i class="fas fa-clock fa-2x"></i>
                                     </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="text-center">
-                                        <div class="text-white mb-2">
-                                            <i class="fas fa-lock fa-2x"></i>
-                                        </div>
-                                        <div class="text-white fw-bold fs-5">Secure</div>
-                                        <div class="text-white-50 small">Private</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="text-center">
-                                        <div class="text-white mb-2">
-                                            <i class="fas fa-dollar-sign fa-2x"></i>
-                                        </div>
-                                        <div class="text-white fw-bold fs-5">Free</div>
-                                        <div class="text-white-50 small">No Cost</div>
-                                    </div>
+                                    <div class="text-white fw-bold">Fast</div>
+                                    <div class="text-white-50 small">Results</div>
                                 </div>
                             </div>
                         </div>
@@ -2018,8 +2463,214 @@
         </div>
     </section>
 
+    <!-- How the Tax Calculator Works Section -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" style="color: #2c3e50; font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">How the tax calculator works</h2>
+                </div>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-4 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 style="color: #0f5132; font-weight: 700; margin-bottom: 15px; font-size: 1.3rem;">Answer a few simple questions</h3>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin: 0;">Answer a few simple questions for a quick estimate. Get started with basic information about your filing status, age, and tax withholdings.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3 style="color: #0f5132; font-weight: 700; margin-bottom: 15px; font-size: 1.3rem;">Share details about dependents, income, and deductions</h3>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin: 0;">Share details about dependents, income, and deductions for a better result. Add more information to get a more accurate estimate of your tax situation.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 style="color: #0f5132; font-weight: 700; margin-bottom: 15px; font-size: 1.3rem;">Get your estimate and custom tax doc checklist</h3>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin: 0;">Stress less about tax season with your estimate and a personalized checklist of documents you'll need to file your taxes accurately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-11 col-xl-10">
+                    <div class="cta-banner">
+                        <div class="calculator-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="cta-banner-text">
+                            Ready to get a head start on your tax planning?
+                        </div>
+                        <button class="btn-cta-estimate" id="ctaStartCalculatorBtn">
+                            Start my estimate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Understand What Goes Into Your Tax Refund Section -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" style="color: #2c3e50; font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">Understand what goes into your tax refund</h2>
+                </div>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-6 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 style="color: #0f5132; font-weight: 700; font-size: 1.2rem; margin-bottom: 12px;">
+                            <a href="/blog.html" style="color: #0f5132; text-decoration: none;">Tax law changes <i class="fas fa-arrow-right ms-1" style="font-size: 0.9rem;"></i></a>
+                        </h4>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem;">New tax law changes can affect deductions, credits, and more. Our calculator stays up-to-date with the latest regulations to give you an accurate estimate.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4 style="color: #0f5132; font-weight: 700; font-size: 1.2rem; margin-bottom: 12px;">
+                            <a href="/blog.html" style="color: #0f5132; text-decoration: none;">Taxable income <i class="fas fa-arrow-right ms-1" style="font-size: 0.9rem;"></i></a>
+                        </h4>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem;">Your taxable income is your total income minus deductions. This amount directly affects your tax liability and potential refund.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <h4 style="color: #0f5132; font-weight: 700; font-size: 1.2rem; margin-bottom: 12px;">
+                            <a href="/blog.html" style="color: #0f5132; text-decoration: none;">Credits & deductions <i class="fas fa-arrow-right ms-1" style="font-size: 0.9rem;"></i></a>
+                        </h4>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem;">Deductions reduce your taxable income, while credits reduce the amount of tax you owe. Both can significantly impact your refund.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="simple-card h-100 animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="value-icon mb-3">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 style="color: #0f5132; font-weight: 700; font-size: 1.2rem; margin-bottom: 12px;">
+                            <a href="/blog.html" style="color: #0f5132; text-decoration: none;">Tax brackets & tax breaks <i class="fas fa-arrow-right ms-1" style="font-size: 0.9rem;"></i></a>
+                        </h4>
+                        <p style="color: #5b6b7e; line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem;">Tax brackets are determined by your income and filing status. Understanding your bracket helps you plan for tax breaks and optimize your return.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="/blog.html" style="color: #20B2AA; text-decoration: none; font-weight: 600; font-size: 1.05rem;">Still have questions? Explore resource center <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choose How You Want to File Section -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" style="color: #2c3e50; font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">Choose how you want to file — on your own, with expert help, or we'll do it for you</h2>
+                    <p class="text-muted mb-5" style="font-size: 1.1rem; color: #6c757d;">Taxpayers can qualify for free federal and state filing.</p>
+                </div>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-4">
+                    <div class="pricing-card h-100 animate-fade-in-up">
+                        <h4 class="pricing-card-title">File on your own with confidence</h4>
+                        <p class="pricing-card-subtitle">Ready to qualify for free, easy guided simple tax returns.</p>
+                        <ul class="pricing-features-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Simple W-2, or, student, or unemployment income</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>File from any device</span>
+                            </li>
+                        </ul>
+                        <a href="/contact.html" class="pricing-learn-more">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                        <div class="pricing-amount">
+                            <span class="pricing-starting">Starting at</span>
+                            <div class="pricing-price">$0</div>
+                            <span class="pricing-note">+ $0 state additional for paid products</span>
+                        </div>
+                        <button class="btn-filing-pricing">File on my own</button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card h-100 animate-fade-in-up featured" style="animation-delay: 0.1s;">
+                        <h4 class="pricing-card-title">File online with help by your side</h4>
+                        <p class="pricing-card-subtitle">Online support from tax pros and AI assisted.</p>
+                        <ul class="pricing-features-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Deductions for families, homeowners, or investors</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Access to tax pros from home</span>
+                            </li>
+                        </ul>
+                        <a href="/contact.html" class="pricing-learn-more">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                        <div class="pricing-amount">
+                            <span class="pricing-starting">Starting at</span>
+                            <div class="pricing-price">$60</div>
+                            <span class="pricing-note">+ $49 per state filed</span>
+                        </div>
+                        <button class="btn-filing-pricing">File with some help</button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card h-100 animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <h4 class="pricing-card-title">File stress-free with a tax pro</h4>
+                        <p class="pricing-card-subtitle">Full, personalized support from home or in person.</p>
+                        <ul class="pricing-features-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Those engaged in an account or tax liability issues</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Choose your tax pro to get expert tax advice</span>
+                            </li>
+                        </ul>
+                        <a href="/contact.html" class="pricing-learn-more">Learn more <i class="fas fa-arrow-right ms-1"></i></a>
+                        <div class="pricing-amount">
+                            <span class="pricing-starting">Starting at</span>
+                            <div class="pricing-price">$99</div>
+                            <span class="pricing-note">+ additional state fee</span>
+                        </div>
+                        <button class="btn-filing-pricing">File with a tax pro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Calculator Content - Professional Design -->
-    <section class="calculator-content" style="position: relative; z-index: 1;">
+    <section class="calculator-content" id="calculatorSection" style="display: none; position: relative; z-index: 1; background: #f8f9fa; padding: 80px 0;">
         <div class="container" style="max-width: 1000px; position: relative; z-index: 2;">
             <!-- Header with Estimated Refund and Progress -->
             <div class="calculator-header">
@@ -3118,6 +3769,32 @@
             else scrollToTopBtn.classList.remove('show');
         });
         scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        // Show calculator when estimate button is clicked
+        function showCalculator() {
+            const calculatorSection = document.getElementById('calculatorSection');
+            if (calculatorSection) {
+                calculatorSection.style.display = 'block';
+                calculatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // Add event listeners to estimate buttons
+        const startCalculatorBtn = document.getElementById('startCalculatorBtn');
+        if (startCalculatorBtn) {
+            startCalculatorBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                showCalculator();
+            });
+        }
+        
+        const ctaStartCalculatorBtn = document.getElementById('ctaStartCalculatorBtn');
+        if (ctaStartCalculatorBtn) {
+            ctaStartCalculatorBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                showCalculator();
+            });
+        }
     </script>
 </body>
 </html>
