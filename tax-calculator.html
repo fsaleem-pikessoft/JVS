@@ -2675,7 +2675,7 @@
             <!-- Header with Estimated Refund and Progress -->
             <div class="calculator-header">
                 <div style="text-align: center; margin-bottom: 30px;">
-                    <div style="color: #6c757d; font-size: 1.1rem; margin-bottom: 12px; font-weight: 600; letter-spacing: 0.5px;">Your estimated refund:</div>
+                    <div id="estimatedRefundLabel" style="color: #6c757d; font-size: 1.1rem; margin-bottom: 12px; font-weight: 600; letter-spacing: 0.5px;">Your estimated refund:</div>
                     <div id="estimatedRefundDisplay">$0</div>
                 </div>
                 <!-- Progress Steps -->
@@ -3399,11 +3399,31 @@
             const taxableIncome = Math.max(0, income - deduction);
             const rawTax = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
             const taxOwed = alignWithIndustry(rawTax);
-            const refund = Math.max(0, withheld - taxOwed);
+            const netAmount = withheld - taxOwed; // Allow negative values
             
             const display = document.getElementById('estimatedRefundDisplay');
+            const label = document.getElementById('estimatedRefundLabel');
+            
             if (display) {
-                display.textContent = formatCurrency(refund);
+                display.textContent = formatCurrency(netAmount);
+                // Apply styling based on positive/negative
+                if (netAmount < 0) {
+                    display.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
+                    display.style.webkitBackgroundClip = 'text';
+                    display.style.webkitTextFillColor = 'transparent';
+                    display.style.backgroundClip = 'text';
+                    display.style.textShadow = '0 2px 10px rgba(220, 53, 69, 0.2)';
+                } else {
+                    display.style.background = 'linear-gradient(135deg, #20B2AA 0%, #17a2b8 100%)';
+                    display.style.webkitBackgroundClip = 'text';
+                    display.style.webkitTextFillColor = 'transparent';
+                    display.style.backgroundClip = 'text';
+                    display.style.textShadow = '0 2px 10px rgba(32, 178, 170, 0.2)';
+                }
+            }
+            
+            if (label) {
+                label.textContent = netAmount >= 0 ? 'Your estimated refund:' : 'Your estimated balance due:';
             }
         }
 
@@ -3668,8 +3688,7 @@
             const taxOwed = alignWithIndustry(rawTaxOwed);
             const credits = calculatorData.credits.length * 500; // Simple credit estimate
             const finalTax = Math.max(0, taxOwed - credits);
-            const netAmount = withheld - finalTax;
-            const refund = Math.max(0, netAmount);
+            const netAmount = withheld - finalTax; // Allow negative values to show amount owed
             
             // Determine tax bracket
             let taxBracket = '0%';
@@ -3688,7 +3707,16 @@
             // Display results
             const headerLabel = netAmount >= 0 ? 'Your estimated refund:' : 'Your estimated balance due:';
             document.getElementById('finalRefundLabel').textContent = headerLabel;
-            document.getElementById('finalRefundAmount').textContent = formatCurrency(netAmount);
+            
+            const finalRefundAmountEl = document.getElementById('finalRefundAmount');
+            finalRefundAmountEl.textContent = formatCurrency(netAmount);
+            // Apply color based on positive/negative
+            if (netAmount < 0) {
+                finalRefundAmountEl.style.color = '#dc3545';
+            } else {
+                finalRefundAmountEl.style.color = '#48CAE4';
+            }
+            
             document.getElementById('resultIncome').textContent = formatCurrency(income);
             document.getElementById('resultDeductions').textContent = formatCurrency(deduction);
             document.getElementById('resultTaxableIncome').textContent = formatCurrency(taxableIncome);
@@ -3700,10 +3728,39 @@
             document.getElementById('resultCredits').textContent = formatCurrency(credits);
             const totalLabel = netAmount >= 0 ? 'Total tax refund' : 'Total balance due';
             document.getElementById('resultTotalLabel').textContent = totalLabel;
-            document.getElementById('resultTotalRefund').textContent = formatCurrency(netAmount);
+            
+            const resultTotalRefundEl = document.getElementById('resultTotalRefund');
+            resultTotalRefundEl.textContent = formatCurrency(netAmount);
+            // Apply color based on positive/negative
+            if (netAmount < 0) {
+                resultTotalRefundEl.style.color = '#dc3545';
+            } else {
+                resultTotalRefundEl.style.color = '#20B2AA';
+            }
             
             // Update header refund display
-            document.getElementById('estimatedRefundDisplay').textContent = formatCurrency(netAmount);
+            const estimatedRefundDisplayEl = document.getElementById('estimatedRefundDisplay');
+            estimatedRefundDisplayEl.textContent = formatCurrency(netAmount);
+            // Apply styling based on positive/negative
+            if (netAmount < 0) {
+                estimatedRefundDisplayEl.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
+                estimatedRefundDisplayEl.style.webkitBackgroundClip = 'text';
+                estimatedRefundDisplayEl.style.webkitTextFillColor = 'transparent';
+                estimatedRefundDisplayEl.style.backgroundClip = 'text';
+                estimatedRefundDisplayEl.style.textShadow = '0 2px 10px rgba(220, 53, 69, 0.2)';
+            } else {
+                estimatedRefundDisplayEl.style.background = 'linear-gradient(135deg, #20B2AA 0%, #17a2b8 100%)';
+                estimatedRefundDisplayEl.style.webkitBackgroundClip = 'text';
+                estimatedRefundDisplayEl.style.webkitTextFillColor = 'transparent';
+                estimatedRefundDisplayEl.style.backgroundClip = 'text';
+                estimatedRefundDisplayEl.style.textShadow = '0 2px 10px rgba(32, 178, 170, 0.2)';
+            }
+            
+            // Update header label
+            const estimatedRefundLabelEl = document.getElementById('estimatedRefundLabel');
+            if (estimatedRefundLabelEl) {
+                estimatedRefundLabelEl.textContent = headerLabel;
+            }
         }
 
         // Reset calculator
@@ -3753,7 +3810,19 @@
             });
             
             // Reset refund display
-            document.getElementById('estimatedRefundDisplay').textContent = '$0';
+            const estimatedRefundDisplayEl = document.getElementById('estimatedRefundDisplay');
+            estimatedRefundDisplayEl.textContent = '$0';
+            estimatedRefundDisplayEl.style.background = 'linear-gradient(135deg, #20B2AA 0%, #17a2b8 100%)';
+            estimatedRefundDisplayEl.style.webkitBackgroundClip = 'text';
+            estimatedRefundDisplayEl.style.webkitTextFillColor = 'transparent';
+            estimatedRefundDisplayEl.style.backgroundClip = 'text';
+            estimatedRefundDisplayEl.style.textShadow = '0 2px 10px rgba(32, 178, 170, 0.2)';
+            
+            // Reset label
+            const estimatedRefundLabelEl = document.getElementById('estimatedRefundLabel');
+            if (estimatedRefundLabelEl) {
+                estimatedRefundLabelEl.textContent = 'Your estimated refund:';
+            }
             
             // Hide conditional fields
             document.getElementById('filingStatusRow').style.display = 'none';
