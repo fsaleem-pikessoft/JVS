@@ -1583,6 +1583,22 @@
             transition: all 0.3s ease;
             outline: none;
         }
+        
+        /* Hide default browser dropdown arrow */
+        .form-select-custom {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none;
+        }
+        
+        /* Hide default arrow for select elements in mobile field controls */
+        .mobile-field-control .form-select-custom {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none;
+        }
 
         .form-select-custom:focus,
         .form-field-row input[type="number"]:focus {
@@ -1654,6 +1670,32 @@
         .btn-get-estimate:active,
         .btn-next-step:active {
             transform: translateY(-1px);
+        }
+
+        .btn-back-step {
+            background: transparent;
+            color: #20B2AA;
+            border: 2px solid #20B2AA;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-back-step:hover {
+            background: #20B2AA;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(32, 178, 170, 0.3);
+        }
+
+        .btn-back-step:active {
+            transform: translateY(0);
         }
 
         .calculator-step h2 {
@@ -2732,6 +2774,7 @@
                                             <option value="">single or married</option>
                                             <option value="single">Single</option>
                                             <option value="married">Married</option>
+                                            <option value="head_of_household">Head of Household</option>
                                         </select>
                                         <i class="fas fa-chevron-down" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #047857; pointer-events: none;"></i>
                                         <i class="fas fa-check-circle" id="maritalStatusCheck" style="position: absolute; right: 48px; top: 50%; transform: translateY(-50%); color: #20B2AA; display: none;"></i>
@@ -2847,12 +2890,16 @@
 
                         <div id="dependentsSection" style="display: none; margin-bottom: 30px;">
                             <div id="dependentsList"></div>
-                            <button type="button" onclick="addDependent()" style="background: transparent; border: 2px solid #20B2AA; color: #20B2AA; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px;">
+                            <div id="newDependentForm" style="display: none;"></div>
+                            <button type="button" id="addDependentBtn" onclick="addDependent()" style="background: transparent; border: 2px solid #20B2AA; color: #20B2AA; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px;">
                                 <i class="fas fa-plus me-2"></i>Add another dependent
                             </button>
                         </div>
 
-                        <div style="text-align: center; margin-top: 40px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+                            <button type="button" class="btn-back-step" onclick="goBackStep()" style="background: transparent; color: #20B2AA; border: 2px solid #20B2AA; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
                             <button type="button" class="btn-next-step" onclick="goToStep3()" style="background: #20B2AA; color: white; border: none; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer;">
                                 Next
                             </button>
@@ -2865,49 +2912,58 @@
                         <p style="color: #6c757d; font-size: 1rem; margin-bottom: 30px;">There are many ways to make income. Choose all the ways you earned in 2025.</p>
                         
                         <div id="incomeTypesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                            <button type="button" class="income-type-btn" data-type="employment" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="employment" data-label="Employment (W-2)" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Employment (W-2)</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="interest" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="interest" data-label="Interest" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Interest</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="business" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="business" data-label="Business" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Business</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="social_security" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="social_security" data-label="Social Security" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Social Security</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="dividends" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="dividends" data-label="Dividends" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Dividends</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="capital_gains" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="capital_gains" data-label="Capital gains/losses" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Capital gains/losses</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="combat_pay" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="combat_pay" data-label="Combat pay" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Combat pay</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="unemployment" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="unemployment" data-label="Unemployment" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Unemployment</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="tax_refund" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="tax_refund" data-label="State/local tax refund" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">State/local tax refund</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
-                            <button type="button" class="income-type-btn" data-type="other" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
+                            <button type="button" class="income-type-btn" data-type="other" data-label="Other income" style="padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">
                                 <span style="color: #2c3e50; font-weight: 600;">Other income</span>
                                 <i class="fas fa-plus float-end" style="color: #20B2AA; margin-top: 5px;"></i>
                             </button>
                         </div>
 
-                        <div style="text-align: center; margin-top: 40px;">
+                        <div id="incomeAmountsContainer" style="margin-bottom: 30px;"></div>
+
+                        <div style="margin-top: 20px;">
+                            <a href="#" onclick="return false;" style="color: #20B2AA; text-decoration: none; font-size: 0.9rem; font-weight: 600;">What is this?</a>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+                            <button type="button" class="btn-back-step" onclick="goBackStep()" style="background: transparent; color: #20B2AA; border: 2px solid #20B2AA; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
                             <button type="button" class="btn-next-step" onclick="goToStep4()" style="background: #20B2AA; color: white; border: none; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer;">
                                 Next
                             </button>
@@ -2941,6 +2997,12 @@
                                     Continue with itemized
                                 </button>
                             </div>
+                        </div>
+                        
+                        <div style="text-align: left; margin-top: 40px;">
+                            <button type="button" class="btn-back-step" onclick="goBackStep()" style="background: transparent; color: #20B2AA; border: 2px solid #20B2AA; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
                         </div>
                     </div>
 
@@ -2979,7 +3041,10 @@
                             </label>
                         </div>
 
-                        <div style="text-align: center; margin-top: 40px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+                            <button type="button" class="btn-back-step" onclick="goBackStep()" style="background: transparent; color: #20B2AA; border: 2px solid #20B2AA; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
                             <button type="button" class="btn-next-step" onclick="goToStep6()" style="background: #20B2AA; color: white; border: none; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer;">
                                 See my final estimate
                             </button>
@@ -3051,6 +3116,12 @@
                                 </h3>
                                 <i class="fas fa-chevron-down" style="color: #6c757d; cursor: pointer;"></i>
                             </div>
+                        </div>
+
+                        <div style="text-align: left; margin-bottom: 30px;">
+                            <button type="button" class="btn-back-step" onclick="goBackStep()" style="background: transparent; color: #20B2AA; border: 2px solid #20B2AA; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
                         </div>
 
                         <div class="results-actions">
@@ -3168,6 +3239,7 @@
             filingMethod: '',
             dependents: [],
             incomeTypes: [],
+            incomeAmounts: {},
             deductionType: 'standard',
             credits: [],
             standardDeduction: 15750
@@ -3209,18 +3281,51 @@
                     
                     // Show/hide filing status and spouse age based on marital status
                     const filingStatusRow = document.getElementById('filingStatusRow');
+                    const filingStatus = document.getElementById('filingStatus');
                     const spouseAgeRow = document.getElementById('spouseAgeRow');
+                    
                     if (this.value === 'married') {
+                        // Show filing status row with only married options
                         if (filingStatusRow) filingStatusRow.style.display = 'flex';
                         if (spouseAgeRow) spouseAgeRow.style.display = 'flex';
-                    } else {
+                        
+                        // Update filing status dropdown to show only married options
+                        if (filingStatus) {
+                            filingStatus.innerHTML = `
+                                <option value="">select</option>
+                                <option value="married_jointly">Married Filing Jointly</option>
+                                <option value="married_separately">Married Filing Separately</option>
+                            `;
+                            filingStatus.value = '';
+                            calculatorData.filingStatus = '';
+                        }
+                    } else if (this.value === 'single') {
+                        // Show filing status row with Single and Head of Household options
+                        if (filingStatusRow) filingStatusRow.style.display = 'flex';
+                        if (spouseAgeRow) spouseAgeRow.style.display = 'none';
+                        
+                        // Update filing status dropdown to show Single and Head of Household options
+                        if (filingStatus) {
+                            filingStatus.innerHTML = `
+                                <option value="">select</option>
+                                <option value="single">Single</option>
+                                <option value="head_of_household">Head of Household</option>
+                            `;
+                            filingStatus.value = '';
+                            calculatorData.filingStatus = '';
+                        }
+                    } else if (this.value === 'head_of_household') {
+                        // Set filing status directly to head_of_household and hide the row
                         if (filingStatusRow) filingStatusRow.style.display = 'none';
                         if (spouseAgeRow) spouseAgeRow.style.display = 'none';
-                        if (this.value === 'single') {
-                            calculatorData.filingStatus = 'single';
-                            const filingStatus = document.getElementById('filingStatus');
-                            if (filingStatus) filingStatus.value = 'single';
-                        }
+                        calculatorData.filingStatus = 'head_of_household';
+                        if (filingStatus) filingStatus.value = 'head_of_household';
+                    } else {
+                        // Hide both rows if no selection
+                        if (filingStatusRow) filingStatusRow.style.display = 'none';
+                        if (spouseAgeRow) spouseAgeRow.style.display = 'none';
+                        calculatorData.filingStatus = '';
+                        if (filingStatus) filingStatus.value = '';
                     }
                     updateEstimatedRefund();
                 });
@@ -3322,13 +3427,40 @@
             if (dependentsYes && dependentsNo) {
                 dependentsYes.addEventListener('change', function() {
                     if (this.checked) {
-                        document.getElementById('dependentsSection').style.display = 'block';
+                        const dependentsSection = document.getElementById('dependentsSection');
+                        if (dependentsSection) {
+                            dependentsSection.style.display = 'block';
+                        }
+                        // If no dependents added yet, show the form immediately
+                        if (calculatorData.dependents.length === 0) {
+                            addDependent();
+                        }
                     }
                 });
                 dependentsNo.addEventListener('change', function() {
                     if (this.checked) {
-                        document.getElementById('dependentsSection').style.display = 'none';
+                        const dependentsSection = document.getElementById('dependentsSection');
+                        if (dependentsSection) {
+                            dependentsSection.style.display = 'none';
+                        }
                         calculatorData.dependents = [];
+                        const dependentsList = document.getElementById('dependentsList');
+                        if (dependentsList) {
+                            dependentsList.innerHTML = '';
+                        }
+                        const newDependentForm = document.getElementById('newDependentForm');
+                        if (newDependentForm) {
+                            newDependentForm.style.display = 'none';
+                            newDependentForm.innerHTML = '';
+                        }
+                        const addDependentBtn = document.getElementById('addDependentBtn');
+                        if (addDependentBtn) {
+                            addDependentBtn.style.display = 'block';
+                            addDependentBtn.style.background = 'transparent';
+                            addDependentBtn.style.border = '2px solid #20B2AA';
+                            addDependentBtn.style.color = '#20B2AA';
+                            addDependentBtn.innerHTML = '<i class="fas fa-plus me-2"></i>Add another dependent';
+                        }
                     }
                 });
             }
@@ -3337,24 +3469,99 @@
             document.querySelectorAll('.income-type-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const type = this.dataset.type;
+                    const label = this.dataset.label || type;
+                    const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                    
                     if (this.classList.contains('selected')) {
+                        // Remove income type
                         this.classList.remove('selected');
                         calculatorData.incomeTypes = calculatorData.incomeTypes.filter(t => t !== type);
+                        if (calculatorData.incomeAmounts) {
+                            delete calculatorData.incomeAmounts[type];
+                        }
                         this.querySelector('i').classList.remove('fa-times');
                         this.querySelector('i').classList.add('fa-plus');
                         this.style.background = 'white';
                         this.style.borderColor = '#e0e0e0';
+                        this.querySelector('span').style.color = '#2c3e50';
+                        
+                        // Remove income amount input
+                        const incomeInputDiv = document.getElementById(`incomeAmount_${type}`);
+                        if (incomeInputDiv) {
+                            incomeInputDiv.remove();
+                        }
                     } else {
+                        // Add income type
                         this.classList.add('selected');
-                        calculatorData.incomeTypes.push(type);
+                        if (!calculatorData.incomeTypes.includes(type)) {
+                            calculatorData.incomeTypes.push(type);
+                        }
                         this.querySelector('i').classList.remove('fa-plus');
                         this.querySelector('i').classList.add('fa-times');
                         this.style.background = '#20B2AA';
                         this.style.borderColor = '#20B2AA';
                         this.querySelector('span').style.color = 'white';
+                        
+                        // Add income amount input field
+                        if (!document.getElementById(`incomeAmount_${type}`)) {
+                            const incomeInputDiv = document.createElement('div');
+                            incomeInputDiv.id = `incomeAmount_${type}`;
+                            incomeInputDiv.className = 'income-amount-input';
+                            incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                            incomeInputDiv.innerHTML = `
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">${label}</label>
+                                    <i class="fas fa-times" onclick="removeIncomeAmount('${type}')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                                    <input type="text" class="income-amount-field" data-income-type="${type}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;">
+                                </div>
+                            `;
+                            incomeAmountsContainer.appendChild(incomeInputDiv);
+                            
+                            // Initialize comma input for the amount field
+                            const amountInput = incomeInputDiv.querySelector('.income-amount-field');
+                            if (amountInput) {
+                                initCommaInput(amountInput, (value) => {
+                                    if (!calculatorData.incomeAmounts) {
+                                        calculatorData.incomeAmounts = {};
+                                    }
+                                    calculatorData.incomeAmounts[type] = value;
+                                    updateEstimatedRefund();
+                                });
+                            }
+                        }
                     }
+                    updateEstimatedRefund();
                 });
             });
+            
+            // Function to remove income amount
+            window.removeIncomeAmount = function(type) {
+                const incomeInputDiv = document.getElementById(`incomeAmount_${type}`);
+                if (incomeInputDiv) {
+                    incomeInputDiv.remove();
+                }
+                
+                // Remove from data
+                if (calculatorData.incomeAmounts) {
+                    delete calculatorData.incomeAmounts[type];
+                }
+                calculatorData.incomeTypes = calculatorData.incomeTypes.filter(t => t !== type);
+                
+                // Reset button state
+                const btn = document.querySelector(`.income-type-btn[data-type="${type}"]`);
+                if (btn) {
+                    btn.classList.remove('selected');
+                    btn.querySelector('i').classList.remove('fa-times');
+                    btn.querySelector('i').classList.add('fa-plus');
+                    btn.style.background = 'white';
+                    btn.style.borderColor = '#e0e0e0';
+                    btn.querySelector('span').style.color = '#2c3e50';
+                }
+                updateEstimatedRefund();
+            };
 
             // Credit buttons
             document.querySelectorAll('.credit-btn').forEach(btn => {
@@ -3535,6 +3742,10 @@
             }
             
             currentStep = step;
+            
+            // Restore form data for the step we're navigating to
+            restoreFormData(step);
+            
             document.getElementById('calculatorCard')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -3543,7 +3754,12 @@
                 alert('Please fill in all required fields.');
                 return;
             }
-            goToStep(2);
+            // If "Includes wages (W-2)" is selected, skip dependents step and go to income types
+            if (calculatorData.incomeType === 'includes_wages') {
+                goToStep(3);
+            } else {
+                goToStep(2);
+            }
         }
 
         function goToStep3() {
@@ -3568,51 +3784,434 @@
             goToStep(6);
         }
 
+        // Go back to previous step
+        function goBackStep() {
+            if (currentStep <= 1) return;
+            
+            let previousStep = currentStep - 1;
+            
+            // If going back from step 3 and incomeType is 'includes_wages', skip step 2
+            if (currentStep === 3 && calculatorData.incomeType === 'includes_wages') {
+                previousStep = 1;
+            }
+            
+            goToStep(previousStep);
+            restoreFormData(previousStep);
+        }
+
+        // Restore form data when navigating back to a step
+        function restoreFormData(step) {
+            // Step 1: Restore basic info
+            if (step === 1) {
+                const maritalStatus = document.getElementById('maritalStatus');
+                if (maritalStatus && calculatorData.maritalStatus) {
+                    maritalStatus.value = calculatorData.maritalStatus;
+                    const check = document.getElementById('maritalStatusCheck');
+                    if (check) check.style.display = 'block';
+                    
+                    // Restore filing status dropdown based on marital status
+                    const filingStatusRow = document.getElementById('filingStatusRow');
+                    const filingStatus = document.getElementById('filingStatus');
+                    const spouseAgeRow = document.getElementById('spouseAgeRow');
+                    
+                    if (calculatorData.maritalStatus === 'married') {
+                        if (filingStatusRow) filingStatusRow.style.display = 'flex';
+                        if (spouseAgeRow) spouseAgeRow.style.display = 'flex';
+                        if (filingStatus) {
+                            filingStatus.innerHTML = `
+                                <option value="">select</option>
+                                <option value="married_jointly">Married Filing Jointly</option>
+                                <option value="married_separately">Married Filing Separately</option>
+                            `;
+                            if (calculatorData.filingStatus) {
+                                filingStatus.value = calculatorData.filingStatus;
+                            }
+                        }
+                    } else if (calculatorData.maritalStatus === 'single') {
+                        if (filingStatusRow) filingStatusRow.style.display = 'flex';
+                        if (spouseAgeRow) spouseAgeRow.style.display = 'none';
+                        if (filingStatus) {
+                            filingStatus.innerHTML = `
+                                <option value="">select</option>
+                                <option value="single">Single</option>
+                                <option value="head_of_household">Head of Household</option>
+                            `;
+                            if (calculatorData.filingStatus) {
+                                filingStatus.value = calculatorData.filingStatus;
+                            }
+                        }
+                    } else if (calculatorData.maritalStatus === 'head_of_household') {
+                        if (filingStatusRow) filingStatusRow.style.display = 'none';
+                        if (spouseAgeRow) spouseAgeRow.style.display = 'none';
+                    }
+                }
+                
+                const age = document.getElementById('age');
+                if (age && calculatorData.age) {
+                    age.value = calculatorData.age;
+                    const check = document.getElementById('ageCheck');
+                    if (check) check.style.display = 'block';
+                }
+                
+                const spouseAge = document.getElementById('spouseAge');
+                if (spouseAge && calculatorData.spouseAge) {
+                    spouseAge.value = calculatorData.spouseAge;
+                    const check = document.getElementById('spouseAgeCheck');
+                    if (check) check.style.display = 'block';
+                }
+                
+                const incomeType = document.getElementById('incomeType');
+                if (incomeType && calculatorData.incomeType) {
+                    incomeType.value = calculatorData.incomeType;
+                    const check = document.getElementById('incomeTypeCheck');
+                    if (check) check.style.display = 'block';
+                    
+                    const wageIncomeRow = document.getElementById('wageIncomeRow');
+                    if (calculatorData.incomeType === 'includes_wages' && wageIncomeRow) {
+                        wageIncomeRow.style.display = 'flex';
+                    }
+                }
+                
+                const wageIncome = document.getElementById('wageIncome');
+                if (wageIncome && calculatorData.wageIncome) {
+                    wageIncome.value = formatWithCommas(calculatorData.wageIncome, true);
+                    const check = document.getElementById('wageIncomeCheck');
+                    if (check) check.style.display = 'block';
+                }
+                
+                const taxWithheld = document.getElementById('taxWithheld');
+                if (taxWithheld && calculatorData.taxWithheld) {
+                    taxWithheld.value = formatWithCommas(calculatorData.taxWithheld, true);
+                    const check = document.getElementById('taxWithheldCheck');
+                    if (check) check.style.display = 'block';
+                }
+            }
+            
+            // Step 2: Restore dependents
+            if (step === 2) {
+                const dependentsSection = document.getElementById('dependentsSection');
+                const dependentsList = document.getElementById('dependentsList');
+                const addDependentBtn = document.getElementById('addDependentBtn');
+                
+                if (calculatorData.dependents && calculatorData.dependents.length > 0) {
+                    if (dependentsSection) dependentsSection.style.display = 'block';
+                    if (dependentsList) {
+                        dependentsList.innerHTML = '';
+                        calculatorData.dependents.forEach((dep, index) => {
+                            const savedDependentDiv = document.createElement('div');
+                            savedDependentDiv.className = 'saved-dependent';
+                            savedDependentDiv.id = `savedDependent_${dep.id || (index + 1)}`;
+                            savedDependentDiv.style.cssText = 'display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 15px; background: white;';
+                            savedDependentDiv.innerHTML = `
+                                <div>
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Dependent ${dep.id || (index + 1)}</span>
+                                    <span style="color: #6c757d; margin-left: 10px;">Age: ${dep.age}</span>
+                                </div>
+                                <button type="button" onclick="editDependent(${dep.id || (index + 1)})" style="background: #20B2AA; color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-pencil-alt"></i> Edit
+                                </button>
+                            `;
+                            dependentsList.appendChild(savedDependentDiv);
+                        });
+                    }
+                    
+                    // Show and style the "Add another dependent" button
+                    if (addDependentBtn) {
+                        addDependentBtn.style.display = 'block';
+                        addDependentBtn.style.background = 'transparent';
+                        addDependentBtn.style.border = '2px solid #4A90E2';
+                        addDependentBtn.style.color = '#4A90E2';
+                        addDependentBtn.innerHTML = 'Add another dependent';
+                    }
+                    
+                    // Check the "Yes" radio button
+                    const dependentsYes = document.getElementById('dependentsYes');
+                    if (dependentsYes) dependentsYes.checked = true;
+                } else {
+                    // Check the "No" radio button
+                    const dependentsNo = document.getElementById('dependentsNo');
+                    if (dependentsNo) dependentsNo.checked = true;
+                }
+            }
+            
+            // Step 3: Restore income types and amounts
+            if (step === 3) {
+                // Restore income type button states
+                document.querySelectorAll('.income-type-btn').forEach(btn => {
+                    const type = btn.dataset.type;
+                    if (calculatorData.incomeTypes && calculatorData.incomeTypes.includes(type)) {
+                        btn.classList.add('selected');
+                        const icon = btn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-plus');
+                            icon.classList.add('fa-times');
+                        }
+                        btn.style.background = '#20B2AA';
+                        btn.style.borderColor = '#20B2AA';
+                        const span = btn.querySelector('span');
+                        if (span) span.style.color = 'white';
+                    }
+                });
+                
+                // Restore income amount inputs
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                if (incomeAmountsContainer && calculatorData.incomeAmounts) {
+                    incomeAmountsContainer.innerHTML = '';
+                    Object.keys(calculatorData.incomeAmounts).forEach(type => {
+                        const amount = calculatorData.incomeAmounts[type];
+                        const btn = document.querySelector(`.income-type-btn[data-type="${type}"]`);
+                        if (btn) {
+                            const label = btn.dataset.label || type;
+                            const incomeInputDiv = document.createElement('div');
+                            incomeInputDiv.id = `incomeAmount_${type}`;
+                            incomeInputDiv.className = 'income-amount-input';
+                            incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                            incomeInputDiv.innerHTML = `
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">${label}</label>
+                                    <i class="fas fa-times" onclick="removeIncomeAmount('${type}')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                                    <input type="text" class="income-amount-field" data-income-type="${type}" value="${formatWithCommas(amount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;">
+                                </div>
+                            `;
+                            incomeAmountsContainer.appendChild(incomeInputDiv);
+                            
+                            // Initialize comma input for the amount field
+                            const amountInput = incomeInputDiv.querySelector('.income-amount-field');
+                            if (amountInput) {
+                                initCommaInput(amountInput, (value) => {
+                                    if (!calculatorData.incomeAmounts) {
+                                        calculatorData.incomeAmounts = {};
+                                    }
+                                    calculatorData.incomeAmounts[type] = value;
+                                    updateEstimatedRefund();
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+            
+            // Step 4: Restore deduction selection
+            if (step === 4) {
+                // The deduction selection is handled by the selectDeduction function
+                // Visual indication is already handled by the card onclick
+            }
+            
+            // Step 5: Restore credits
+            if (step === 5) {
+                // Restore credit button states
+                document.querySelectorAll('.credit-btn').forEach(btn => {
+                    const credit = btn.dataset.credit;
+                    if (calculatorData.credits && calculatorData.credits.includes(credit)) {
+                        btn.classList.add('selected');
+                        const icon = btn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-plus');
+                            icon.classList.add('fa-times');
+                        }
+                        btn.style.background = '#20B2AA';
+                        btn.style.borderColor = '#20B2AA';
+                        const span = btn.querySelector('span');
+                        if (span) span.style.color = 'white';
+                    }
+                });
+            }
+        }
+
         function addDependent() {
+            const newDependentForm = document.getElementById('newDependentForm');
             const dependentsList = document.getElementById('dependentsList');
-            const dependentId = calculatorData.dependents.length;
-            const dependentDiv = document.createElement('div');
-            dependentDiv.className = 'dependent-item';
-            dependentDiv.style.cssText = 'border: 2px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 15px;';
-            dependentDiv.innerHTML = `
+            const addDependentBtn = document.getElementById('addDependentBtn');
+            const dependentNumber = calculatorData.dependents.length + 1;
+            
+            // Hide the add button if this is the first dependent
+            if (dependentNumber === 1) {
+                addDependentBtn.style.display = 'none';
+            } else {
+                addDependentBtn.style.background = 'transparent';
+                addDependentBtn.style.border = '2px solid #4A90E2';
+                addDependentBtn.style.color = '#4A90E2';
+                addDependentBtn.innerHTML = 'Add another dependent';
+            }
+            
+            // Create new dependent form
+            const dependentFormDiv = document.createElement('div');
+            dependentFormDiv.className = 'new-dependent-form';
+            dependentFormDiv.id = `newDependentForm_${dependentNumber}`;
+            dependentFormDiv.style.cssText = 'border: 2px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 15px; background: white;';
+            dependentFormDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; font-weight: 600; font-size: 1.1rem; margin: 0;">Dependent ${dependentNumber}</h3>
+                    <i class="fas fa-trash" onclick="removeNewDependent(${dependentNumber})" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                </div>
                 <div style="margin-bottom: 15px;">
                     <label style="color: #2c3e50; font-weight: 600; display: block; margin-bottom: 8px;">Age</label>
-                    <input type="number" class="dependent-age" placeholder="Enter age" style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px;">
-                    <small style="color: #6c757d; font-size: 0.85rem;">As of January 1, 2025</small>
+                    <input type="number" class="dependent-age" placeholder="Enter age" style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                    <small style="color: #6c757d; font-size: 0.85rem; display: block; margin-top: 5px;">As of January 1, 2025</small>
                 </div>
-                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
                     <label style="display: flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" class="dependent-student" style="margin-right: 8px;">
+                        <input type="checkbox" class="dependent-student" style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
                         <span style="color: #2c3e50;">Student</span>
                     </label>
                     <label style="display: flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" class="dependent-disabled" style="margin-right: 8px;">
+                        <input type="checkbox" class="dependent-disabled" style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
                         <span style="color: #2c3e50;">Disabled</span>
                     </label>
                     <label style="display: flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" class="dependent-lives-with" style="margin-right: 8px;">
+                        <input type="checkbox" class="dependent-lives-with" style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
                         <span style="color: #2c3e50;">Lives with me</span>
                     </label>
                 </div>
-                <button type="button" onclick="this.parentElement.remove()" style="background: #dc3545; color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; float: right;">
-                    Remove
-                </button>
-                <button type="button" onclick="saveDependent(this)" style="background: #20B2AA; color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; margin-right: 10px;">
-                    Done
-                </button>
+                <div style="text-align: right;">
+                    <button type="button" onclick="saveDependent(${dependentNumber})" style="background: #20B2AA; color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1rem;">
+                        Done
+                    </button>
+                </div>
             `;
-            dependentsList.appendChild(dependentDiv);
+            
+            newDependentForm.innerHTML = '';
+            newDependentForm.appendChild(dependentFormDiv);
+            newDependentForm.style.display = 'block';
         }
 
-        function saveDependent(btn) {
-            const dependentDiv = btn.parentElement;
-            const age = dependentDiv.querySelector('.dependent-age').value;
-            const student = dependentDiv.querySelector('.dependent-student').checked;
-            const disabled = dependentDiv.querySelector('.dependent-disabled').checked;
-            const livesWith = dependentDiv.querySelector('.dependent-lives-with').checked;
+        function removeNewDependent(dependentNumber) {
+            const newDependentForm = document.getElementById('newDependentForm');
+            newDependentForm.style.display = 'none';
+            newDependentForm.innerHTML = '';
             
-            calculatorData.dependents.push({ age, student, disabled, livesWith });
-            dependentDiv.style.borderColor = '#20B2AA';
+            const addDependentBtn = document.getElementById('addDependentBtn');
+            if (calculatorData.dependents.length === 0) {
+                addDependentBtn.style.display = 'block';
+                addDependentBtn.style.background = 'transparent';
+                addDependentBtn.style.border = '2px solid #20B2AA';
+                addDependentBtn.style.color = '#20B2AA';
+                addDependentBtn.innerHTML = '<i class="fas fa-plus me-2"></i>Add another dependent';
+            }
+        }
+
+        function saveDependent(dependentNumber) {
+            const formDiv = document.getElementById(`newDependentForm_${dependentNumber}`);
+            if (!formDiv) return;
+            
+            const age = formDiv.querySelector('.dependent-age').value;
+            if (!age) {
+                alert('Please enter the dependent\'s age.');
+                return;
+            }
+            
+            const student = formDiv.querySelector('.dependent-student').checked;
+            const disabled = formDiv.querySelector('.dependent-disabled').checked;
+            const livesWith = formDiv.querySelector('.dependent-lives-with').checked;
+            
+            // Save to data
+            const dependentData = { 
+                id: calculatorData.dependents.length + 1,
+                age, 
+                student, 
+                disabled, 
+                livesWith 
+            };
+            calculatorData.dependents.push(dependentData);
+            
+            // Create saved dependent display
+            const dependentsList = document.getElementById('dependentsList');
+            const savedDependentDiv = document.createElement('div');
+            savedDependentDiv.className = 'saved-dependent';
+            savedDependentDiv.id = `savedDependent_${dependentData.id}`;
+            savedDependentDiv.style.cssText = 'display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 15px; background: white;';
+            savedDependentDiv.innerHTML = `
+                <div>
+                    <span style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Dependent ${dependentData.id}</span>
+                    <span style="color: #6c757d; margin-left: 10px;">Age: ${age}</span>
+                </div>
+                <button type="button" onclick="editDependent(${dependentData.id})" style="background: #20B2AA; color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                </button>
+            `;
+            dependentsList.appendChild(savedDependentDiv);
+            
+            // Clear the form
+            const newDependentForm = document.getElementById('newDependentForm');
+            newDependentForm.style.display = 'none';
+            newDependentForm.innerHTML = '';
+            
+            // Show add button with updated style
+            const addDependentBtn = document.getElementById('addDependentBtn');
+            addDependentBtn.style.display = 'block';
+            addDependentBtn.style.background = 'transparent';
+            addDependentBtn.style.border = '2px solid #4A90E2';
+            addDependentBtn.style.color = '#4A90E2';
+            addDependentBtn.innerHTML = 'Add another dependent';
+        }
+
+        function editDependent(dependentId) {
+            const dependentData = calculatorData.dependents.find(d => d.id === dependentId);
+            if (!dependentData) return;
+            
+            // Remove from saved list
+            const savedDiv = document.getElementById(`savedDependent_${dependentId}`);
+            if (savedDiv) savedDiv.remove();
+            
+            // Remove from data
+            calculatorData.dependents = calculatorData.dependents.filter(d => d.id !== dependentId);
+            
+            // Re-number remaining dependents
+            calculatorData.dependents.forEach((d, index) => {
+                d.id = index + 1;
+                const savedEl = document.getElementById(`savedDependent_${d.id}`);
+                if (savedEl) {
+                    savedEl.id = `savedDependent_${d.id}`;
+                    savedEl.querySelector('span').textContent = `Dependent ${d.id}`;
+                    savedEl.querySelector('button').setAttribute('onclick', `editDependent(${d.id})`);
+                }
+            });
+            
+            // Show edit form
+            const newDependentForm = document.getElementById('newDependentForm');
+            const dependentNumber = calculatorData.dependents.length + 1;
+            
+            const dependentFormDiv = document.createElement('div');
+            dependentFormDiv.className = 'new-dependent-form';
+            dependentFormDiv.id = `newDependentForm_${dependentNumber}`;
+            dependentFormDiv.style.cssText = 'border: 2px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 15px; background: white;';
+            dependentFormDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; font-weight: 600; font-size: 1.1rem; margin: 0;">Dependent ${dependentNumber}</h3>
+                    <i class="fas fa-trash" onclick="removeNewDependent(${dependentNumber})" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="color: #2c3e50; font-weight: 600; display: block; margin-bottom: 8px;">Age</label>
+                    <input type="number" class="dependent-age" placeholder="Enter age" value="${dependentData.age}" style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                    <small style="color: #6c757d; font-size: 0.85rem; display: block; margin-top: 5px;">As of January 1, 2025</small>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="dependent-student" ${dependentData.student ? 'checked' : ''} style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                        <span style="color: #2c3e50;">Student</span>
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="dependent-disabled" ${dependentData.disabled ? 'checked' : ''} style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                        <span style="color: #2c3e50;">Disabled</span>
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" class="dependent-lives-with" ${dependentData.livesWith ? 'checked' : ''} style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                        <span style="color: #2c3e50;">Lives with me</span>
+                    </label>
+                </div>
+                <div style="text-align: right;">
+                    <button type="button" onclick="saveDependent(${dependentNumber})" style="background: #20B2AA; color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1rem;">
+                        Done
+                    </button>
+                </div>
+            `;
+            
+            newDependentForm.innerHTML = '';
+            newDependentForm.appendChild(dependentFormDiv);
+            newDependentForm.style.display = 'block';
         }
 
         // Tax brackets for 2025
@@ -3777,10 +4376,48 @@
                 filingMethod: '',
                 dependents: [],
                 incomeTypes: [],
+                incomeAmounts: {},
                 deductionType: 'standard',
                 credits: [],
                 standardDeduction: 15750
             };
+            
+            // Clear income amounts container
+            const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+            if (incomeAmountsContainer) {
+                incomeAmountsContainer.innerHTML = '';
+            }
+            
+            // Reset income type buttons
+            document.querySelectorAll('.income-type-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-plus');
+                }
+                btn.style.background = 'white';
+                btn.style.borderColor = '#e0e0e0';
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.style.color = '#2c3e50';
+                }
+            });
+            
+            // Clear dependents section
+            const dependentsList = document.getElementById('dependentsList');
+            if (dependentsList) {
+                dependentsList.innerHTML = '';
+            }
+            const newDependentForm = document.getElementById('newDependentForm');
+            if (newDependentForm) {
+                newDependentForm.style.display = 'none';
+                newDependentForm.innerHTML = '';
+            }
+            const dependentsSection = document.getElementById('dependentsSection');
+            if (dependentsSection) {
+                dependentsSection.style.display = 'none';
+            }
             
             // Reset form
             document.getElementById('taxCalculatorForm')?.reset();
