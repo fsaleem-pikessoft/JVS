@@ -3352,6 +3352,292 @@
                         </div>
 
                         <div id="incomeAmountsContainer" style="margin-bottom: 30px;"></div>
+                        
+                        <!-- W-2 Form Container (Inline) -->
+                        <div id="w2FormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Employment (W-2)</h3>
+                                <button type="button" onclick="closeW2FormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="w2FormsContainer">
+                                <!-- W-2 forms will be added here -->
+                            </div>
+                            
+                            <div style="margin-top: 20px;">
+                                <button type="button" onclick="addAnotherW2()" style="background: transparent; color: #20B2AA; border: 2px dashed #20B2AA; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s;" onmouseover="this.style.background='#f0f9f7'" onmouseout="this.style.background='transparent'">
+                                    <i class="fas fa-plus me-2"></i>Add another W-2
+                                </button>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveW2Form()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Interest Form Container (Inline) -->
+                        <div id="interestFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Interest</h3>
+                                <button type="button" onclick="closeInterestFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Interest income earned (2025) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="interestIncome" class="income-amount-field" data-income-type="interest" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1000-INT, Box 1</small>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveInterestForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Business Form Container (Inline) -->
+                        <div id="businessFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Small business, self-employment, gig</h3>
+                                <button type="button" onclick="closeBusinessFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="businessFormsContainer">
+                                <!-- Business forms will be added here -->
+                            </div>
+                            
+                            <div style="margin-top: 20px;">
+                                <button type="button" onclick="addAnotherBusiness()" style="background: transparent; color: #20B2AA; border: 2px dashed #20B2AA; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s;" onmouseover="this.style.background='#f0f9f7'" onmouseout="this.style.background='transparent'">
+                                    <i class="fas fa-plus me-2"></i>Add another business
+                                </button>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveBusinessForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Security Form Container (Inline) -->
+                        <div id="socialSecurityFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Social Security</h3>
+                                <button type="button" onclick="closeSocialSecurityFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Total Social Security benefits (2025) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="socialSecurityBenefits" class="income-amount-field" data-income-type="social_security" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">Form SSA-1099, Box 5</small>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Federal income tax withheld (2025) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="socialSecurityWithheld" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">Form SSA-1099, Box 5</small>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveSocialSecurityForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Dividends Form Container (Inline) -->
+                        <div id="dividendsFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Dividends</h3>
+                                <button type="button" onclick="closeDividendsFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Ordinary dividends (2025) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="ordinaryDividends" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1099-DIV, Box 1a</small>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Qualified dividends (2025) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="qualifiedDividends" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1099-DIV, Box 1b</small>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveDividendsForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Combat Pay Form Container (Inline) -->
+                        <div id="combatPayFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Combat pay</h3>
+                                <button type="button" onclick="closeCombatPayFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Total nontaxable combat pay (2025) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="combatPayAmount" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="includeCombatPayEIC" style="margin-right: 10px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">Include my nontaxable combat pay in my earned income credit calculation</span>
+                                </label>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveCombatPayForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Unemployment Form Container (Inline) -->
+                        <div id="unemploymentFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Unemployment</h3>
+                                <button type="button" onclick="closeUnemploymentFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="unemploymentFormsContainer">
+                                <!-- Unemployment forms will be added here -->
+                            </div>
+                            
+                            <div style="margin-top: 20px;">
+                                <button type="button" onclick="addAnotherUnemployment()" style="background: transparent; color: #20B2AA; border: 2px dashed #20B2AA; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s;" onmouseover="this.style.background='#f0f9f7'" onmouseout="this.style.background='transparent'">
+                                    <i class="fas fa-plus me-2"></i>Add another 1099-G
+                                </button>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveUnemploymentForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- State/Local Tax Refund Form Container (Inline) -->
+                        <div id="taxRefundFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">State/local tax refund</h3>
+                                <button type="button" onclick="closeTaxRefundFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Any state/local tax refund(s) (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="taxRefundAmount" class="income-amount-field" data-income-type="tax_refund" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                    <i class="fas fa-question-circle" style="color: #20B2AA; cursor: pointer; font-size: 1.1rem;" title="State or local tax refunds received"></i>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveTaxRefundForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Capital Gains/Losses Form Container (Inline) -->
+                        <div id="capitalGainsFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Capital gains/losses</h3>
+                                <button type="button" onclick="closeCapitalGainsFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Held for one year or less (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="shortTermCapitalGains" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1000-8, Box 1d minus Box 1e</small>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Held for more than one year (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="longTermCapitalGains" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                </div>
+                                <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1000-8, Box 1d minus Box 1e or 1099DIV, Box 2a</small>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveCapitalGainsForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Other Income Form Container (Inline) -->
+                        <div id="otherIncomeFormContainer" style="display: none; margin-bottom: 30px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: 700; margin: 0;">Other income</h3>
+                                <button type="button" onclick="closeOtherIncomeFormInline()" style="background: transparent; border: none; font-size: 1.5rem; color: #6c757d; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#f0f0f0'; this.style.color='#dc3545'" onmouseout="this.style.background='transparent'; this.style.color='#6c757d'">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Any other income in 2025 (optional)</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                                    <input type="text" id="otherIncomeAmount" class="income-amount-field" data-income-type="other" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                                    <i class="fas fa-question-circle" style="color: #20B2AA; cursor: pointer; font-size: 1.1rem;" title="Any other income not listed above"></i>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 20px; text-align: right;">
+                                <button type="button" onclick="saveOtherIncomeForm()" style="background: #0f5132; color: white; border: none; padding: 14px 40px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='#20B2AA'" onmouseout="this.style.background='#0f5132'">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
 
                         <div style="margin-top: 20px;">
                             <a href="#" onclick="return false;" style="color: #20B2AA; text-decoration: none; font-size: 0.9rem; font-weight: 600;">What is this?</a>
@@ -4083,7 +4369,40 @@
                         this.style.borderColor = '#20B2AA';
                         this.querySelector('span').style.color = 'white';
                         
-                        // Add income amount input field
+                        // Special handling for different income types - show inline forms
+                        if (type === 'employment') {
+                            showW2FormInline();
+                            return;
+                        } else if (type === 'interest') {
+                            showInterestFormInline();
+                            return;
+                        } else if (type === 'business') {
+                            showBusinessFormInline();
+                            return;
+                        } else if (type === 'social_security') {
+                            showSocialSecurityFormInline();
+                            return;
+                        } else if (type === 'dividends') {
+                            showDividendsFormInline();
+                            return;
+                        } else if (type === 'combat_pay') {
+                            showCombatPayFormInline();
+                            return;
+                        } else if (type === 'unemployment') {
+                            showUnemploymentFormInline();
+                            return;
+                        } else if (type === 'tax_refund') {
+                            showTaxRefundFormInline();
+                            return;
+                        } else if (type === 'capital_gains') {
+                            showCapitalGainsFormInline();
+                            return;
+                        } else if (type === 'other') {
+                            showOtherIncomeFormInline();
+                            return;
+                        }
+                        
+                        // Add income amount input field for other types
                         if (!document.getElementById(`incomeAmount_${type}`)) {
                             const incomeInputDiv = document.createElement('div');
                             incomeInputDiv.id = `incomeAmount_${type}`;
@@ -5400,6 +5719,894 @@
         
         // Make function globally accessible immediately
         window.calculateTax = calculateTax;
+        
+        // W-2 Form Functions
+        let w2FormCount = 0;
+        let w2FormsData = [];
+        
+        function showW2FormInline() {
+            const container = document.getElementById('w2FormContainer');
+            if (container) {
+                container.style.display = 'block';
+                // Initialize with one W-2 form if empty
+                const formsContainer = document.getElementById('w2FormsContainer');
+                if (formsContainer && formsContainer.children.length === 0) {
+                    addW2Form();
+                }
+            }
+        }
+        
+        function closeW2FormInline() {
+            const container = document.getElementById('w2FormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        // Keep old function names for backward compatibility
+        function showW2Form() {
+            showW2FormInline();
+        }
+        
+        function closeW2Form() {
+            closeW2FormInline();
+        }
+        
+        function addW2Form() {
+            w2FormCount++;
+            const formId = `w2Form_${w2FormCount}`;
+            const container = document.getElementById('w2FormsContainer');
+            
+            if (container) {
+                const w2FormDiv = document.createElement('div');
+                w2FormDiv.id = formId;
+                w2FormDiv.className = 'w2-form-item';
+                w2FormDiv.style.cssText = 'margin-bottom: 25px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: #f9f9f9;';
+                w2FormDiv.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #2c3e50; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Total wages (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="w2-wages" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                        </div>
+                        <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">Box 1 on W-2</small>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #2c3e50; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Total federal withholdings (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="w2-withholdings" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                        </div>
+                        <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">Box 2 on W-2</small>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #2c3e50; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Tips (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="w2-tips" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                            <i class="fas fa-question-circle" style="color: #20B2AA; cursor: pointer; font-size: 1.1rem;" title="Tips received"></i>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #2c3e50; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Overtime pay (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="w2-overtime" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                            <i class="fas fa-question-circle" style="color: #20B2AA; cursor: pointer; font-size: 1.1rem;" title="Overtime pay received"></i>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #2c3e50; font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">Whose W-2 is this?</label>
+                        <div style="display: flex; gap: 20px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="radio" name="w2Owner_${formId}" class="w2-owner" data-form-id="${formId}" value="mine" checked style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                                <span style="color: #2c3e50; font-weight: 600;">Mine</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="radio" name="w2Owner_${formId}" class="w2-owner" data-form-id="${formId}" value="spouse" style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                                <span style="color: #2c3e50; font-weight: 600;">My spouse</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    ${w2FormCount > 1 ? `<button type="button" onclick="removeW2Form('${formId}')" style="background: transparent; color: #dc3545; border: 1px solid #dc3545; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem;">Remove this W-2</button>` : ''}
+                `;
+                container.appendChild(w2FormDiv);
+            }
+        }
+        
+        function addAnotherW2() {
+            addW2Form();
+        }
+        
+        function removeW2Form(formId) {
+            const form = document.getElementById(formId);
+            if (form) {
+                form.remove();
+            }
+        }
+        
+        function saveW2Form() {
+            const container = document.getElementById('w2FormsContainer');
+            if (!container) return;
+            
+            const forms = container.querySelectorAll('.w2-form-item');
+            w2FormsData = [];
+            let totalWages = 0;
+            let totalWithholdings = 0;
+            
+            forms.forEach((form, index) => {
+                const formId = form.id;
+                const wages = parseFloat(form.querySelector('.w2-wages')?.value.replace(/,/g, '') || 0);
+                const withholdings = parseFloat(form.querySelector('.w2-withholdings')?.value.replace(/,/g, '') || 0);
+                const tips = parseFloat(form.querySelector('.w2-tips')?.value.replace(/,/g, '') || 0);
+                const overtime = parseFloat(form.querySelector('.w2-overtime')?.value.replace(/,/g, '') || 0);
+                const owner = form.querySelector('.w2-owner:checked')?.value || 'mine';
+                
+                w2FormsData.push({
+                    wages: wages,
+                    withholdings: withholdings,
+                    tips: tips,
+                    overtime: overtime,
+                    owner: owner
+                });
+                
+                // Add to appropriate totals based on owner
+                if (owner === 'mine') {
+                    totalWages += wages + tips + overtime;
+                    totalWithholdings += withholdings;
+                } else {
+                    // For spouse, add to spouse totals
+                    if (!calculatorData.spouseWageIncome) calculatorData.spouseWageIncome = 0;
+                    if (!calculatorData.spouseTaxWithheld) calculatorData.spouseTaxWithheld = 0;
+                    calculatorData.spouseWageIncome += wages + tips + overtime;
+                    calculatorData.spouseTaxWithheld += withholdings;
+                }
+            });
+            
+            // Update calculator data
+            calculatorData.w2Forms = w2FormsData;
+            calculatorData.wageIncome = totalWages;
+            calculatorData.taxWithheld = totalWithholdings;
+            
+            // Update income amount display
+            const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+            const existingInput = document.getElementById('incomeAmount_employment');
+            
+            if (existingInput) {
+                const input = existingInput.querySelector('.income-amount-field');
+                if (input) {
+                    input.value = formatWithCommas(totalWages, true);
+                }
+            } else {
+                // Create income amount display
+                const incomeInputDiv = document.createElement('div');
+                incomeInputDiv.id = 'incomeAmount_employment';
+                incomeInputDiv.className = 'income-amount-input';
+                incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                incomeInputDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Employment (W-2)</label>
+                        <i class="fas fa-times" onclick="removeIncomeAmount('employment')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                        <input type="text" class="income-amount-field" data-income-type="employment" value="${formatWithCommas(totalWages, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                    </div>
+                `;
+                if (incomeAmountsContainer) {
+                    incomeAmountsContainer.appendChild(incomeInputDiv);
+                }
+            }
+            
+            // Close inline form
+            closeW2FormInline();
+        }
+        
+        // Interest Form Functions
+        function showInterestFormInline() {
+            const container = document.getElementById('interestFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeInterestFormInline() {
+            const container = document.getElementById('interestFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveInterestForm() {
+            const input = document.getElementById('interestIncome');
+            if (input) {
+                const amount = parseFloat(input.value.replace(/,/g, '') || 0);
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.interest = amount;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_interest');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(amount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_interest';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Interest</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('interest')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="interest" value="${formatWithCommas(amount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            closeInterestFormInline();
+        }
+        
+        // Business Form Functions
+        let businessFormCount = 0;
+        let businessFormsData = [];
+        
+        function showBusinessFormInline() {
+            const container = document.getElementById('businessFormContainer');
+            if (container) {
+                container.style.display = 'block';
+                const formsContainer = document.getElementById('businessFormsContainer');
+                if (formsContainer && formsContainer.children.length === 0) {
+                    addBusinessForm();
+                }
+            }
+        }
+        
+        function closeBusinessFormInline() {
+            const container = document.getElementById('businessFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function addBusinessForm() {
+            businessFormCount++;
+            const formId = `businessForm_${businessFormCount}`;
+            const container = document.getElementById('businessFormsContainer');
+            
+            if (container) {
+                const businessFormDiv = document.createElement('div');
+                businessFormDiv.id = formId;
+                businessFormDiv.className = 'business-form-item';
+                businessFormDiv.style.cssText = 'margin-bottom: 25px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: white;';
+                businessFormDiv.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Net business income (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="business-income" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                        </div>
+                        <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1000-MISC, Box 3 or 1000-NEC, Box 1</small>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Tips (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="business-tips" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                            <i class="fas fa-question-circle" style="color: #20B2AA; cursor: pointer; font-size: 1.1rem;" title="Tips received"></i>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 12px; font-size: 0.9rem;">Who owns the business?</label>
+                        <div style="display: flex; gap: 20px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="radio" name="businessOwner_${formId}" class="business-owner" data-form-id="${formId}" value="myself" checked style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                                <span style="color: #2c3e50; font-weight: 600;">Myself</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="radio" name="businessOwner_${formId}" class="business-owner" data-form-id="${formId}" value="spouse" style="margin-right: 8px; width: 18px; height: 18px; accent-color: #20B2AA;">
+                                <span style="color: #2c3e50; font-weight: 600;">My Spouse</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    ${businessFormCount > 1 ? `<button type="button" onclick="removeBusinessForm('${formId}')" style="background: transparent; color: #dc3545; border: 1px solid #dc3545; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem;">Remove this business</button>` : ''}
+                `;
+                container.appendChild(businessFormDiv);
+            }
+        }
+        
+        function addAnotherBusiness() {
+            addBusinessForm();
+        }
+        
+        function removeBusinessForm(formId) {
+            const form = document.getElementById(formId);
+            if (form) {
+                form.remove();
+            }
+        }
+        
+        function saveBusinessForm() {
+            const container = document.getElementById('businessFormsContainer');
+            if (!container) return;
+            
+            const forms = container.querySelectorAll('.business-form-item');
+            businessFormsData = [];
+            let totalBusinessIncome = 0;
+            
+            forms.forEach((form) => {
+                const formId = form.id;
+                const income = parseFloat(form.querySelector('.business-income')?.value.replace(/,/g, '') || 0);
+                const tips = parseFloat(form.querySelector('.business-tips')?.value.replace(/,/g, '') || 0);
+                const owner = form.querySelector('.business-owner:checked')?.value || 'myself';
+                
+                businessFormsData.push({
+                    income: income,
+                    tips: tips,
+                    owner: owner
+                });
+                
+                totalBusinessIncome += income + tips;
+            });
+            
+            calculatorData.businessForms = businessFormsData;
+            if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+            calculatorData.incomeAmounts.business = totalBusinessIncome;
+            
+            // Update income amount display
+            const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+            const existingInput = document.getElementById('incomeAmount_business');
+            
+            if (existingInput) {
+                const input = existingInput.querySelector('.income-amount-field');
+                if (input) {
+                    input.value = formatWithCommas(totalBusinessIncome, true);
+                }
+            } else {
+                const incomeInputDiv = document.createElement('div');
+                incomeInputDiv.id = 'incomeAmount_business';
+                incomeInputDiv.className = 'income-amount-input';
+                incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                incomeInputDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Business</label>
+                        <i class="fas fa-times" onclick="removeIncomeAmount('business')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                        <input type="text" class="income-amount-field" data-income-type="business" value="${formatWithCommas(totalBusinessIncome, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                    </div>
+                `;
+                if (incomeAmountsContainer) {
+                    incomeAmountsContainer.appendChild(incomeInputDiv);
+                }
+            }
+            
+            closeBusinessFormInline();
+        }
+        
+        // Social Security Form Functions
+        function showSocialSecurityFormInline() {
+            const container = document.getElementById('socialSecurityFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeSocialSecurityFormInline() {
+            const container = document.getElementById('socialSecurityFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveSocialSecurityForm() {
+            const benefitsInput = document.getElementById('socialSecurityBenefits');
+            const withheldInput = document.getElementById('socialSecurityWithheld');
+            
+            if (benefitsInput) {
+                const amount = parseFloat(benefitsInput.value.replace(/,/g, '') || 0);
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.social_security = amount;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_social_security');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(amount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_social_security';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Social Security</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('social_security')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="social_security" value="${formatWithCommas(amount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            
+            closeSocialSecurityFormInline();
+        }
+        
+        // Make all functions globally accessible
+        window.showW2Form = showW2Form;
+        window.closeW2Form = closeW2Form;
+        window.addAnotherW2 = addAnotherW2;
+        window.removeW2Form = removeW2Form;
+        window.saveW2Form = saveW2Form;
+        window.showInterestFormInline = showInterestFormInline;
+        window.closeInterestFormInline = closeInterestFormInline;
+        window.saveInterestForm = saveInterestForm;
+        window.showBusinessFormInline = showBusinessFormInline;
+        window.closeBusinessFormInline = closeBusinessFormInline;
+        window.addAnotherBusiness = addAnotherBusiness;
+        window.removeBusinessForm = removeBusinessForm;
+        window.saveBusinessForm = saveBusinessForm;
+        window.showSocialSecurityFormInline = showSocialSecurityFormInline;
+        window.closeSocialSecurityFormInline = closeSocialSecurityFormInline;
+        window.saveSocialSecurityForm = saveSocialSecurityForm;
+        
+        // Dividends Form Functions
+        function showDividendsFormInline() {
+            const container = document.getElementById('dividendsFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeDividendsFormInline() {
+            const container = document.getElementById('dividendsFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveDividendsForm() {
+            const ordinaryInput = document.getElementById('ordinaryDividends');
+            const qualifiedInput = document.getElementById('qualifiedDividends');
+            
+            if (ordinaryInput && qualifiedInput) {
+                const ordinaryAmount = parseFloat(ordinaryInput.value.replace(/,/g, '') || 0);
+                const qualifiedAmount = parseFloat(qualifiedInput.value.replace(/,/g, '') || 0);
+                const totalAmount = ordinaryAmount + qualifiedAmount;
+                
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.dividends = totalAmount;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_dividends');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(totalAmount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_dividends';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Dividends</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('dividends')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="dividends" value="${formatWithCommas(totalAmount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            closeDividendsFormInline();
+        }
+        
+        // Combat Pay Form Functions
+        function showCombatPayFormInline() {
+            const container = document.getElementById('combatPayFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeCombatPayFormInline() {
+            const container = document.getElementById('combatPayFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveCombatPayForm() {
+            const amountInput = document.getElementById('combatPayAmount');
+            const eicCheckbox = document.getElementById('includeCombatPayEIC');
+            
+            if (amountInput) {
+                const amount = parseFloat(amountInput.value.replace(/,/g, '') || 0);
+                const includeInEIC = eicCheckbox ? eicCheckbox.checked : false;
+                
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.combat_pay = amount;
+                calculatorData.combatPayIncludeEIC = includeInEIC;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_combat_pay');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(amount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_combat_pay';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Combat pay</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('combat_pay')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="combat_pay" value="${formatWithCommas(amount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            closeCombatPayFormInline();
+        }
+        
+        // Unemployment Form Functions
+        let unemploymentFormCount = 0;
+        let unemploymentFormsData = [];
+        
+        function showUnemploymentFormInline() {
+            const container = document.getElementById('unemploymentFormContainer');
+            if (container) {
+                container.style.display = 'block';
+                const formsContainer = document.getElementById('unemploymentFormsContainer');
+                if (formsContainer && formsContainer.children.length === 0) {
+                    addUnemploymentForm();
+                }
+            }
+        }
+        
+        function closeUnemploymentFormInline() {
+            const container = document.getElementById('unemploymentFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function addUnemploymentForm() {
+            unemploymentFormCount++;
+            const formId = `unemploymentForm_${unemploymentFormCount}`;
+            const container = document.getElementById('unemploymentFormsContainer');
+            
+            if (container) {
+                const unemploymentFormDiv = document.createElement('div');
+                unemploymentFormDiv.id = formId;
+                unemploymentFormDiv.className = 'unemployment-form-item';
+                unemploymentFormDiv.style.cssText = 'margin-bottom: 25px; padding: 25px; border: 2px solid #e0e0e0; border-radius: 12px; background: white;';
+                unemploymentFormDiv.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Total unemployment (2025) (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="unemployment-amount" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                        </div>
+                        <small style="color: #6c757d; font-size: 0.85rem; margin-top: 5px; display: block;">1099-G, Box 1</small>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: #0f5132; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">Federal income tax withheld (optional)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.1rem;">$</span>
+                            <input type="text" class="unemployment-withheld" data-form-id="${formId}" placeholder="0.00" value="0" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; color: #2c3e50;">
+                        </div>
+                    </div>
+                    
+                    ${unemploymentFormCount > 1 ? `<button type="button" onclick="removeUnemploymentForm('${formId}')" style="background: transparent; color: #dc3545; border: 1px solid #dc3545; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem;">Remove this 1099-G</button>` : ''}
+                `;
+                container.appendChild(unemploymentFormDiv);
+            }
+        }
+        
+        function addAnotherUnemployment() {
+            addUnemploymentForm();
+        }
+        
+        function removeUnemploymentForm(formId) {
+            const form = document.getElementById(formId);
+            if (form) {
+                form.remove();
+            }
+        }
+        
+        function saveUnemploymentForm() {
+            const container = document.getElementById('unemploymentFormsContainer');
+            if (!container) return;
+            
+            const forms = container.querySelectorAll('.unemployment-form-item');
+            unemploymentFormsData = [];
+            let totalUnemployment = 0;
+            
+            forms.forEach((form) => {
+                const formId = form.id;
+                const amount = parseFloat(form.querySelector('.unemployment-amount')?.value.replace(/,/g, '') || 0);
+                const withheld = parseFloat(form.querySelector('.unemployment-withheld')?.value.replace(/,/g, '') || 0);
+                
+                unemploymentFormsData.push({
+                    amount: amount,
+                    withheld: withheld
+                });
+                
+                totalUnemployment += amount;
+            });
+            
+            calculatorData.unemploymentForms = unemploymentFormsData;
+            if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+            calculatorData.incomeAmounts.unemployment = totalUnemployment;
+            
+            // Update income amount display
+            const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+            const existingInput = document.getElementById('incomeAmount_unemployment');
+            
+            if (existingInput) {
+                const input = existingInput.querySelector('.income-amount-field');
+                if (input) {
+                    input.value = formatWithCommas(totalUnemployment, true);
+                }
+            } else {
+                const incomeInputDiv = document.createElement('div');
+                incomeInputDiv.id = 'incomeAmount_unemployment';
+                incomeInputDiv.className = 'income-amount-input';
+                incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                incomeInputDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Unemployment</label>
+                        <i class="fas fa-times" onclick="removeIncomeAmount('unemployment')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                        <input type="text" class="income-amount-field" data-income-type="unemployment" value="${formatWithCommas(totalUnemployment, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                    </div>
+                `;
+                if (incomeAmountsContainer) {
+                    incomeAmountsContainer.appendChild(incomeInputDiv);
+                }
+            }
+            
+            closeUnemploymentFormInline();
+        }
+        
+        // Tax Refund Form Functions
+        function showTaxRefundFormInline() {
+            const container = document.getElementById('taxRefundFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeTaxRefundFormInline() {
+            const container = document.getElementById('taxRefundFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveTaxRefundForm() {
+            const input = document.getElementById('taxRefundAmount');
+            if (input) {
+                const amount = parseFloat(input.value.replace(/,/g, '') || 0);
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.tax_refund = amount;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_tax_refund');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(amount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_tax_refund';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">State/local tax refund</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('tax_refund')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="tax_refund" value="${formatWithCommas(amount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            closeTaxRefundFormInline();
+        }
+        
+        // Capital Gains Form Functions
+        function showCapitalGainsFormInline() {
+            const container = document.getElementById('capitalGainsFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeCapitalGainsFormInline() {
+            const container = document.getElementById('capitalGainsFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveCapitalGainsForm() {
+            const shortTermInput = document.getElementById('shortTermCapitalGains');
+            const longTermInput = document.getElementById('longTermCapitalGains');
+            
+            if (shortTermInput && longTermInput) {
+                const shortTermAmount = parseFloat(shortTermInput.value.replace(/,/g, '') || 0);
+                const longTermAmount = parseFloat(longTermInput.value.replace(/,/g, '') || 0);
+                const totalAmount = shortTermAmount + longTermAmount;
+                
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.capital_gains = totalAmount;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_capital_gains');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(totalAmount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_capital_gains';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Capital gains/losses</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('capital_gains')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="capital_gains" value="${formatWithCommas(totalAmount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            closeCapitalGainsFormInline();
+        }
+        
+        // Other Income Form Functions
+        function showOtherIncomeFormInline() {
+            const container = document.getElementById('otherIncomeFormContainer');
+            if (container) {
+                container.style.display = 'block';
+            }
+        }
+        
+        function closeOtherIncomeFormInline() {
+            const container = document.getElementById('otherIncomeFormContainer');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+        
+        function saveOtherIncomeForm() {
+            const input = document.getElementById('otherIncomeAmount');
+            if (input) {
+                const amount = parseFloat(input.value.replace(/,/g, '') || 0);
+                if (!calculatorData.incomeAmounts) calculatorData.incomeAmounts = {};
+                calculatorData.incomeAmounts.other = amount;
+                
+                // Update income amount display
+                const incomeAmountsContainer = document.getElementById('incomeAmountsContainer');
+                const existingInput = document.getElementById('incomeAmount_other');
+                
+                if (existingInput) {
+                    const displayInput = existingInput.querySelector('.income-amount-field');
+                    if (displayInput) {
+                        displayInput.value = formatWithCommas(amount, true);
+                    }
+                } else {
+                    const incomeInputDiv = document.createElement('div');
+                    incomeInputDiv.id = 'incomeAmount_other';
+                    incomeInputDiv.className = 'income-amount-input';
+                    incomeInputDiv.style.cssText = 'margin-bottom: 20px; padding: 20px; border: 2px solid #e0e0e0; border-radius: 10px; background: #f9f9f9;';
+                    incomeInputDiv.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <label style="color: #2c3e50; font-weight: 600; font-size: 1rem;">Other income</label>
+                            <i class="fas fa-times" onclick="removeIncomeAmount('other')" style="color: #dc3545; cursor: pointer; font-size: 1.1rem;"></i>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #2c3e50; font-weight: 600; font-size: 1.2rem;">$</span>
+                            <input type="text" class="income-amount-field" data-income-type="other" value="${formatWithCommas(amount, true)}" placeholder="0.00" style="flex: 1; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1.1rem; color: #2c3e50;" readonly>
+                        </div>
+                    `;
+                    if (incomeAmountsContainer) {
+                        incomeAmountsContainer.appendChild(incomeInputDiv);
+                    }
+                }
+            }
+            closeOtherIncomeFormInline();
+        }
+        
+        // Make all new functions globally accessible
+        window.showDividendsFormInline = showDividendsFormInline;
+        window.closeDividendsFormInline = closeDividendsFormInline;
+        window.saveDividendsForm = saveDividendsForm;
+        window.showCombatPayFormInline = showCombatPayFormInline;
+        window.closeCombatPayFormInline = closeCombatPayFormInline;
+        window.saveCombatPayForm = saveCombatPayForm;
+        window.showUnemploymentFormInline = showUnemploymentFormInline;
+        window.closeUnemploymentFormInline = closeUnemploymentFormInline;
+        window.addAnotherUnemployment = addAnotherUnemployment;
+        window.removeUnemploymentForm = removeUnemploymentForm;
+        window.saveUnemploymentForm = saveUnemploymentForm;
+        window.showTaxRefundFormInline = showTaxRefundFormInline;
+        window.closeTaxRefundFormInline = closeTaxRefundFormInline;
+        window.saveTaxRefundForm = saveTaxRefundForm;
+        window.showCapitalGainsFormInline = showCapitalGainsFormInline;
+        window.closeCapitalGainsFormInline = closeCapitalGainsFormInline;
+        window.saveCapitalGainsForm = saveCapitalGainsForm;
+        window.showOtherIncomeFormInline = showOtherIncomeFormInline;
+        window.closeOtherIncomeFormInline = closeOtherIncomeFormInline;
+        window.saveOtherIncomeForm = saveOtherIncomeForm;
 
         // Reset calculator
         function resetCalculator() {
