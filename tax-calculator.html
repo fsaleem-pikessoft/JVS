@@ -2419,14 +2419,41 @@
 
             .step1-intro {
                 text-align: left;
+                padding: 20px 15px !important;
+            }
+            
+            .step1-intro h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .step1-intro p {
+                font-size: 0.9rem !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .step1-intro-tag {
+                font-size: 0.75rem !important;
+                padding: 6px 12px !important;
+                margin-bottom: 15px !important;
             }
 
             .step1-illustration {
-                min-height: 180px;
+                min-height: 150px !important;
+                padding: 20px 15px !important;
+            }
+            
+            .step1-illustration-content {
+                font-size: 0.9rem !important;
             }
 
             .mobile-help {
                 margin-top: 6px;
+                font-size: 0.8rem !important;
+            }
+            
+            .step1-mobile-card {
+                padding: 20px 15px !important;
             }
             
             /* Results step responsive */
@@ -2482,13 +2509,71 @@
             
             .mobile-field-label {
                 font-size: 0.9rem !important;
-                margin-bottom: 6px !important;
+                margin-bottom: 8px !important;
+                line-height: 1.4 !important;
+            }
+            
+            .mobile-field-control {
+                width: 100% !important;
             }
             
             .mobile-field-control input,
             .mobile-field-control select {
                 font-size: 0.95rem !important;
                 padding: 10px 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Step 1 grid layout mobile */
+            .step1-container {
+                flex-direction: column !important;
+            }
+            
+            .step1-mobile-card {
+                order: 2 !important;
+            }
+            
+            .step1-illustration {
+                order: 1 !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .mobile-field-control input[type="number"] {
+                font-size: 0.95rem !important;
+            }
+            
+            .mobile-field-control span {
+                font-size: 0.9rem !important;
+                white-space: nowrap !important;
+            }
+            
+            /* Form select custom mobile */
+            .form-select-custom {
+                font-size: 0.95rem !important;
+                padding: 10px 40px 10px 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Check icons mobile */
+            .mobile-field-control .fa-check-circle {
+                font-size: 1rem !important;
+                flex-shrink: 0 !important;
+            }
+            
+            /* Age input with "years old" text mobile */
+            .mobile-field-control[style*="display: flex"] {
+                flex-wrap: wrap !important;
+            }
+            
+            .mobile-field-control[style*="display: flex"] input {
+                min-width: 0 !important;
+                flex: 1 1 auto !important;
+            }
+            
+            .mobile-field-control[style*="display: flex"] span {
+                flex-shrink: 0 !important;
             }
             
             /* Step 2 - Dependents mobile */
@@ -2524,18 +2609,151 @@
             #capitalGainsFormContainer,
             #otherIncomeFormContainer {
                 padding: 15px 12px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            #w2FormContainer > div:first-child,
+            #interestFormContainer > div:first-child,
+            #businessFormContainer > div:first-child {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
             }
             
             #w2FormContainer h3,
             #interestFormContainer h3,
-            #businessFormContainer h3 {
+            #businessFormContainer h3,
+            #socialSecurityFormContainer h3,
+            #dividendsFormContainer h3,
+            #combatPayFormContainer h3,
+            #unemploymentFormContainer h3,
+            #taxRefundFormContainer h3,
+            #capitalGainsFormContainer h3,
+            #otherIncomeFormContainer h3 {
                 font-size: 1.1rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            /* Form container close button mobile */
+            #w2FormContainer button[onclick*="close"],
+            #interestFormContainer button[onclick*="close"],
+            #businessFormContainer button[onclick*="close"] {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 1.2rem !important;
+            }
+            
+            /* Form container buttons mobile */
+            #w2FormContainer button[onclick*="save"],
+            #interestFormContainer button[onclick*="save"],
+            #businessFormContainer button[onclick*="save"] {
+                width: 100% !important;
+                padding: 12px !important;
+                font-size: 0.95rem !important;
+            }
+            
+            #w2FormContainer button[onclick*="addAnother"],
+            #unemploymentFormContainer button[onclick*="addAnother"] {
+                padding: 10px 20px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* W-2 form fields mobile */
+            .w2-form-item {
+                padding: 15px 12px !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .w2-form-item > div {
+                margin-bottom: 15px !important;
+            }
+            
+            .w2-form-item label {
+                font-size: 0.85rem !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .w2-form-item input[type="text"] {
+                font-size: 0.9rem !important;
+                padding: 10px 12px !important;
+            }
+            
+            .w2-form-item small {
+                font-size: 0.75rem !important;
+            }
+            
+            .w2-form-item span[style*="font-size: 1.1rem"] {
+                font-size: 0.95rem !important;
+            }
+            
+            .w2-form-item label[style*="display: flex"] {
+                font-size: 0.85rem !important;
+            }
+            
+            .w2-form-item input[type="radio"] {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            .w2-form-item button[onclick*="removeW2Form"] {
+                width: 100% !important;
+                padding: 10px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            #w2FormsContainer input,
+            #w2FormsContainer select,
+            #w2FormsContainer label {
+                font-size: 0.9rem !important;
+            }
+            
+            #w2FormsContainer input,
+            #w2FormsContainer select {
+                padding: 10px 12px !important;
+            }
+            
+            #w2FormsContainer > div {
+                margin-bottom: 15px !important;
+            }
+            
+            /* Continue my estimate button mobile */
+            #step6 button[onclick*="goToStep(2)"] {
+                width: 100% !important;
+                padding: 12px 20px !important;
+                font-size: 0.95rem !important;
+            }
+            
+            #step6 h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            #step6 p {
+                font-size: 0.85rem !important;
             }
             
             /* Step 4 - Deductions mobile */
             .deduction-options-grid {
                 grid-template-columns: 1fr !important;
                 gap: 12px !important;
+            }
+            
+            .deduction-options-grid > div {
+                padding: 20px 15px !important;
+            }
+            
+            .deduction-options-grid h3 {
+                font-size: 1.2rem !important;
+                margin-top: 30px !important;
+            }
+            
+            .deduction-options-grid p {
+                font-size: 0.9rem !important;
+            }
+            
+            .btn-continue-standard,
+            .btn-continue-itemized {
+                padding: 12px !important;
+                font-size: 0.95rem !important;
             }
             
             /* Step 5 - Credits mobile */
@@ -2556,6 +2774,38 @@
                 width: 100% !important;
                 padding: 12px 24px !important;
                 font-size: 0.95rem !important;
+                border-radius: 50px !important;
+            }
+            
+            .btn-get-estimate {
+                margin-top: 30px !important;
+            }
+            
+            /* Step 2 radio buttons mobile */
+            #step2 label[style*="display: flex"] {
+                padding: 12px 15px !important;
+                font-size: 1rem !important;
+            }
+            
+            #step2 label input[type="radio"] {
+                width: 18px !important;
+                height: 18px !important;
+                margin-right: 12px !important;
+            }
+            
+            /* Step 5 checkbox mobile */
+            #step5 label[style*="display: flex"] {
+                padding: 12px 15px !important;
+            }
+            
+            #step5 label input[type="checkbox"] {
+                width: 18px !important;
+                height: 18px !important;
+                margin-right: 12px !important;
+            }
+            
+            #step5 label span {
+                font-size: 1rem !important;
             }
             
             /* Step navigation containers mobile */
@@ -2595,9 +2845,36 @@
                 margin-bottom: 15px !important;
             }
             
+            .dependent-item {
+                padding: 15px 12px !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .dependent-item input,
+            .dependent-item select {
+                font-size: 0.9rem !important;
+                padding: 10px 12px !important;
+            }
+            
+            .dependent-item label {
+                font-size: 0.85rem !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .dependent-item button {
+                padding: 8px 16px !important;
+                font-size: 0.85rem !important;
+            }
+            
             #dependentsList > div,
             #newDependentForm > div {
-                padding: 15px !important;
+                padding: 15px 12px !important;
+            }
+            
+            #addDependentBtn {
+                width: 100% !important;
+                padding: 12px 20px !important;
+                font-size: 0.9rem !important;
             }
             
             /* W-2 form fields mobile */
@@ -2638,6 +2915,94 @@
             
             .calculator-step > div[style*="background: #f5f5f5"] p {
                 font-size: 0.85rem !important;
+            }
+            
+            /* Results section mobile */
+            #resultsBreakdown {
+                padding: 20px 15px !important;
+            }
+            
+            /* My Details section mobile */
+            #wizardStep1 h3,
+            #wizardStep2 h3 {
+                font-size: 1.1rem !important;
+                padding-bottom: 12px !important;
+            }
+            
+            #wizardStep1 h3 i,
+            #wizardStep2 h3 i {
+                font-size: 1rem !important;
+            }
+            
+            #wizardStep1 h3 span,
+            #wizardStep2 h3 span {
+                gap: 8px !important;
+            }
+            
+            #myDetailsContent > div > div,
+            #wizardStep1 > div > div[style*="display: flex"] {
+                padding: 10px 0 !important;
+                flex-wrap: wrap !important;
+            }
+            
+            #myDetailsContent span[style*="color: #0f5132"],
+            #wizardStep1 span[style*="color: #0f5132"] {
+                font-size: 0.85rem !important;
+            }
+            
+            #resultMaritalStatus,
+            #resultFilingStatus,
+            #resultAge,
+            #resultSpouseAge,
+            #resultMyIncome,
+            #resultSpouseIncome,
+            #resultMyWithholdings,
+            #resultSpouseWithholdings {
+                font-size: 0.85rem !important;
+            }
+            
+            /* Breakdown rows mobile */
+            .breakdown-row {
+                padding: 10px 0 !important;
+                flex-wrap: wrap !important;
+            }
+            
+            .breakdown-label,
+            .breakdown-value {
+                font-size: 0.85rem !important;
+            }
+            
+            .breakdown-row > div[style*="color: #6b7280"] {
+                font-size: 0.75rem !important;
+                margin-top: 4px !important;
+            }
+            
+            /* Update info button mobile */
+            #updateInfoBtn {
+                width: 100% !important;
+                padding: 12px 20px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* Collapsible chevron mobile */
+            #detailsChevron,
+            #breakdownChevron {
+                font-size: 0.8rem !important;
+            }
+            
+            /* Step 6 left column mobile */
+            #step6 > div:first-child > div:first-child {
+                padding: 20px 15px !important;
+            }
+            
+            #step6 > div:first-child > div:first-child h3 {
+                font-size: 1.1rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            #step6 > div:first-child > div:first-child p {
+                font-size: 0.85rem !important;
+                margin-bottom: 20px !important;
             }
         }
         
@@ -2699,6 +3064,26 @@
                 padding: 12px 0 !important;
             }
             
+            .breakdown-label,
+            .breakdown-value {
+                font-size: 0.9rem !important;
+            }
+            
+            #wizardStep1 h3,
+            #wizardStep2 h3 {
+                font-size: 1.15rem !important;
+            }
+            
+            #myDetailsContent > div > div,
+            #wizardStep1 > div > div[style*="display: flex"] {
+                padding: 10px 0 !important;
+            }
+            
+            #myDetailsContent span[style*="color: #0f5132"],
+            #wizardStep1 span[style*="color: #0f5132"] {
+                font-size: 0.9rem !important;
+            }
+            
             #step6 h3 {
                 font-size: 1.2rem !important;
             }
@@ -2710,6 +3095,11 @@
             #step6 button {
                 padding: 12px 24px !important;
                 font-size: 0.95rem !important;
+            }
+            
+            #updateInfoBtn {
+                padding: 12px 24px !important;
+                font-size: 0.9rem !important;
             }
             
             /* Step 1 - Form fields responsive */
