@@ -2438,6 +2438,383 @@
             #step6 #finalRefundAmount {
                 font-size: 3rem !important;
             }
+            
+            #step6 > div:first-child > div:first-child {
+                padding-right: 0 !important;
+            }
+            
+            #resultsBreakdown {
+                padding: 20px 15px !important;
+                min-height: auto !important;
+            }
+            
+            #wizardStep1, #wizardStep2 {
+                margin-top: 15px !important;
+            }
+            
+            #wizardStep1 h3, #wizardStep2 h3 {
+                font-size: 1.1rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            #myDetailsContent, #estimateBreakdownContent {
+                margin-top: 15px !important;
+            }
+            
+            .breakdown-row {
+                padding: 10px 0 !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .breakdown-label, .breakdown-value {
+                font-size: 0.9rem !important;
+            }
+            
+            #updateInfoBtn {
+                padding: 8px 20px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* Step 1 - Mobile form fields */
+            .mobile-field-group {
+                margin-bottom: 18px !important;
+            }
+            
+            .mobile-field-label {
+                font-size: 0.9rem !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .mobile-field-control input,
+            .mobile-field-control select {
+                font-size: 0.95rem !important;
+                padding: 10px 12px !important;
+            }
+            
+            /* Step 2 - Dependents mobile */
+            #step2 h2 {
+                font-size: 1.6rem !important;
+            }
+            
+            #step2 label {
+                padding: 10px !important;
+                font-size: 0.95rem !important;
+            }
+            
+            /* Step 3 - Income types mobile */
+            #incomeTypesGrid {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+            
+            .income-type-btn {
+                padding: 12px 15px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* Income form containers mobile */
+            #w2FormContainer,
+            #interestFormContainer,
+            #businessFormContainer,
+            #socialSecurityFormContainer,
+            #dividendsFormContainer,
+            #combatPayFormContainer,
+            #unemploymentFormContainer,
+            #taxRefundFormContainer,
+            #capitalGainsFormContainer,
+            #otherIncomeFormContainer {
+                padding: 15px 12px !important;
+            }
+            
+            #w2FormContainer h3,
+            #interestFormContainer h3,
+            #businessFormContainer h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Step 4 - Deductions mobile */
+            .deduction-options-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            
+            /* Step 5 - Credits mobile */
+            #creditsGrid {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+            
+            .credit-btn {
+                padding: 12px 15px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* Buttons mobile */
+            .btn-back-step,
+            .btn-next-step,
+            .btn-get-estimate {
+                width: 100% !important;
+                padding: 12px 24px !important;
+                font-size: 0.95rem !important;
+            }
+            
+            /* Step navigation containers mobile */
+            #step2 > div:last-child,
+            #step3 > div:last-child,
+            #step4 > div:last-child,
+            #step5 > div:last-child {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+            
+            #step2 > div:last-child > button,
+            #step3 > div:last-child > button,
+            #step4 > div:last-child > button,
+            #step5 > div:last-child > button {
+                width: 100% !important;
+            }
+            
+            /* Progress steps mobile */
+            .progress-steps-new {
+                gap: 5px !important;
+            }
+            
+            .step-circle {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            .step-label {
+                font-size: 0.6rem !important;
+            }
+            
+            /* Dependent forms mobile */
+            #dependentsList,
+            #newDependentForm {
+                margin-bottom: 15px !important;
+            }
+            
+            #dependentsList > div,
+            #newDependentForm > div {
+                padding: 15px !important;
+            }
+            
+            /* W-2 form fields mobile */
+            #w2FormsContainer input,
+            #w2FormsContainer select {
+                font-size: 0.9rem !important;
+                padding: 8px 10px !important;
+            }
+            
+            /* Calculator header mobile */
+            .calculator-header {
+                padding: 25px 20px !important;
+            }
+            
+            #estimatedRefundDisplay {
+                font-size: 2.5rem !important;
+            }
+            
+            /* Step titles mobile */
+            .calculator-step h2 {
+                font-size: 1.7rem !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .calculator-step p {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Info boxes mobile */
+            .calculator-step > div[style*="background: #f5f5f5"] {
+                padding: 15px !important;
+                flex-direction: column !important;
+            }
+            
+            .calculator-step > div[style*="background: #f5f5f5"] i {
+                font-size: 1.2rem !important;
+            }
+            
+            .calculator-step > div[style*="background: #f5f5f5"] p {
+                font-size: 0.85rem !important;
+            }
+        }
+        
+        /* Additional responsive for very small screens */
+        @media (max-width: 400px) {
+            .calculator-card-new {
+                padding: 20px 15px !important;
+            }
+            
+            .calculator-header {
+                padding: 20px 15px !important;
+            }
+            
+            #finalRefundAmount {
+                font-size: 2.5rem !important;
+            }
+            
+            .step-circle {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 0.75rem !important;
+            }
+            
+            .step-label {
+                font-size: 0.55rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Step 6 grid layout - stack columns on tablet */
+            .step6-grid,
+            #step6 > div[style*="grid"] {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+            
+            #step6 > div:first-child > div:first-child {
+                padding-right: 0 !important;
+            }
+            
+            #finalRefundAmount {
+                font-size: 3rem !important;
+            }
+            
+            #finalRefundLabel {
+                font-size: 1.1rem !important;
+            }
+            
+            #resultsBreakdown {
+                padding: 25px 20px !important;
+            }
+            
+            #wizardStep1 h3, #wizardStep2 h3 {
+                font-size: 1.15rem !important;
+            }
+            
+            .breakdown-row {
+                padding: 12px 0 !important;
+            }
+            
+            #step6 h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            #step6 p {
+                font-size: 0.9rem !important;
+            }
+            
+            #step6 button {
+                padding: 12px 24px !important;
+                font-size: 0.95rem !important;
+            }
+            
+            /* Step 1 - Form fields responsive */
+            .mobile-field-group {
+                margin-bottom: 20px !important;
+            }
+            
+            .mobile-field-label {
+                font-size: 0.95rem !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .mobile-field-control input,
+            .mobile-field-control select {
+                font-size: 1rem !important;
+                padding: 10px 12px !important;
+            }
+            
+            /* Step 2 - Dependents responsive */
+            #step2 label {
+                padding: 12px !important;
+                font-size: 1rem !important;
+            }
+            
+            #dependentsSection {
+                margin-top: 20px !important;
+            }
+            
+            #addDependentBtn {
+                width: 100% !important;
+                padding: 12px 20px !important;
+            }
+            
+            /* Step 3 - Income types grid responsive */
+            #incomeTypesGrid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+            }
+            
+            .income-type-btn {
+                padding: 12px 15px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Income form containers responsive */
+            #w2FormContainer,
+            #interestFormContainer,
+            #businessFormContainer,
+            #socialSecurityFormContainer,
+            #dividendsFormContainer,
+            #combatPayFormContainer,
+            #unemploymentFormContainer,
+            #taxRefundFormContainer,
+            #capitalGainsFormContainer,
+            #otherIncomeFormContainer {
+                padding: 20px 15px !important;
+            }
+            
+            #w2FormContainer h3,
+            #interestFormContainer h3,
+            #businessFormContainer h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Step 4 - Deduction options responsive */
+            .deduction-options-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            /* Step 5 - Credits grid responsive */
+            #creditsGrid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 12px !important;
+            }
+            
+            .credit-btn {
+                padding: 12px 15px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Navigation buttons responsive */
+            .btn-back-step,
+            .btn-next-step,
+            .btn-get-estimate {
+                width: 100% !important;
+                padding: 14px 30px !important;
+                font-size: 1rem !important;
+            }
+            
+            /* Step navigation buttons container */
+            #step2 > div:last-child,
+            #step3 > div:last-child,
+            #step4 > div:last-child,
+            #step5 > div:last-child {
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+            
+            #step2 > div:last-child > button,
+            #step3 > div:last-child > button,
+            #step4 > div:last-child > button,
+            #step5 > div:last-child > button {
+                width: 100% !important;
+            }
         }
 
         /* Smooth Animations */
@@ -3749,7 +4126,7 @@
 
                     <!-- Step 6: Results (Matching Screenshot Design) -->
                     <div class="calculator-step" id="step6" style="display: none;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                        <div class="step6-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
                             <!-- Left Column: Refund Display -->
                             <div style="padding-right: 20px;">
                                 <div id="finalRefundLabel" style="font-size: 1.2rem; font-weight: 600; color: #0f5132; margin-bottom: 15px;">Your estimated refund:</div>
