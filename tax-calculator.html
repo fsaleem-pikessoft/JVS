@@ -2512,36 +2512,20 @@
         }
         
         #estimateBreakdownContent {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            min-height: 300px !important;
-            height: auto !important;
-            overflow: visible !important;
-            position: relative !important;
+            min-height: 300px;
+            height: auto;
+            overflow: visible;
+            position: relative;
         }
         
         #breakdownDetails {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            min-height: 200px !important;
-            height: auto !important;
-            overflow: visible !important;
-            position: relative !important;
+            min-height: 200px;
+            height: auto;
+            overflow: visible;
+            position: relative;
         }
         
-        #wizardStep2.show #estimateBreakdownContent,
-        #wizardStep2.show #breakdownDetails,
-        #wizardStep2[style*="display: block"] #estimateBreakdownContent,
-        #wizardStep2[style*="display: block"] #breakdownDetails {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            height: auto !important;
-            min-height: 200px !important;
-            overflow: visible !important;
-        }
+        /* Removed !important to allow inline styles to control collapsible behavior */
         
         /* Force breakdown content to be visible when wizardStep2 is shown */
         #wizardStep2[style*="display: block"] .breakdown-row,
@@ -2600,15 +2584,7 @@
             width: 100% !important;
         }
         
-        #wizardStep2[style*="display: block"] #estimateBreakdownContent,
-        #wizardStep2.show #estimateBreakdownContent,
-        #wizardStep2 #estimateBreakdownContent {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            height: auto !important;
-            width: 100% !important;
-        }
+        /* Removed !important to allow inline styles to control collapsible behavior */
         
         /* Force visibility when breakdown tab is active - DIRECT SELECTOR */
         #wizardStep2.show,
@@ -2635,14 +2611,7 @@
             opacity: 1 !important;
         }
         
-        #wizardStep2.show #estimateBreakdownContent,
-        #wizardStep2[style*="display: block"] #estimateBreakdownContent,
-        #wizardStep2.show #breakdownDetails,
-        #wizardStep2[style*="display: block"] #breakdownDetails {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
+        /* Removed !important to allow inline styles to control visibility */
         
         /* Tab Styles */
         .tab-button {
@@ -2696,8 +2665,8 @@
             opacity: 1 !important;
         }
         
-        /* Hide wizardStep2 when it has tab-content */
-        #wizardStep2.tab-content {
+        /* Hide wizardStep2 when it has tab-content BUT NOT when it has active-tab */
+        #wizardStep2.tab-content:not(.active-tab) {
             display: none !important;
             visibility: hidden !important;
         }
@@ -3760,67 +3729,53 @@
                             </div>
 
                             <!-- Right Column: Breakdown Card -->
-                            <div style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04); padding: 0; overflow: visible; border: 1px solid #f0f0f0; position: relative; z-index: 10;">
-                                <!-- Back Button -->
-                                <div style="padding: 20px 25px; border-bottom: 1px solid #f0f0f0; background: #fafbfc;">
-                                    <button type="button" onclick="goBackStep()" style="background: transparent; color: #0f5132; border: none; padding: 8px 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; border-radius: 6px;" onmouseover="this.style.backgroundColor='#e8f5f3'; this.style.color='#20B2AA'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#0f5132'">
-                                        <i class="fas fa-arrow-left"></i> Back
-                                    </button>
-                                </div>
-                                
-                                <div id="resultsBreakdown" style="padding: 0 25px 25px; position: relative; z-index: 10; pointer-events: auto; overflow: visible; min-height: 600px;">
-                                    <!-- Tabs Navigation -->
-                                    <div style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #f0f0f0;">
-                                        <button type="button" id="tabMyDetails" class="tab-button active" onclick="switchTab(1)" style="flex: 1; background: transparent; border: none; border-bottom: 3px solid #20B2AA; padding: 15px 20px; font-size: 0.95rem; font-weight: 600; color: #20B2AA; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                            <i class="fas fa-user"></i> My Details
-                                        </button>
-                                        <button type="button" id="tabBreakdown" class="tab-button" onclick="switchTab(2)" style="flex: 1; background: transparent; border: none; border-bottom: 3px solid transparent; padding: 15px 20px; font-size: 0.95rem; font-weight: 600; color: #6c757d; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                            <i class="fas fa-file-alt"></i> Breakdown
-                                        </button>
-                                    </div>
-                                    
+                            <div style="background: transparent; padding: 0; overflow: visible; position: relative; z-index: 10;">
+                                <div id="resultsBreakdown" style="padding: 25px; position: relative; z-index: 10; pointer-events: auto; overflow: visible; min-height: 600px;">
                                     <!-- Wizard Step 1: My Details -->
                                     <div id="wizardStep1" class="wizard-step active-tab" data-tab="1">
-                                        <div style="margin-bottom: 20px;">
-                                            <h3 style="color: #0f5132; font-size: 1.2rem; font-weight: 600; margin: 0 0 25px 0; display: flex; align-items: center; gap: 12px;">
-                                                <i class="fas fa-user" style="color: #20B2AA; font-size: 1.2rem;"></i>My details
+                                        <div style="cursor: pointer; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;" onclick="toggleDetailsSection()">
+                                            <h3 style="color: #0f5132; font-size: 1.2rem; font-weight: 600; margin: 0; display: flex; align-items: center; justify-content: space-between;">
+                                                <span style="display: flex; align-items: center; gap: 12px;">
+                                                    <i class="fas fa-user" style="color: #0f5132; font-size: 1.2rem;"></i>My details
+                                                </span>
+                                                <i class="fas fa-chevron-up" id="detailsChevron" style="color: #0f5132; font-size: 0.9rem; transition: transform 0.3s;"></i>
                                             </h3>
                                         </div>
-                                        <div id="myDetailsContent" style="padding: 0;">
-                                        <div style="display: flex; flex-direction: column; gap: 18px;">
+                                        <div id="myDetailsContent" style="padding: 0; display: block; margin-top: 20px;">
+                                        <div style="display: flex; flex-direction: column; gap: 12px;">
                                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">Marital Status:</span>
-                                                <span id="resultMaritalStatus" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
+                                                <span style="color: #0f5132; font-size: 0.95rem;">Marital Status:</span>
+                                                <span id="resultMaritalStatus" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
                                             </div>
                                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">Filing status:</span>
-                                                <span id="resultFilingStatus" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
+                                                <span style="color: #0f5132; font-size: 0.95rem;">Filing status:</span>
+                                                <span id="resultFilingStatus" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
                                             </div>
                                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">My age:</span>
-                                                <span id="resultAge" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
-                                            </div>
-                                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">My income:</span>
-                                                <span id="resultMyIncome" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
-                                            </div>
-                                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">My federal withholdings:</span>
-                                                <span id="resultMyWithholdings" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
+                                                <span style="color: #0f5132; font-size: 0.95rem;">My age:</span>
+                                                <span id="resultAge" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
                                             </div>
                                             <div id="resultSpouseAgeRow" style="display: none; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">My spouse's age:</span>
-                                                <span id="resultSpouseAge" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
+                                                <span style="color: #0f5132; font-size: 0.95rem;">Spouse's age:</span>
+                                                <span id="resultSpouseAge" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
+                                                <span style="color: #0f5132; font-size: 0.95rem;">My income:</span>
+                                                <span id="resultMyIncome" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
                                             </div>
                                             <div id="resultSpouseIncomeRow" style="display: none; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">My spouse's income:</span>
-                                                <span id="resultSpouseIncome" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
+                                                <span style="color: #0f5132; font-size: 0.95rem;">Spouse's income:</span>
+                                                <span id="resultSpouseIncome" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
+                                                <span style="color: #0f5132; font-size: 0.95rem;">My federal withholdings:</span>
+                                                <span id="resultMyWithholdings" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
                                             </div>
                                             <div id="resultSpouseWithholdingsRow" style="display: none; justify-content: space-between; align-items: center; padding: 8px 0;">
-                                                <span style="color: #6b7a90; font-size: 0.9rem;">My spouse's federal withholdings:</span>
-                                                <span id="resultSpouseWithholdings" style="color: #0f5132; font-weight: 600; font-size: 0.9rem;">-</span>
+                                                <span style="color: #0f5132; font-size: 0.95rem;">Spouse's federal withholdings:</span>
+                                                <span id="resultSpouseWithholdings" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">-</span>
                                             </div>
-                                            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #f0f0f0; display: flex; justify-content: flex-start; align-items: center; position: relative; z-index: 100;">
+                                            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #f0f0f0; display: flex; justify-content: flex-end; align-items: center; position: relative; z-index: 100;">
                                                 <button type="button" id="updateInfoBtn" onclick="goToStep(1)" style="background: white; color: #2c3e50; border: 1px solid #d0d0d0; padding: 10px 24px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer !important; transition: all 0.3s; position: relative; z-index: 1000; pointer-events: auto !important;" onmouseover="this.style.borderColor='#20B2AA'; this.style.color='#20B2AA'" onmouseout="this.style.borderColor='#d0d0d0'; this.style.color='#2c3e50'">
                                                     Update info
                                                 </button>
@@ -3829,56 +3784,59 @@
                                     </div>
                                     
                                     <!-- Wizard Step 2: Estimate Breakdown -->
-                                    <div id="wizardStep2" class="wizard-step tab-content" data-tab="2" style="position: relative; z-index: 100;">
-                                        <div style="margin-bottom: 20px;">
-                                            <h3 style="color: #0f5132; font-size: 1.2rem; font-weight: 600; margin: 0 0 25px 0; display: flex; align-items: center; gap: 12px;">
-                                                <i class="fas fa-file-alt" style="color: #20B2AA; font-size: 1.2rem;"></i>Estimate breakdown
+                                    <div id="wizardStep2" class="wizard-step active-tab" data-tab="2" style="position: relative; z-index: 100; display: block; margin-top: 20px;">
+                                        <div style="cursor: pointer; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;" onclick="toggleBreakdownSection()">
+                                            <h3 style="color: #0f5132; font-size: 1.2rem; font-weight: 600; margin: 0; display: flex; align-items: center; justify-content: space-between;">
+                                                <span style="display: flex; align-items: center; gap: 12px;">
+                                                    <i class="fas fa-file-alt" style="color: #0f5132; font-size: 1.2rem;"></i>Estimate breakdown
+                                                </span>
+                                                <i class="fas fa-chevron-down" id="breakdownChevron" style="color: #0f5132; font-size: 0.9rem; transition: transform 0.3s;"></i>
                                             </h3>
                                         </div>
-                                        <div id="estimateBreakdownContent">
+                                        <div id="estimateBreakdownContent" style="display: none; margin-top: 20px;">
                                             <div id="breakdownDetails">
-                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f5f5f5;">
-                                                <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Income</span>
-                                                <span class="breakdown-value" id="resultIncome" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">$0</span>
+                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f5f5f5;">
+                                                <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Income</span>
+                                                <span class="breakdown-value" id="resultIncome" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">$0</span>
                                 </div>
-                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f5f5f5;">
-                                                <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Deductions</span>
-                                                <span class="breakdown-value" id="resultDeductions" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">$0</span>
+                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f5f5f5;">
+                                                <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Deductions</span>
+                                                <span class="breakdown-value" id="resultDeductions" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">$0</span>
                                 </div>
-                                            <div class="breakdown-row" style="padding: 14px 0; border-bottom: 1px solid #f5f5f5;">
+                                            <div class="breakdown-row" style="padding: 12px 0; border-bottom: 1px solid #f5f5f5;">
                                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                                    <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Taxable income</span>
-                                                    <span class="breakdown-value" id="resultTaxableIncome" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">$0</span>
+                                                    <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Taxable income</span>
+                                                    <span class="breakdown-value" id="resultTaxableIncome" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">$0</span>
                                 </div>
-                                                <div style="color: #9ca3af; font-size: 0.8rem; font-style: italic; padding-left: 2px;">Income after deductions</div>
+                                                <div style="color: #6b7280; font-size: 0.85rem; font-style: italic; padding-left: 2px;">Income after deductions</div>
                                 </div>
-                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f5f5f5;">
-                                                <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Tax bracket</span>
-                                                <span class="breakdown-value" id="resultTaxBracket" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">0%</span>
+                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f5f5f5;">
+                                                <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Tax bracket</span>
+                                                <span class="breakdown-value" id="resultTaxBracket" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">0%</span>
                                 </div>
-                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 2px solid #e8e8e8; margin-bottom: 15px;">
-                                                <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Effective tax rate</span>
-                                                <span class="breakdown-value" id="resultEffectiveRate" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">0%</span>
+                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 2px solid #e8e8e8; margin-bottom: 15px;">
+                                                <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Effective tax rate</span>
+                                                <span class="breakdown-value" id="resultEffectiveRate" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">0%</span>
                                 </div>
-                                            <div class="breakdown-row" style="padding: 14px 0; border-bottom: 1px solid #f5f5f5;">
+                                            <div class="breakdown-row" style="padding: 12px 0; border-bottom: 1px solid #f5f5f5;">
                                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                                    <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Taxes refunded</span>
-                                                    <span class="breakdown-value" id="resultTaxesRefunded" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">$0</span>
+                                                    <span class="breakdown-label" style="color: #0f5132; font-weight: 700; font-size: 0.95rem;">Taxes refunded</span>
+                                                    <span class="breakdown-value" id="resultTaxesRefunded" style="color: #0f5132; font-weight: 700; font-size: 0.95rem;">$0</span>
                                 </div>
-                                                <div id="taxesRefundedExplanation" style="color: #9ca3af; font-size: 0.8rem; font-style: italic; padding-left: 2px;">(Taxable income times effective tax rate)</div>
+                                                <div id="taxesRefundedExplanation" style="color: #6b7280; font-size: 0.85rem; font-style: italic; padding-left: 2px;">(Taxable income times effective tax rate)</div>
                                 </div>
-                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f5f5f5;">
-                                                <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Payments and federal taxes withheld</span>
-                                                <span class="breakdown-value" id="resultWithheld" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">$0</span>
+                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f5f5f5;">
+                                                <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Payments and federal taxes withheld</span>
+                                                <span class="breakdown-value" id="resultWithheld" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">$0</span>
                                 </div>
-                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 2px solid #e8e8e8; margin-bottom: 15px;">
-                                                <span class="breakdown-label" style="color: #6b7a90; font-size: 0.9rem;">Refundable credits</span>
-                                                <span class="breakdown-value" id="resultCredits" style="color: #2c3e50; font-weight: 600; font-size: 0.9rem;">$0</span>
+                                            <div class="breakdown-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 2px solid #e8e8e8; margin-bottom: 15px;">
+                                                <span class="breakdown-label" style="color: #0f5132; font-size: 0.95rem;">Refundable credits</span>
+                                                <span class="breakdown-value" id="resultCredits" style="color: #0f5132; font-weight: 600; font-size: 0.95rem;">$0</span>
                                             </div>
                                             </div>
                                             <div class="breakdown-total" style="display: flex; justify-content: space-between; align-items: center; padding: 18px 15px; margin-top: 10px; background: linear-gradient(135deg, #f0f9f7 0%, #e8f5f3 100%); border-radius: 10px; border: 1px solid #d1e7e5;">
                                                 <span id="resultTotalLabel" style="color: #0f5132; font-weight: 700; font-size: 1.05rem;">Total tax refund:</span>
-                                                <span id="resultTotalRefund" style="color: #20B2AA; font-weight: 700; font-size: 1.05rem;">$0</span>
+                                                <span id="resultTotalRefund" style="color: #0f5132; font-weight: 700; font-size: 1.05rem;">$0</span>
                                             </div>
                                         </div>
                                     </div>
@@ -4004,12 +3962,44 @@
             standardDeduction: 15750
         };
 
-        // Standard deduction amounts for 2025
+        // Standard deduction amounts for 2025 (under OBBB)
         const standardDeductions2025 = {
             single: 15750,
             married_jointly: 31500,
             married_separately: 15750,
-            head_of_household: 23650
+            head_of_household: 23625
+        };
+        
+        // 2025 Tax Brackets (taxable income ranges)
+        // Format: [rate %, lowerBound, upperBound]
+        const taxBrackets2025 = {
+            single: [
+                [10, 0, 11925],
+                [12, 11925, 48475],
+                [22, 48475, 103350],
+                [24, 103350, 197300],
+                [32, 197300, 250525],
+                [35, 250525, 626350],
+                [37, 626350, Infinity]
+            ],
+            married_jointly: [
+                [10, 0, 23850],
+                [12, 23850, 96950],
+                [22, 96950, 206700],
+                [24, 206700, 394600],
+                [32, 394600, 501050],
+                [35, 501050, 751600],
+                [37, 751600, Infinity]
+            ],
+            head_of_household: [
+                [10, 0, 17000],
+                [12, 17000, 64850],
+                [22, 64850, 103350],
+                [24, 103350, 197300],
+                [32, 197300, 250500],
+                [35, 250500, 626351],
+                [37, 626351, Infinity]
+            ]
         };
 
         // Alignment factor lets us mirror industry calculators (H&R Block / TurboTax)
@@ -4509,6 +4499,13 @@
                 withheld += (calculatorData.spouseTaxWithheld || 0);
             }
             
+            // Add all other income types
+            if (calculatorData.incomeAmounts) {
+                Object.values(calculatorData.incomeAmounts).forEach(amount => {
+                    income += (parseFloat(amount) || 0);
+                });
+            }
+            
             // Get standard deduction based on filing status
             let deduction = calculatorData.standardDeduction;
             if (!deduction || deduction === 15750) {
@@ -4517,10 +4514,21 @@
                 deduction = standardDeductions2025[filingStatus] || 15750;
                 calculatorData.standardDeduction = deduction;
             }
+            
+            // Taxable Income = Gross Income - Standard Deduction
             const taxableIncome = Math.max(0, income - deduction);
-            const rawTax = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
-            const taxOwed = alignWithIndustry(rawTax);
-            const netAmount = withheld - taxOwed; // Allow negative values
+            
+            // Calculate federal tax using progressive brackets
+            const totalFederalTax = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
+            
+            // Calculate credits
+            const credits = calculatorData.credits.length * 500;
+            
+            // Final tax after credits
+            const finalTax = Math.max(0, totalFederalTax - credits);
+            
+            // Refund = Withholdings + Credits - Total Federal Tax
+            const netAmount = (withheld + credits) - finalTax;
             
             const display = document.getElementById('estimatedRefundDisplay');
             const label = document.getElementById('estimatedRefundLabel');
@@ -4596,7 +4604,7 @@
             }
             
             if (tabNumber === 1) {
-                // Show My Details tab, hide Breakdown
+                // Show My Details tab, but keep both sections visible
                 if (tabMyDetails) {
                     tabMyDetails.classList.add('active');
                     tabMyDetails.style.borderBottomColor = '#20B2AA';
@@ -4615,16 +4623,24 @@
                     wizardStep1.style.visibility = 'visible';
                     wizardStep1.style.opacity = '1';
                 }
-                // Ensure wizardStep2 is hidden
+                // Keep wizardStep2 visible too (both sections should show)
                 if (wizardStep2) {
-                    wizardStep2.classList.add('tab-content');
-                    wizardStep2.classList.remove('active-tab');
-                    wizardStep2.style.display = 'none';
-                    wizardStep2.style.visibility = 'hidden';
+                    wizardStep2.classList.remove('tab-content');
+                    wizardStep2.classList.add('active-tab');
+                    wizardStep2.style.display = 'block';
+                    wizardStep2.style.visibility = 'visible';
+                    wizardStep2.style.opacity = '1';
                 }
             } else if (tabNumber === 2) {
                 // Show Breakdown tab, hide My Details
                 console.log('=== SWITCHING TO BREAKDOWN TAB ===');
+                
+                // Ensure tax is calculated before showing breakdown
+                if (typeof calculateTax === 'function') {
+                    calculateTax();
+                } else if (typeof window.calculateTax === 'function') {
+                    window.calculateTax();
+                }
                 
                 if (tabMyDetails) {
                     tabMyDetails.classList.remove('active');
@@ -4646,14 +4662,21 @@
                     wizardStep2.classList.add('active-tab');
                     wizardStep2.classList.add('show');
                     
-                    // Remove ALL inline display/visibility styles that might conflict
-                    wizardStep2.style.removeProperty('display');
-                    wizardStep2.style.removeProperty('visibility');
-                    wizardStep2.style.removeProperty('opacity');
-                    wizardStep2.style.removeProperty('height');
-                    wizardStep2.style.removeProperty('overflow');
+                    // Explicitly set display properties to ensure visibility
+                    wizardStep2.style.display = 'block';
+                    wizardStep2.style.visibility = 'visible';
+                    wizardStep2.style.opacity = '1';
+                    wizardStep2.style.height = 'auto';
+                    wizardStep2.style.overflow = 'visible';
                     
-                    // Keep only position and z-index from original inline style
+                    // Force remove tab-content class completely (in case it's being re-added)
+                    setTimeout(function() {
+                        if (wizardStep2.classList.contains('tab-content')) {
+                            wizardStep2.classList.remove('tab-content');
+                        }
+                    }, 0);
+                    
+                    // Keep position and z-index from original inline style
                     wizardStep2.style.position = 'relative';
                     wizardStep2.style.zIndex = '100';
                     
@@ -4679,17 +4702,9 @@
                         console.log('breakdownDetails innerHTML length:', breakdownDetails.innerHTML.length);
                     }
                     
-                    // Remove inline styles from nested elements that might be hiding them
-                    if (breakdownContent) {
-                        breakdownContent.style.removeProperty('display');
-                        breakdownContent.style.removeProperty('visibility');
-                        breakdownContent.style.removeProperty('opacity');
-                    }
-                    if (breakdownDetails) {
-                        breakdownDetails.style.removeProperty('display');
-                        breakdownDetails.style.removeProperty('visibility');
-                        breakdownDetails.style.removeProperty('opacity');
-                    }
+                    // Don't force display - respect collapsed state
+                    // The breakdown content should remain collapsed by default
+                    // It will only expand when user clicks the header
                     
                     // Remove inline styles from rows (keep their original flex/block from HTML)
                     rows.forEach(function(row, index) {
@@ -4713,18 +4728,54 @@
                 } else {
                     console.error('wizardStep2 element not found!');
                 }
-                // Ensure wizardStep1 is hidden
+                // Keep wizardStep1 visible too (both sections should show)
                 if (wizardStep1) {
-                    wizardStep1.classList.add('tab-content');
-                    wizardStep1.classList.remove('active-tab');
-                    wizardStep1.style.display = 'none';
-                    wizardStep1.style.visibility = 'hidden';
+                    wizardStep1.classList.remove('tab-content');
+                    wizardStep1.classList.add('active-tab');
+                    wizardStep1.style.display = 'block';
+                    wizardStep1.style.visibility = 'visible';
+                    wizardStep1.style.opacity = '1';
                 }
             }
         }
         
         // Make function globally accessible
         window.switchTab = switchTab;
+        
+        // Toggle functions for collapsible sections
+        function toggleDetailsSection() {
+            const content = document.getElementById('myDetailsContent');
+            const chevron = document.getElementById('detailsChevron');
+            if (content && chevron) {
+                if (content.style.display === 'none' || !content.style.display) {
+                    content.style.display = 'block';
+                    chevron.style.transform = 'rotate(180deg)'; // Rotate down to up
+                } else {
+                    content.style.display = 'none';
+                    chevron.style.transform = 'rotate(0deg)'; // Rotate up to down
+                }
+            }
+        }
+        
+        function toggleBreakdownSection() {
+            const content = document.getElementById('estimateBreakdownContent');
+            const chevron = document.getElementById('breakdownChevron');
+            if (content && chevron) {
+                const currentDisplay = content.style.display || window.getComputedStyle(content).display;
+                if (currentDisplay === 'none') {
+                    content.style.setProperty('display', 'block', 'important');
+                    content.style.setProperty('visibility', 'visible', 'important');
+                    chevron.style.transform = 'rotate(180deg)'; // Rotate down to up
+                } else {
+                    content.style.setProperty('display', 'none', 'important');
+                    content.style.setProperty('visibility', 'hidden', 'important');
+                    chevron.style.transform = 'rotate(0deg)'; // Rotate up to down
+                }
+            }
+        }
+        
+        window.toggleDetailsSection = toggleDetailsSection;
+        window.toggleBreakdownSection = toggleBreakdownSection;
 
         function parseCommaNumber(value) {
             if (!value) return 0;
@@ -4833,7 +4884,7 @@
                     window.calculateTax();
                 }
                 
-                // Reset to tab 1 (My Details)
+                // Reset to tab 1 (My Details), but show both sections
                 currentTab = 1;
                 const wizardStep1 = document.getElementById('wizardStep1');
                 const wizardStep2 = document.getElementById('wizardStep2');
@@ -4843,10 +4894,14 @@
                 if (wizardStep1) {
                     wizardStep1.style.display = 'block';
                     wizardStep1.style.visibility = 'visible';
+                    wizardStep1.classList.remove('tab-content');
+                    wizardStep1.classList.add('active-tab');
                 }
                 if (wizardStep2) {
-                    wizardStep2.style.display = 'none';
-                    wizardStep2.style.visibility = 'hidden';
+                    wizardStep2.style.display = 'block';
+                    wizardStep2.style.visibility = 'visible';
+                    wizardStep2.classList.remove('tab-content');
+                    wizardStep2.classList.add('active-tab');
                 }
                 
                 // Set active tab styles
@@ -4891,8 +4946,15 @@
                 alert('Please select your filing status.');
                 return;
             }
-            // Calculate tax and show results
+            // Calculate tax first (needed for breakdown data)
             calculateTax();
+            
+            // If "Using a tax professional" is selected, go to dependents page (step 2)
+            if (calculatorData.filingMethod === 'with_professional') {
+                goToStep(2);
+                return;
+            }
+            // Otherwise, show results
             goToStep(6);
         }
 
@@ -5418,13 +5480,51 @@
         }
 
         // Calculate tax at 19% flat rate
+        // Calculate federal tax using progressive tax brackets (2025)
         function calculateTaxAmount(taxableIncome, filingStatus) {
-            // Calculate tax at 19% flat rate
-            let tax = 0;
-                if (taxableIncome > 0) {
-                tax = taxableIncome * 0.19;
+            // Map filing status to bracket key
+            let statusKey = 'single';
+            if (filingStatus === 'married_jointly' || filingStatus === 'married_separately') {
+                statusKey = 'married_jointly';
+            } else if (filingStatus === 'head_of_household') {
+                statusKey = 'head_of_household';
             }
-            return Math.max(0, tax);
+            
+            const brackets = taxBrackets2025[statusKey] || taxBrackets2025.single;
+            
+            // Progressive bracket calculation
+            let totalTax = 0;
+            for (let i = 0; i < brackets.length; i++) {
+                const [rate, lower, upper] = brackets[i];
+                if (taxableIncome > lower) {
+                    const amountInBracket = Math.min(taxableIncome, upper) - lower;
+                    totalTax += amountInBracket * (rate / 100);
+                } else {
+                    break;
+                }
+            }
+            
+            return Math.max(0, totalTax);
+        }
+        
+        // Get top (marginal) tax bracket for display
+        function getTopTaxBracket(taxableIncome, filingStatus) {
+            let statusKey = 'single';
+            if (filingStatus === 'married_jointly' || filingStatus === 'married_separately') {
+                statusKey = 'married_jointly';
+            } else if (filingStatus === 'head_of_household') {
+                statusKey = 'head_of_household';
+            }
+            
+            const brackets = taxBrackets2025[statusKey] || taxBrackets2025.single;
+            
+            for (let i = 0; i < brackets.length; i++) {
+                const [rate, lower, upper] = brackets[i];
+                if (taxableIncome >= lower && taxableIncome < upper) {
+                    return rate;
+                }
+            }
+            return 0;
         }
 
         // Calculate tax and show results
@@ -5440,6 +5540,13 @@
                 withheld += (calculatorData.spouseTaxWithheld || 0);
             }
             
+            // Add all other income types
+            if (calculatorData.incomeAmounts) {
+                Object.values(calculatorData.incomeAmounts).forEach(amount => {
+                    income += (parseFloat(amount) || 0);
+                });
+            }
+            
             // Get standard deduction based on filing status
             let deduction = calculatorData.standardDeduction;
             if (!deduction || deduction === 15750) {
@@ -5448,57 +5555,31 @@
                 deduction = standardDeductions2025[filingStatus] || 15750;
                 calculatorData.standardDeduction = deduction;
             }
+            // Calculate taxable income: Gross Income - Standard Deduction
             const taxableIncome = Math.max(0, income - deduction);
-            const rawTaxOwed = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
-            const taxOwed = alignWithIndustry(rawTaxOwed);
+            
+            // Calculate federal tax using progressive brackets
+            const totalFederalTax = calculateTaxAmount(taxableIncome, calculatorData.filingStatus || 'single');
+            
+            // Calculate credits
             const credits = calculatorData.credits.length * 500; // Simple credit estimate
-            const finalTax = Math.max(0, taxOwed - credits);
-            const netAmount = withheld - finalTax; // Allow negative values to show amount owed
             
-            // Calculate actual tax bracket based on taxable income (2025 tax brackets)
-            let taxBracket = '10%';
-            if (taxableIncome > 0) {
-                // 2025 Tax Brackets (Single)
-                if (calculatorData.filingStatus === 'married_jointly' || calculatorData.filingStatus === 'married_separately') {
-                    // Married filing jointly brackets
-                    if (taxableIncome > 731200) {
-                        taxBracket = '37%';
-                    } else if (taxableIncome > 462500) {
-                        taxBracket = '35%';
-                    } else if (taxableIncome > 364200) {
-                        taxBracket = '32%';
-                    } else if (taxableIncome > 201050) {
-                        taxBracket = '24%';
-                    } else if (taxableIncome > 116900) {
-                        taxBracket = '22%';
-                    } else if (taxableIncome > 47150) {
-                        taxBracket = '12%';
-                    } else {
-                        taxBracket = '10%';
-                    }
-                } else {
-                    // Single or Head of Household brackets
-                    if (taxableIncome > 609350) {
-                        taxBracket = '37%';
-                    } else if (taxableIncome > 243725) {
-                        taxBracket = '35%';
-                    } else if (taxableIncome > 191950) {
-                        taxBracket = '32%';
-                    } else if (taxableIncome > 100525) {
-                        taxBracket = '24%';
-                    } else if (taxableIncome > 47150) {
-                        taxBracket = '22%';
-                    } else if (taxableIncome > 11600) {
-                        taxBracket = '12%';
-                    } else {
-                        taxBracket = '10%';
-                    }
-                }
-            }
+            // Final tax after credits
+            const finalTax = Math.max(0, totalFederalTax - credits);
             
+            // Refund formula: Withholdings + Credits - Total Federal Tax
+            const netAmount = (withheld + credits) - totalFederalTax; // Allow negative values to show amount owed
+            
+            // Get top (marginal) tax bracket for display
+            const topBracketRate = getTopTaxBracket(taxableIncome, calculatorData.filingStatus || 'single');
+            const taxBracket = topBracketRate > 0 ? topBracketRate + '%' : '0%';
+            
+            // Effective Tax Rate: (Total Federal Tax ÷ Taxable Income) × 100
+            // Round to nearest whole percent (HR Block style)
             let effectiveRate = 0;
             if (taxableIncome > 0) {
-                effectiveRate = (taxOwed / taxableIncome) * 100;
+                const exactRate = (totalFederalTax / taxableIncome) * 100;
+                effectiveRate = Math.round(exactRate); // Round to nearest whole percent
             }
             
             // Display results
@@ -5557,22 +5638,23 @@
                 console.error('✗ resultTaxBracket element not found!');
             }
             
-            const displayedEffectiveRate = effectiveRate > 0 ? Math.ceil(effectiveRate) : 0;
+            // Display effective rate (already rounded to whole percent)
             if (resultEffectiveRateEl) {
-                resultEffectiveRateEl.textContent = displayedEffectiveRate + '%';
-                console.log('✓ Effective Rate set to:', displayedEffectiveRate + '%');
+                resultEffectiveRateEl.textContent = effectiveRate + '%';
+                console.log('✓ Effective Rate set to:', effectiveRate + '%');
             } else {
                 console.error('✗ resultEffectiveRate element not found!');
             }
             
             if (resultTaxesRefundedEl) {
-                resultTaxesRefundedEl.textContent = formatCurrency(taxOwed);
-                console.log('✓ Taxes Refunded set to:', formatCurrency(taxOwed));
+                // "Taxes refunded" shows the total federal tax (before credits)
+                resultTaxesRefundedEl.textContent = formatCurrency(totalFederalTax);
+                console.log('✓ Taxes Refunded set to:', formatCurrency(totalFederalTax));
                 
                 // Update the explanation text with actual effective rate
                 const taxesRefundedExplanation = document.getElementById('taxesRefundedExplanation');
                 if (taxesRefundedExplanation) {
-                    taxesRefundedExplanation.textContent = `(Taxable income times effective tax rate of ${displayedEffectiveRate}%)`;
+                    taxesRefundedExplanation.textContent = `(Taxable income times effective tax rate of ${effectiveRate}%)`;
                 }
             } else {
                 console.error('✗ resultTaxesRefunded element not found!');
@@ -5606,12 +5688,9 @@
                 console.error('✗ resultTotalRefund element not found!');
             }
             
-            // Style total refund in green when positive (as shown in the image)
-            if (netAmount >= 0) {
-                resultTotalRefundEl.style.color = '#20B2AA'; // Teal/green color
-                resultTotalRefundEl.style.fontWeight = '700';
-            } else {
-                resultTotalRefundEl.style.color = '#dc3545'; // Red for amount owed
+            // Style total refund in dark green to match design
+            if (resultTotalRefundEl) {
+                resultTotalRefundEl.style.color = '#0f5132';
                 resultTotalRefundEl.style.fontWeight = '700';
             }
             
