@@ -376,6 +376,50 @@
             max-width: 900px;
         }
         
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .calculator-content {
+                padding: 30px 0 50px;
+            }
+            .calculator-content .container {
+                max-width: 100%;
+                padding: 0 12px;
+            }
+            .content-section {
+                padding: 24px;
+                margin: 0 12px 30px;
+                border-radius: 16px;
+            }
+            .content-section h2 {
+                font-size: 1.6rem;
+                gap: 10px;
+            }
+            #resultsBreakdown {
+                padding: 16px;
+                min-height: auto;
+            }
+            #wizardStep1 h3,
+            #wizardStep2 h3 {
+                font-size: 1.05rem;
+            }
+            .breakdown-row {
+                padding: 10px 0 !important;
+            }
+            .breakdown-label,
+            .breakdown-value {
+                font-size: 0.9rem !important;
+            }
+            .breakdown-total {
+                padding: 14px 12px !important;
+                flex-direction: row;
+                gap: 8px;
+            }
+            .tab-button {
+                font-size: 0.9rem;
+                padding: 12px 10px;
+            }
+        }
+        
         .content-section {
             background: white;
             border-radius: 25px;
