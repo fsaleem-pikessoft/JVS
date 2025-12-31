@@ -105,10 +105,7 @@ html {
 
 /* Main Navigation Styles */
 .navbar {
-    background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('images/nav.jpeg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    background: rgba(255, 255, 255, 0.95) !important;
     transition: all 0.3s ease;
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -117,10 +114,7 @@ html {
 }
 
 .navbar.scrolled {
-    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('images/nav.jpeg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    background: rgba(255, 255, 255, 0.98) !important;
     padding: 0.75rem 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     top: 0;
@@ -468,10 +462,7 @@ html {
 @media (max-width: 991.98px) {
     .navbar {
         top: 0;
-        background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('images/nav.jpeg') !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
+        background: rgba(255, 255, 255, 0.95) !important;
     }
     
     .top-bar {
@@ -1066,6 +1057,8 @@ html {
     justify-content: center;  
     position: relative;
     overflow: hidden;
+    height: 250px;
+    min-height: 250px;
 }
 
 /* Protection Plus Logo */
@@ -1124,7 +1117,8 @@ html {
 .family-svg {
     width: 100%;
     height: 100%;
-    max-width: 250px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 /* Card Content */
@@ -1903,11 +1897,11 @@ html {
 .watermark-svg {
     width: 140px;
     height: 90px;
-    margin: 0 auto 0.75rem;
+    margin: 0 auto;
     display: block;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     object-fit: contain;
-    border-radius: 50%;
+    border-radius: 0;
 }
 
 .watermark-text {
@@ -2672,13 +2666,13 @@ html {
 }
 
 /* Image Styling */
-.protection-logo-img,
+.protection-logo-img,    
 .business-svg,
 .couple-svg,
 .family-svg,
 .portrait-svg {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -2686,6 +2680,7 @@ html {
 
 .protection-logo-img {    
     object-fit: contain;
+    padding: 20px;
 }
 
 
