@@ -686,7 +686,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #1e3c72;
+    background: transparent;
     z-index: 1;
 }
 
@@ -698,8 +698,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 25%, #20B2AA 50%, #17A2B8 75%, #20B2AA 100%);
-    background-size: 400% 400%;
+    background: transparent;
     z-index: 2;
 }
 
